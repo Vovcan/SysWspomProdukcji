@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="View\ArchiveScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ComplaintsScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\EmployeeListScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\HoursScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MainMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ProductionScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ProjectsScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SaleScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SettingsScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TaskCreationScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TaskListScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\WarehouseListScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
