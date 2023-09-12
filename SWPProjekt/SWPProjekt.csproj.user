@@ -2,6 +2,17 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="View\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\OdzyskanieHasla.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\TworzenieNowegoHasla.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="View\ArchiveScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -14,7 +25,13 @@
     <Page Update="View\HoursScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\MainMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\OdzyskanieHasla.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductionScreen.xaml">
@@ -33,6 +50,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\TaskListScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TworzenieNowegoHasla.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\WarehouseListScreen.xaml">
