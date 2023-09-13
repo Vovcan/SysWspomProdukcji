@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using SWPProjekt.ViewModel;
+using System.Windows.Controls;
 
 namespace SWPProjekt.View
 {
@@ -10,6 +11,8 @@ namespace SWPProjekt.View
         public WarehouseListScreen()
         {
             InitializeComponent();
+            WarehouseListScreenViewModel viewModel = new WarehouseListScreenViewModel();
+            DataContext = viewModel;
         }
     }
 }
