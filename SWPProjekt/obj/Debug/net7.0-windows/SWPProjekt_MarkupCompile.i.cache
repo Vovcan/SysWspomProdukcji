@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\
+C:\Users\user\pollub\swp\SWPProjekt\obj\Debug\net7.0-windows\
 SWPProjekt
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\user\Desktop\swp\SWPProjekt\App.xaml
-16-334747827
+C:\Users\user\pollub\swp\SWPProjekt\App.xaml
+17650480540
 
-23299844077
-2011683569784
-MainWindow.xaml;View\ArchiveScreen.xaml;View\ComplaintsScreen.xaml;View\EmployeeListScreen.xaml;View\HoursScreen.xaml;View\Login.xaml;View\MainMenu.xaml;View\OdzyskanieHasla.xaml;View\ProductionScreen.xaml;View\ProjectsScreen.xaml;View\SaleScreen.xaml;View\SettingsScreen.xaml;View\TaskCreationScreen.xaml;View\TaskListScreen.xaml;View\TworzenieNowegoHasla.xaml;View\WarehouseListScreen.xaml;
+291404658455
+204-2088085926
+CustomControls\BindablePasswordBox.xaml;MainWindow.xaml;View\ArchiveScreen.xaml;View\ComplaintsScreen.xaml;View\EmployeeListScreen.xaml;View\HoursScreen.xaml;View\Login.xaml;View\MainMenu.xaml;View\OdzyskanieHasla.xaml;View\ProductionScreen.xaml;View\ProjectsScreen.xaml;View\SaleScreen.xaml;View\SettingsScreen.xaml;View\TaskCreationScreen.xaml;View\TaskListScreen.xaml;View\TworzenieNowegoHasla.xaml;View\WarehouseListScreen.xaml;
 
-False
+True
 

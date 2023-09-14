@@ -53,7 +53,7 @@ namespace SWPProjekt.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SWPProjekt;V1.0.0.0;component/view/hoursscreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SWPProjekt;component/view/hoursscreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\HoursScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
