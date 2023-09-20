@@ -14,8 +14,8 @@ namespace SWPProjekt.ViewModel
         public ObservableCollection<Warehouse> WarehouseList { get; set; } = new ObservableCollection<Warehouse>();
         public WarehouseListScreenViewModel() {
 
-            WarehouseList.Add(new Warehouse("magazyn1","adres1","zip1",false));
-            WarehouseList.Add(new Warehouse("magazyn2", "adres2", "zip2", true));
+            //WarehouseList.Add(new Warehouse("magazyn1","adres1","zip1",false));
+            //WarehouseList.Add(new Warehouse("magazyn2", "adres2", "zip2", true));
         }
         
         
