@@ -7,10 +7,12 @@
              xmlns:helpers="clr-namespace:SWPProjekt.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <UserControl.Resources>
         <helpers:DataContextProxy x:Key="DataContextProxy" DataSource="{Binding}"/>
     </UserControl.Resources>
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
@@ -56,6 +58,7 @@
             <Grid Grid.Column="1" Name="ContentGrid"/>
             <!-- Główna zawartość -->
         </Grid>
+        <ContentControl x:Name="MainContent" />
     </Grid>
-    
+
 </UserControl>

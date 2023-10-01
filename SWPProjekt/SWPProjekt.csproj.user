@@ -14,6 +14,9 @@
     <Compile Update="View\TworzenieNowegoHasla.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\WarehouseScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="CustomControls\BindablePasswordBox.xaml">
@@ -62,6 +65,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\WarehouseListScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\WarehouseScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

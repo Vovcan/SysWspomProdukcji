@@ -13,7 +13,7 @@ namespace SWPProjekt.View
             InitializeComponent();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)   //metoda wyświetlająca odpowieni ekran zależnie od wybranego przycisku
+        public void MenuItem_Click(object sender, RoutedEventArgs e)   //metoda wyświetlająca odpowieni ekran zależnie od wybranego przycisku
         {
             MenuItem item = (MenuItem)sender;
             UserControl? screen=null;
@@ -53,6 +53,9 @@ namespace SWPProjekt.View
                     break;
                 case "SettingsBtn":
                     screen = new SettingsScreen();
+                    break;
+                case "WarehouseBtn":
+                    screen = new WarehouseScreen();
                     break;
             }
             

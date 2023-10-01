@@ -14,9 +14,7 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </UserControl.Resources>
     
-    <UserControl.DataContext>
-        <viewModel:LoginViewModel/>
-    </UserControl.DataContext>
+    
 
 
     <UserControl.Visibility>
