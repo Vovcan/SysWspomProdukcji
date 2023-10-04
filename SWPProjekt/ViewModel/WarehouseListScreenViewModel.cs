@@ -11,12 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-
-
 namespace SWPProjekt.ViewModel
 {
     
-    public class WarehouseListScreenViewModel
+    public class WarehouseListScreenViewModel : BaseViewModel
     {
         
         public ObservableCollection<Warehouse>? WarehouseList { get; set; }

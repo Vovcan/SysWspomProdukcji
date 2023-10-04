@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using SWPProjekt.ViewModel;
 
 namespace SWPProjekt
 {
@@ -10,6 +11,9 @@ namespace SWPProjekt
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel();
+
         }
     }
 }

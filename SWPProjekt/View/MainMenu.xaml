@@ -18,6 +18,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <ContentControl Content="{Binding SelectedViewModel}"/>
+
         <StackPanel Name="TopBar" Grid.Row="0" Background="DodgerBlue"> <!-- Pasek górny -->
             <Menu Background="Transparent" HorizontalAlignment="Right">
                 <MenuItem Header="Ustawienia" Name="SettingsBtn" Click="MenuItem_Click"/>

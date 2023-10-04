@@ -5,10 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SWPProjekt"
         xmlns:userView="clr-namespace:SWPProjekt.View"
+        xmlns:helpers="clr-namespace:SWPProjekt.Helpers"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         WindowState="Maximized">
+    <Window.Resources>
+        <helpers:DataContextProxy x:Key="DataContextProxy" DataSource="{Binding}"/>
+    </Window.Resources>
     <Grid>
-        <userView:MainMenu/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Name="TopBar" Grid.Row="0" Background="DodgerBlue">
+            <!-- Pasek górny -->
+            <Menu Background="Transparent" HorizontalAlignment="Right">
+                <MenuItem Header="Ustawienia" Name="SettingsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="WarehouseList"/>
+            </Menu>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="274*"/>
+            </Grid.ColumnDefinitions>
+
+            <Menu Grid.Column="0">
+                <!-- Menu boczne -->
+                <Menu.ItemsPanel>
+                    <!-- ustawienie układu menu na pionowy -->
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+
+                <MenuItem Header="Lista magazynów" Name="WarehouseListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="WarehouseList"/>
+                <MenuItem Header="Produkcja" Name="ProductionScreenBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ProductionList"/>
+                <MenuItem Header="Projekty" Name="ProjectsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ProjectsScreen"/>
+                <Expander Header="Praca" Name="WorkBtn">
+                    <StackPanel>
+                        <MenuItem Header="Lista Zadań" Name="TaskListBtn" />
+                        <MenuItem Header="Tworzenie zadań" Name="TaskCreationBtn" />
+                    </StackPanel>
+                </Expander>
+                <MenuItem Header="Lista pracowników" Name="EmployeeListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="EmployeeListScreen"/>
+                <MenuItem Header="Sprzedaż" Name="SaleBtn" Command="{Binding UpdateViewCommand}" CommandParameter="SaleScreen"/>
+                <MenuItem Header="Godziny" Name="HoursBtn" Command="{Binding UpdateViewCommand}" CommandParameter="HoursScreen"/>
+                <MenuItem Header="Archiwum" Name="ArchiveBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ArchiveScreen"/>
+                <MenuItem Header="Skargi" Name="ComplaintsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ComplaintsScreen"/>
+            </Menu>
+
+            <Grid Grid.Column="1" Grid.ColumnSpan="2">
+                <ContentControl Content="{Binding SelectedViewModel}"/>
+            </Grid>
+
+
+        </Grid>
+
     </Grid>
 </Window>

@@ -2,11 +2,41 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SWPProjekt"
-
+             xmlns:views="clr-namespace:SWPProjekt.View"
+             xmlns:viewmodels="clr-namespace:SWPProjekt.ViewModel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewmodels:WarehouseListScreenViewModel}">
+                <views:WarehouseListScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ProductionListScreenViewModel}">
+                <views:ProductionListScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ArchiveScreenViewModel}">
+                <views:ArchiveScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ComplaintsScreenViewModel}">
+                <views:ComplaintsScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:EmployeeListScreenViewModel}">
+                <views:EmployeeListScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:HoursScreenViewModel}">
+                <views:HoursScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:SaleScreenViewModel}">
+                <views:SaleScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ProjectsScreenViewModel}">
+                <views:ProjectsScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:SettingsScreenViewModel}">
+                <views:SettingsScreen/>
+            </DataTemplate>
+            
             <ResourceDictionary.MergedDictionaries>
+
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
@@ -15,3 +45,6 @@
         </ResourceDictionary>
     </Application.Resources>
 </Application>
+
+
+    

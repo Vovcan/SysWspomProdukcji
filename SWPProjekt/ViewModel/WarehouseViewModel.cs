@@ -9,7 +9,7 @@ using SWPProjekt.Model;
 
 namespace SWPProjekt.ViewModel
 {
-    internal class WarehouseViewModel
+    internal class WarehouseViewModel : BaseViewModel
     {
         public ObservableCollection<Warehouse>? Warehouse { get; set; }
 

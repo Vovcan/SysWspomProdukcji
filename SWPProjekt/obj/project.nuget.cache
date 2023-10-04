@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RQfwmiHE58Xc0DVDGpocs8JN1+4u4n1sB0tzO6+2Ft+bt3q1VkfLj6XEIKgybzhMvpqNgPfdFCsYcBAdc+30kA==",
+  "dgSpecHash": "eK5WyYHltbHiIcROMLTKyZpPnKhj9W61QxpwqY3MM9KW6Ggeqz3R/6hGZlzYv6hoyiAkuThPgyatK7Jt6JkoeQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\swp_2\\SWPProjekt\\SWPProjekt.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\swp\\SWPProjekt\\SWPProjekt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",

@@ -11,6 +11,9 @@
     <Compile Update="View\OdzyskanieHasla.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\ProductionListScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\TworzenieNowegoHasla.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -41,6 +44,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\OdzyskanieHasla.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ProductionListScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductionScreen.xaml">
