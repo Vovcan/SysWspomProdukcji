@@ -10,6 +10,18 @@ namespace SWPProjekt.ViewModel
 {
     internal class MainViewModel : BaseViewModel
     {
+        private bool _interfaceChecked;
+
+        public bool InterfaceChecked
+        {
+            get { return _interfaceChecked; }
+            set { _interfaceChecked = value;
+                OnPropertyChanged(nameof(InterfaceChecked));
+            }
+        }
+
+        public ICommand ChangeInterfaceCommand { get; set; }
+
         private BaseViewModel _selectedViewModel;
 
         public BaseViewModel SelectedViewModel
@@ -27,6 +39,7 @@ namespace SWPProjekt.ViewModel
         public MainViewModel()
         {
             UpdateViewCommand = new UpdateViewCommand(this);
+            ChangeInterfaceCommand = new ChangeInterfaceCommand(this);
         }
     }
 }

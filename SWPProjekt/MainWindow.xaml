@@ -7,6 +7,14 @@
         xmlns:userView="clr-namespace:SWPProjekt.View"
         xmlns:helpers="clr-namespace:SWPProjekt.Helpers"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800"
         WindowState="Maximized">
     <Window.Resources>
@@ -21,9 +29,11 @@
 
         <StackPanel Name="TopBar" Grid.Row="0" Background="DodgerBlue">
             <!-- Pasek górny -->
-            <Menu Background="Transparent" HorizontalAlignment="Right">
-                <MenuItem Header="Ustawienia" Name="SettingsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="WarehouseList"/>
-            </Menu>
+            <StackPanel Background="Transparent" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Interface" Foreground="white" VerticalAlignment="Center"/>
+                <ToggleButton IsChecked="{Binding InterfaceChecked}" Command="{Binding ChangeInterfaceCommand}"  Margin="16"/>
+                <MenuItem Header="Ustawienia" Name="SettingsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="SettingsScreen"/>
+            </StackPanel>
         </StackPanel>
 
         <Grid Grid.Row="1">

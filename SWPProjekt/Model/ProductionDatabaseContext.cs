@@ -51,9 +51,9 @@ public partial class ProductionDatabaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //Mateusz connection
- //       => optionsBuilder.UseMySQL("Server=127.0.0.1;User=root;Database=production_database;");
+        => optionsBuilder.UseMySQL("Server=127.0.0.1;User=root;Database=production_database;");
         //Włodzimiesz connection
-       => optionsBuilder.UseMySQL("server=127.0.0.1;database=swp;user=root;password=root");
+      // => optionsBuilder.UseMySQL("server=127.0.0.1;database=swp;user=root;password=root");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
