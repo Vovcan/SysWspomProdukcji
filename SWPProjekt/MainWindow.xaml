@@ -10,7 +10,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          TextElement.FontWeight="Regular"
-         TextElement.FontSize="13"
+         TextElement.FontSize="{Binding FontSize}"
          TextOptions.TextFormattingMode="Ideal"
          TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
@@ -30,7 +30,7 @@
         <StackPanel Name="TopBar" Grid.Row="0" Background="DodgerBlue">
             <!-- Pasek górny -->
             <StackPanel Background="Transparent" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Interface" Foreground="white" VerticalAlignment="Center"/>
+                <TextBlock Text="Interfejs" Foreground="white" VerticalAlignment="Center"/>
                 <ToggleButton IsChecked="{Binding InterfaceChecked}" Command="{Binding ChangeInterfaceCommand}"  Margin="16"/>
                 <MenuItem Header="Ustawienia" Name="SettingsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="SettingsScreen"/>
             </StackPanel>
@@ -39,11 +39,10 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="47*"/>
-                <ColumnDefinition Width="274*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Menu Grid.Column="0">
+            <Menu Grid.Column="0" FontSize="{Binding FontSize}">
                 <!-- Menu boczne -->
                 <Menu.ItemsPanel>
                     <!-- ustawienie układu menu na pionowy -->
@@ -68,7 +67,7 @@
                 <MenuItem Header="Skargi" Name="ComplaintsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ComplaintsScreen"/>
             </Menu>
 
-            <Grid Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid Grid.Column="1">
                 <ContentControl Content="{Binding SelectedViewModel}"/>
             </Grid>
 

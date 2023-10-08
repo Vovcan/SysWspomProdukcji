@@ -20,6 +20,17 @@ namespace SWPProjekt.ViewModel
             }
         }
 
+        private int _fontSize;
+
+        public int FontSize
+        {
+            get { return _fontSize; }
+            set {
+                _fontSize = value;
+                OnPropertyChanged(nameof(FontSize));
+            }
+        }
+
         public ICommand ChangeInterfaceCommand { get; set; }
 
         private BaseViewModel _selectedViewModel;
@@ -38,6 +49,7 @@ namespace SWPProjekt.ViewModel
 
         public MainViewModel()
         {
+            FontSize = 14;
             UpdateViewCommand = new UpdateViewCommand(this);
             ChangeInterfaceCommand = new ChangeInterfaceCommand(this);
         }

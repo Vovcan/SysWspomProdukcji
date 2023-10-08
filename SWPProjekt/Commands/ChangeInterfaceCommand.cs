@@ -26,7 +26,7 @@ namespace SWPProjekt.Commands
         }
 
         public void Execute(object? parameter)
-        { 
+        {
             PaletteHelper helper = new PaletteHelper();
             ITheme theme = helper.GetTheme();
 
