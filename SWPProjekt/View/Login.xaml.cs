@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SWPProjekt.View
@@ -18,11 +17,12 @@ namespace SWPProjekt.View
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class Login : Window
     {
         public Login()
         {
             InitializeComponent();
+            DataContext = new LoginViewModel();
         }
     }
 }

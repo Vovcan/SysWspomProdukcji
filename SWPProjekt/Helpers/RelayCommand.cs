@@ -11,6 +11,7 @@ namespace SWPProjekt.Helpers
     {
         Action<object> execute;
         Func<object, bool> canExecute;
+        private Action onLogin;
 
         public event EventHandler CanExecuteChanged
         {
@@ -22,6 +23,11 @@ namespace SWPProjekt.Helpers
         {
             this.execute = execute;
             this.canExecute = canExecute;
+        }
+
+        public RelayCommand(Action onLogin)
+        {
+            this.onLogin = onLogin;
         }
 
         public bool CanExecute(object parameter)
