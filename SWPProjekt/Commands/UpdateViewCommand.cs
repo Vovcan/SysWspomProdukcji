@@ -61,7 +61,7 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "SettingsScreen")
             {
-                viewModel.SelectedViewModel = new SettingsScreenViewModel();
+                viewModel.SelectedViewModel = new SettingsScreenViewModel(viewModel);
             }
         }
     }

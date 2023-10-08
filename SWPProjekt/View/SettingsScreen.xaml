@@ -7,6 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Ustawienia" Margin="10" FontSize="15"/>
+        <StackPanel>
+            <TextBlock Text="Ustawienia" Margin="10"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Rozmiar czcionki" VerticalAlignment="Center"/>
+                <StackPanel VerticalAlignment="Center" Margin="10">
+                    <Slider Value="{Binding MainModel.FontSize, Delay=200}" Minimum="8" Maximum="24" IsSnapToTickEnabled="True" TickFrequency="1" Width="200" />
+                </StackPanel>
+                <TextBlock Text="{Binding MainModel.FontSize}" VerticalAlignment="Center"/>
+                <TextBlock Text=" px" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Kolorystyka interfejsu" VerticalAlignment="Center"/>
+                <ToggleButton IsChecked="{Binding MainModel.InterfaceChecked}" Command="{Binding ChangeInterfaceCommand}"  Margin="16"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -12,6 +12,6 @@
         <viewModel:ProductionListScreenViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <TextBlock Text="Produkcja" Margin="10" FontSize="15"/> 
+        <TextBlock Text="Produkcja" Margin="10"/> 
     </Grid>
 </UserControl>

@@ -19,7 +19,7 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock Text="Lista Magazynów" Margin="10" FontSize="15"/>
+            <TextBlock Text="Lista Magazynów" Margin="10"/>
             <DataGrid Name="WarehouseListGrid" IsReadOnly="True" ItemsSource="{Binding WarehouseList}" SelectedItem ="{Binding CurrentWarehouse}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn/>
