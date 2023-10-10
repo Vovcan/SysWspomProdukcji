@@ -18,6 +18,7 @@ namespace SWPProjekt.ViewModel
     {
         
         public ObservableCollection<Warehouse>? WarehouseList { get; set; }
+        public MainViewModel MainModel { get; set; }
 
         private Warehouse _currentWarehouse;
         public Warehouse CurrentWarehouse
@@ -34,7 +35,10 @@ namespace SWPProjekt.ViewModel
         }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
 
-        public WarehouseListScreenViewModel() {
+
+
+        public WarehouseListScreenViewModel(MainViewModel mainModel) {
+            MainModel = mainModel;
             try
             {
                 WarehouseList = new ObservableCollection<Warehouse>(context.Warehouses.ToList());

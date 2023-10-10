@@ -30,7 +30,7 @@ namespace SWPProjekt.Commands
             
             if (parameter.ToString() == "WarehouseList")
             {
-                viewModel.SelectedViewModel = new WarehouseListScreenViewModel();
+                viewModel.SelectedViewModel = new WarehouseListScreenViewModel(viewModel);
             }else if(parameter.ToString() == "ProductionList")
             {
                 viewModel.SelectedViewModel = new ProductionListScreenViewModel();

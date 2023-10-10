@@ -8,7 +8,7 @@ using SWPProjekt.Commands;
 
 namespace SWPProjekt.ViewModel
 {
-    internal class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
         private bool _interfaceChecked;
 

@@ -11,8 +11,6 @@ namespace SWPProjekt.View
         public WarehouseListScreen()
         {
             InitializeComponent();
-            WarehouseListScreenViewModel viewModel = new WarehouseListScreenViewModel();
-            DataContext = viewModel;
         }
     }
 }
