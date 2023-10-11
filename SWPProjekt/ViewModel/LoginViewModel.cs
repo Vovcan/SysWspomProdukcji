@@ -50,12 +50,13 @@ public class LoginViewModel : BaseViewModel
 
     public RelayCommand LoginCommand { get; set; }
 
+    public RelayCommand PasswordRecoveryCommand { get; set; }
 
-    public LoginViewModel()
-    {
-        LoginCommand = new RelayCommand(OnLogin );
 
-    }
+    
+
+
+
 
     private void OnLogin(object a)
     {
@@ -83,29 +84,28 @@ public class LoginViewModel : BaseViewModel
 
 
     }
+    private UserControl _currentView;
 
+    public UserControl CurrentView
+    {
+        get { return _currentView; }
+        set
+        {
+            _currentView = value;
+            OnPropertyChanged(nameof(CurrentView));
+        }
+    }
 
-    //private ICommand forgetPasswordCommand;
-    //public ICommand ForgetPasswordCommand
-    //{
-    //    get
-    //    {
-    //        if (forgetPasswordCommand == null)
-    //        {
-    //            forgetPasswordCommand = new RelayCommand(OpenForgetPasswordView);
-    //        }
-    //        return forgetPasswordCommand;
-    //    }
-    //}
-
-    //private void OpenForgetPasswordView()
-    //{
-    //    // Створіть екземпляр ViewModel для "OdzyskanieHasla.xaml"
-    //    OdzyskanieHaslaViewModel odzyskanieHaslaViewModel = new OdzyskanieHaslaViewModel();
-
-    //    // Встановіть CurrentView на ViewModel "OdzyskanieHasla.xaml"
-    //    CurrentView = odzyskanieHaslaViewModel;
-    //}
-
+    private void OpenForgetPasswordView(object a)
+    {
+        var passwordRecoveryPage = new OdzyskanieHasla();
+        CurrentView = passwordRecoveryPage;
+    }
+    public LoginViewModel()
+    {
+        LoginCommand = new RelayCommand(OnLogin);
+        PasswordRecoveryCommand = new RelayCommand(OpenForgetPasswordView);
+        CurrentView = new LoginStartPage();
+    }
 
 }

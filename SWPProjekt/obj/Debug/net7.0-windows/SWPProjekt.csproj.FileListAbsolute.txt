@@ -368,3 +368,7 @@ C:\Users\user\Desktop\swp_1\SWPProjekt\obj\Debug\net7.0-windows\refint\SWPProjek
 C:\Users\user\Desktop\swp_1\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.pdb
 C:\Users\user\Desktop\swp_1\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.genruntimeconfig.cache
 C:\Users\user\Desktop\swp_1\SWPProjekt\obj\Debug\net7.0-windows\ref\SWPProjekt.dll
+C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\Components\BindablePasswordBox.g.cs
+C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\View\LoginStartPage.g.cs
+C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\Components\BindablePasswordBox.baml
+C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\View\LoginStartPage.baml

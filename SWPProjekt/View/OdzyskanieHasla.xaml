@@ -11,15 +11,6 @@
         <helpers:DataContextProxy x:Key="DataContextProxy" DataSource="{Binding}"/>
     </UserControl.Resources>
     <Grid>
-        <Border MinWidth="1920" MinHeight="48" Background ="#0078D4" VerticalAlignment="Top"></Border>
-        <StackPanel   MinHeight="48" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image Source="/Images/String-icon-waffle.png" Width="16" Height="16" Margin="16"/>
-            <TextBlock Text="Produkt name" FontSize="16" Foreground="white" VerticalAlignment="Center"/>
-        </StackPanel>
-        <StackPanel   MinHeight="48" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <TextBlock Text="Interface" FontSize="10" Foreground="white" VerticalAlignment="Center"/>
-            <ToggleButton Margin="16"/>
-        </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock MinWidth="69" MinHeight="20" VerticalAlignment="Center" Text="Odzyskiwanie hasła" HorizontalAlignment="Center" FontSize="24" Padding="20"></TextBlock>
             <StackPanel Orientation="Horizontal">
