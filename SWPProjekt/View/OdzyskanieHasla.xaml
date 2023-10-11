@@ -21,14 +21,17 @@
             <ToggleButton Margin="16"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock MinWidth="69" MinHeight="20" VerticalAlignment="Center" Text="Log in" HorizontalAlignment="Center" FontSize="24" Padding="20"></TextBlock>
-            <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20"/>
-
-            <PasswordBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20"></PasswordBox>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button MinWidth="89" MinHeight="32" Background="#0078D4" Width="89" Height="32" Margin="20">Zaloguj</Button>
-                <Button MinWidth="89" MinHeight="32" BorderBrush="Black" BorderThickness="1" Background="White" Foreground="Black" Content="Zapomniałem hasło" Width="168" Height="32"></Button>
+            <TextBlock MinWidth="69" MinHeight="20" VerticalAlignment="Center" Text="Odzyskiwanie hasła" HorizontalAlignment="Center" FontSize="24" Padding="20"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20"/>
+                <Button MinWidth="116" MinHeight="32" Background="#0078D4" Width="89" Height="32" Margin="20">Wysłać kod</Button>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <PasswordBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20"></PasswordBox>
+                <Button MinWidth="89" MinHeight="32" Background="#0078D4" Width="203" Height="32" Margin="20">Tworzenie nowego hasła</Button>
+            </StackPanel>
+            
+            
         </StackPanel>
     </Grid>
 </UserControl>

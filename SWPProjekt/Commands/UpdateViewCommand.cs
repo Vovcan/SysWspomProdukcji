@@ -63,6 +63,10 @@ namespace SWPProjekt.Commands
             {
                 viewModel.SelectedViewModel = new SettingsScreenViewModel(viewModel);
             }
+            else if (parameter.ToString() == "OdzyskanieHasla")
+            {
+                viewModel.SelectedViewModel = new OdzyskanieHaslaViewModel();
+            }
         }
     }
 }
