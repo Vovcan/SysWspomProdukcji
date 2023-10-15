@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:SWPProjekt"
              xmlns:views="clr-namespace:SWPProjekt.View"
              xmlns:viewmodels="clr-namespace:SWPProjekt.ViewModel"
-             StartupUri="View/Login.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <DataTemplate DataType="{x:Type viewmodels:WarehouseListScreenViewModel}">
@@ -36,6 +36,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:OdzyskanieHaslaViewModel}">
                 <views:OdzyskanieHasla/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ProjectViewModel}">
+                <views:ProjectScreen/>
             </DataTemplate>
             
             <ResourceDictionary.MergedDictionaries>

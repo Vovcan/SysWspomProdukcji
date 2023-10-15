@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using SWPProjekt.Model;
 using SWPProjekt.ViewModel;
 
 namespace SWPProjekt.Commands
@@ -27,7 +28,6 @@ namespace SWPProjekt.Commands
 
         public void Execute(object? parameter)
         {
-            
             if (parameter.ToString() == "WarehouseList")
             {
                 viewModel.SelectedViewModel = new WarehouseListScreenViewModel(viewModel);
@@ -53,7 +53,7 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "ProjectsScreen")
             {
-                viewModel.SelectedViewModel = new ProjectsScreenViewModel();
+                viewModel.SelectedViewModel = new ProjectsScreenViewModel(viewModel);
             }
             else if (parameter.ToString() == "SaleScreen")
             {
@@ -67,6 +67,10 @@ namespace SWPProjekt.Commands
             {
                 viewModel.SelectedViewModel = new OdzyskanieHaslaViewModel();
             }
-        }
+            else if (parameter is Project)
+            {
+                viewModel.SelectedViewModel = new ProjectViewModel((Project)parameter);
+            }
+        }        
     }
 }

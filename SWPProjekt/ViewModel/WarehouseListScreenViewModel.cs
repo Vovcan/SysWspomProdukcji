@@ -25,7 +25,7 @@ namespace SWPProjekt.ViewModel
         {
             get { return _currentWarehouse; }
             set 
-            { 
+            {
                 _currentWarehouse = value;
                 var mainItem = new MenuItem();
                 mainItem.Name = "WarehouseBtn";

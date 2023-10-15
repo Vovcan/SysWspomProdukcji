@@ -49,7 +49,7 @@ namespace SWPProjekt.ViewModel
 
         public MainViewModel()
         {
-            FontSize = 14;
+            FontSize = 16;
             UpdateViewCommand = new UpdateViewCommand(this);
             ChangeInterfaceCommand = new ChangeInterfaceCommand(this);
         }
