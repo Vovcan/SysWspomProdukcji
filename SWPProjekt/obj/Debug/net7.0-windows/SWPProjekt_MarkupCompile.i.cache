@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\user\Desktop\swp\SWPProjekt\App.xaml
-211405232087
+22-246417580
 
-61-1200730910
+63840951622
 225-417873636
-Components\BindablePasswordBox.xaml;CustomControls\BindablePasswordBox.xaml;MainWindow.xaml;View\ArchiveScreen.xaml;View\ComplaintsScreen.xaml;View\EmployeeListScreen.xaml;View\HoursScreen.xaml;View\Login.xaml;View\LoginStartPage.xaml;View\MainMenu.xaml;View\OdzyskanieHasla.xaml;View\ProductionListScreen.xaml;View\ProductionScreen.xaml;View\ProjectsScreen.xaml;View\SaleScreen.xaml;View\SettingsScreen.xaml;View\TaskCreationScreen.xaml;View\TaskListScreen.xaml;View\TworzenieNowegoHasla.xaml;View\WarehouseListScreen.xaml;View\WarehouseScreen.xaml;
+Components\BindablePasswordBox.xaml;CustomControls\BindablePasswordBox.xaml;MainWindow.xaml;View\ArchiveScreen.xaml;View\ComplaintsScreen.xaml;View\EmployeeListScreen.xaml;View\HoursScreen.xaml;View\Login.xaml;View\LoginStartPage.xaml;View\MainMenu.xaml;View\OdzyskanieHasla.xaml;View\ProductionListScreen.xaml;View\ProductionScreen.xaml;View\ProjectScreen.xaml;View\ProjectsScreen.xaml;View\SaleScreen.xaml;View\SettingsScreen.xaml;View\TaskCreationScreen.xaml;View\TaskListScreen.xaml;View\TworzenieNowegoHasla.xaml;View\WarehouseListScreen.xaml;View\WarehouseScreen.xaml;
 
 True
 

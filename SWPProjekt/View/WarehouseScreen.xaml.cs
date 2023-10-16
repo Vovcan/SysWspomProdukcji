@@ -16,15 +16,12 @@ using SWPProjekt.ViewModel;
 
 namespace SWPProjekt.View
 {
-    /// <summary>
-    /// Interaction logic for WarehouseScreen.xaml
-    /// </summary>
+
     public partial class WarehouseScreen : UserControl
     {
         public WarehouseScreen()
         {
             InitializeComponent();
-
         }
     }
 }

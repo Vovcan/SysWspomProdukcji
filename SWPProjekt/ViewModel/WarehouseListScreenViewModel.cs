@@ -27,10 +27,12 @@ namespace SWPProjekt.ViewModel
             set 
             {
                 _currentWarehouse = value;
-                var mainItem = new MenuItem();
-                mainItem.Name = "WarehouseBtn";
-                MainMenu mainMenu = new MainMenu();
-                mainMenu.MenuItem_Click(mainItem, null);
+                if (MainModel.UpdateViewCommand.CanExecute(CurrentWarehouse))
+                    MainModel.UpdateViewCommand.Execute(CurrentWarehouse);
+ //               var mainItem = new MenuItem();
+                //mainItem.Name = "WarehouseBtn";
+                //MainMenu mainMenu = new MainMenu();
+                //mainMenu.MenuItem_Click(mainItem, null);
             }
         }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();

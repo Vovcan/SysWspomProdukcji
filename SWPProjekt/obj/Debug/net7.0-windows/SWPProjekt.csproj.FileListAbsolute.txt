@@ -372,3 +372,5 @@ C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\Components\Bindabl
 C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\View\LoginStartPage.g.cs
 C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\Components\BindablePasswordBox.baml
 C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\View\LoginStartPage.baml
+C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\View\ProjectScreen.g.cs
+C:\Users\user\Desktop\swp\SWPProjekt\obj\Debug\net7.0-windows\View\ProjectScreen.baml

@@ -71,6 +71,10 @@ namespace SWPProjekt.Commands
             {
                 viewModel.SelectedViewModel = new ProjectViewModel((Project)parameter);
             }
+            else if (parameter is Warehouse)
+            {
+                viewModel.SelectedViewModel = new WarehouseViewModel((Warehouse)parameter);
+            }
         }        
     }
 }
