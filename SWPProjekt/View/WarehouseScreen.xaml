@@ -7,31 +7,31 @@
              xmlns:viewModel="clr-namespace:SWPProjekt.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <StackPanel>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <TextBlock Text="Lista magazynów >" FontSize="18" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-            <TextBlock Text="{Binding CurrentWarehouse.Name}"   FontSize="18" Foreground="black"/>
+            <TextBlock Text="Lista magazynów >" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock Text="{Binding CurrentWarehouse.Name}"   FontSize="18" />
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Width="1103" Margin="0,43,0,0">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Nazwa : " FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Name}" FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Nazwa : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Name}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Id: " FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Id}" FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Id: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Id}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Adres: " FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Address}" FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Adres: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Address}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Kod pocztowy: " FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Zip}" FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Kod pocztowy: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Zip}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Zajęty: " FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20">
+                <TextBlock Text="Zajęty: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
@@ -47,11 +47,28 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Surowce: " FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock FontSize="20" Foreground="black" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Surowce: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <ComboBox ItemsSource="{Binding Names}" SelectedItem="{Binding SelectedProduct}"/>
             </StackPanel>
+            <StackPanel>
+                <DataGrid>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn/>
+                        <DataGridTextColumn Header="id" Binding="{Binding Id}" Width="*"/>
+                        <DataGridTextColumn Header="Termin ważności" Binding="{Binding TheTermOfValidity}" Width="*"/>
+                        <DataGridTextColumn Header="Data dostarczenia" Binding="{Binding DeliveryDate}" Width="*"/>
+                        <DataGridTextColumn Header="Producent" Binding="{Binding Manufacturer}" Width="*"/>
+                        <DataGridTextColumn Header="Ilość" Binding="{Binding Quantity}" Width="*"/>
+                        <DataGridTextColumn Header="Obecna ilość" Binding="{Binding CurrentQuantity}" Width="*"/>
+                        <DataGridTextColumn Header="Pełna cena" Binding="{Binding FullPrice}" Width="*"/>
+                        <DataGridTextColumn Header="Jednostka" Binding="{Binding Unit}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+            
         </StackPanel>
         
         
-    </Grid>
+    </StackPanel>
 </UserControl>

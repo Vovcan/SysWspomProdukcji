@@ -150,6 +150,7 @@ public partial class ProductionDatabaseContext : DbContext
                 .HasForeignKey(d => d.Warehouseid)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("FKdelivery583613");
+
         });
 
         modelBuilder.Entity<JobTitle>(entity =>
