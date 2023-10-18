@@ -23,7 +23,10 @@ namespace SWPProjekt.ViewModel
         private Warehouse _currentWarehouse;
         public Warehouse CurrentWarehouse
         {
-            get { return _currentWarehouse; }
+            get 
+            { 
+                return _currentWarehouse; 
+            }
             set 
             {
                 _currentWarehouse = value;

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Input;
 using SWPProjekt.Model;
 using SWPProjekt.ViewModel;
@@ -73,7 +74,9 @@ namespace SWPProjekt.Commands
             }
             else if (parameter is Warehouse)
             {
-                viewModel.SelectedViewModel = new WarehouseViewModel((Warehouse)parameter);
+                List<Product> selectedProduct = new List<Product>();
+
+                viewModel.SelectedViewModel = new WarehouseViewModel((Warehouse)parameter, selectedProduct);
             }
         }        
     }

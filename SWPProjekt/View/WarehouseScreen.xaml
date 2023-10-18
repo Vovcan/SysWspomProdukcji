@@ -5,9 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SWPProjekt.View" 
              xmlns:viewModel="clr-namespace:SWPProjekt.ViewModel"
+             xmlns:helpers="clr-namespace:SWPProjekt.Helpers"
+
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
+    <UserControl.Resources>
+        <helpers:DataContextProxy x:Key="DataContextProxy" DataSource="{Binding}"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Margin="1100,40,-430,377">
+            <Button Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dostawa" />
+        </StackPanel>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
             <TextBlock Text="Lista magazynów >" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
             <TextBlock Text="{Binding CurrentWarehouse.Name}"   FontSize="18" />
@@ -49,26 +58,26 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Surowce: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
                 <TextBlock FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <ComboBox ItemsSource="{Binding Names}" SelectedItem="{Binding SelectedProduct}"/>
+                <ComboBox ItemsSource="{Binding Products}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" />
+                
             </StackPanel>
-            <StackPanel>
-                <DataGrid>
+            <StackPanel Height="78">
+                <DataGrid Name="WarehouseListGrid" IsReadOnly="True"   AutoGenerateColumns="False" >
                     <DataGrid.Columns>
                         <DataGridTextColumn/>
-                        <DataGridTextColumn Header="id" Binding="{Binding Id}" Width="*"/>
-                        <DataGridTextColumn Header="Termin ważności" Binding="{Binding TheTermOfValidity}" Width="*"/>
-                        <DataGridTextColumn Header="Data dostarczenia" Binding="{Binding DeliveryDate}" Width="*"/>
-                        <DataGridTextColumn Header="Producent" Binding="{Binding Manufacturer}" Width="*"/>
-                        <DataGridTextColumn Header="Ilość" Binding="{Binding Quantity}" Width="*"/>
-                        <DataGridTextColumn Header="Obecna ilość" Binding="{Binding CurrentQuantity}" Width="*"/>
-                        <DataGridTextColumn Header="Pełna cena" Binding="{Binding FullPrice}" Width="*"/>
-                        <DataGridTextColumn Header="Jednostka" Binding="{Binding Unit}" Width="*"/>
+                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Adres" Binding="{Binding Address}" Width="*"/>
+                        <DataGridTextColumn Header="Kod pocztowy" Binding="{Binding Zip}" Width="*"/>
+                        <DataGridTextColumn Header="Pełny" Binding="{Binding Full}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
-            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Producent: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding SelectedProduct.Producer}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+            </StackPanel>
         </StackPanel>
-        
-        
-    </StackPanel>
+
+    </Grid>
+
 </UserControl>

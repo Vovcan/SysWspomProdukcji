@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using MaterialDesignColors.Recommended;
 using SWPProjekt.Model;
 
 namespace SWPProjekt.ViewModel
@@ -13,19 +15,26 @@ namespace SWPProjekt.ViewModel
     {
         public Warehouse CurrentWarehouse { get; set; }
 
-        public Product SelectedProduct { get; set; }
-
         ProductionDatabaseContext context = new ProductionDatabaseContext();
 
-        public List<int> Product { get; set; }
+        public List<int> DeliverysId { get; set; }
 
-        public List<string> Names { get; set; }
+        public List<Product> Products { get; set; }
+
+        public Product Product { get; set; }
+
+        public List<string> ProductsName { get; set; }
 
         public List<int> Delivery { get; set; }
 
-        public int Id { get; set; }
+        public List<Delivery> Deliveries { get; set; }
 
-        public WarehouseViewModel(Warehouse warehouse)
+        public int Id { get; set; }
+        //-------------------------
+
+        public List<Product> ProductList { get; set; }
+
+        public WarehouseViewModel(Warehouse warehouse, List<Product> productname)
         {
             CurrentWarehouse = warehouse;
             Delivery = context.Deliveries
@@ -33,25 +42,57 @@ namespace SWPProjekt.ViewModel
                 .Select(d => d.Id)
                 .ToList();
 
-            Product = new List<int>();
+            DeliverysId = new List<int>();
 
             for (int i = 0; i < Delivery.Count; i++)
             {
-                Product.AddRange(context.Deliveries
+                DeliverysId.AddRange(context.Deliveries
                 .Where(x => x.Id == Delivery[i])
                 .Select(d => d.Productid)
                 .ToList());
             }
-            Names = new List<string>();
+            Products = new List<Product>();
 
-            for (int i = 0; i < Product.Count; i++)
+
+            for (int i = 0; i < DeliverysId.Count; i++)
             {
-                Names.AddRange(context.Products
-                .Where(s => s.Id == Product[i])
-                .Select(u => u.Name)
+                Products.AddRange(context.Products
+                .Where(s => s.Id == DeliverysId[i])
                 .ToList());
             }
+
+            ProductList = Products;
+
+            for(int i = 0;i < Products.Count; i++)
+            {
+                for (int j = i+1; j < Products.Count ;j++)
+                {
+                    if (Products[j].Name == Products[i].Name)
+                    {
+                        Products.RemoveAt(j);
+                    }
+                }
+
+            }
+
             
+        }
+        public Product _selectedProduct;
+
+        public Product SelectedProduct
+        {
+            get 
+            { 
+                return _selectedProduct; 
+            }
+            set
+            {
+                _selectedProduct = value;
+                OnPropertyChanged(nameof(SelectedProduct));
+                
+
+                //Deliveries = new ObservableCollection<Delivery>(context.Deliveries.Where(x =>x.Productid == ProductList.));
+            }
         }
 
     }
