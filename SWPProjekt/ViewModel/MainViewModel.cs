@@ -41,7 +41,6 @@ namespace SWPProjekt.ViewModel
             set { 
                 _selectedViewModel = value;
                 OnPropertyChanged(nameof(SelectedViewModel));
-            
             }
         }
 

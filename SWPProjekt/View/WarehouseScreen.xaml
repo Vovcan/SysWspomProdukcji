@@ -59,22 +59,20 @@
                 <TextBlock Text="Surowce: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
                 <TextBlock FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
                 <ComboBox ItemsSource="{Binding Products}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" />
-                
             </StackPanel>
-            <StackPanel Height="78">
-                <DataGrid Name="WarehouseListGrid" IsReadOnly="True"   AutoGenerateColumns="False" >
+            <StackPanel Orientation="Horizontal" Height="184">
+                <DataGrid  IsReadOnly="True" ItemsSource="{Binding CombinedDelivery,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100">
                     <DataGrid.Columns>
-                        <DataGridTextColumn/>
-                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
-                        <DataGridTextColumn Header="Adres" Binding="{Binding Address}" Width="*"/>
-                        <DataGridTextColumn Header="Kod pocztowy" Binding="{Binding Zip}" Width="*"/>
-                        <DataGridTextColumn Header="Pełny" Binding="{Binding Full}" Width="*"/>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                        <DataGridTextColumn Header="Termin ważności" Binding="{Binding DeliveryDate}" Width="*"/>
+                        <DataGridTextColumn Header="Data dostarczenia" Binding="{Binding ExpirationDate}" Width="*"/>
+                        <DataGridTextColumn Header="Producent" Binding="{Binding ProducerName}" Width="*"/>
+                        <DataGridTextColumn Header="Ilość" Binding="{Binding Amount}" Width="*"/>
+                        <DataGridTextColumn Header="Obecna ilość" Binding="{Binding CurrentAmount}" Width="*"/>
+                        <DataGridTextColumn Header="Pełna cena" Binding="{Binding FullPrice}" Width="*"/>
+                        <DataGridTextColumn Header="Jednostka" Binding="{Binding UnitName}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Producent: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding SelectedProduct.Producer}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
             </StackPanel>
         </StackPanel>
 

@@ -21,6 +21,7 @@ namespace SWPProjekt.View
     {
         public WarehouseScreen()
         {
+
             InitializeComponent();
         }
     }

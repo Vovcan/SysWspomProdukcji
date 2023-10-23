@@ -70,9 +70,6 @@
             <Grid Grid.Column="1">
                 <ContentControl Content="{Binding SelectedViewModel}"/>
             </Grid>
-
-
         </Grid>
-
     </Grid>
 </Window>

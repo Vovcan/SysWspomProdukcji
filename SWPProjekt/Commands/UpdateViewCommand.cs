@@ -74,9 +74,7 @@ namespace SWPProjekt.Commands
             }
             else if (parameter is Warehouse)
             {
-                List<Product> selectedProduct = new List<Product>();
-
-                viewModel.SelectedViewModel = new WarehouseViewModel((Warehouse)parameter, selectedProduct);
+                viewModel.SelectedViewModel = new WarehouseViewModel((Warehouse)parameter);
             }
         }        
     }

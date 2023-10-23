@@ -30,11 +30,13 @@ namespace SWPProjekt.ViewModel
         public List<Delivery> Deliveries { get; set; }
 
         public int Id { get; set; }
-        //-------------------------
 
         public List<Product> ProductList { get; set; }
+        //-------------------------
+        public List<Product> SelectedProducts { get; set; }
 
-        public WarehouseViewModel(Warehouse warehouse, List<Product> productname)
+        private List<CombinedDeliveryData> _combinedDelivery;
+        public WarehouseViewModel(Warehouse warehouse)
         {
             CurrentWarehouse = warehouse;
             Delivery = context.Deliveries
@@ -52,8 +54,8 @@ namespace SWPProjekt.ViewModel
                 .ToList());
             }
             Products = new List<Product>();
-
-
+            ProductList = new List<Product>();
+            Deliveries = new List<Delivery>();
             for (int i = 0; i < DeliverysId.Count; i++)
             {
                 Products.AddRange(context.Products
@@ -61,11 +63,12 @@ namespace SWPProjekt.ViewModel
                 .ToList());
             }
 
-            ProductList = Products;
+            ProductList.AddRange(Products);
 
-            for(int i = 0;i < Products.Count; i++)
+
+            for (int i = 0; i < Products.Count; i++)
             {
-                for (int j = i+1; j < Products.Count ;j++)
+                for (int j = i + 1; j < Products.Count; j++)
                 {
                     if (Products[j].Name == Products[i].Name)
                     {
@@ -74,27 +77,62 @@ namespace SWPProjekt.ViewModel
                 }
 
             }
-
-            
         }
         public Product _selectedProduct;
 
         public Product SelectedProduct
         {
-            get 
-            { 
-                return _selectedProduct; 
+            get
+            {
+                return _selectedProduct;
             }
             set
             {
                 _selectedProduct = value;
                 OnPropertyChanged(nameof(SelectedProduct));
-                
+                SelectedProducts = new List<Product>();
+                SelectedProducts.AddRange(ProductList.Where(x => x.Name == _selectedProduct.Name).ToList());
 
-                //Deliveries = new ObservableCollection<Delivery>(context.Deliveries.Where(x =>x.Productid == ProductList.));
+                for (int i = 0; i < SelectedProducts.Count(); i++)
+                {
+                    Deliveries.AddRange(context.Deliveries.Where(x => x.Productid == SelectedProducts[i].Id).ToList());
+                }
+                var DelyverysList = new List<CombinedDeliveryData>();
+
+                for (int i = 0; i < Deliveries.Count(); i++)
+                {
+                    CombinedDeliveryData combinedData = new CombinedDeliveryData();
+
+                    combinedData.Id = Deliveries[i].Id;
+                    combinedData.DeliveryDate = Deliveries[i].DeliveryDate;
+                    combinedData.ExpirationDate = Deliveries[i].ExpirationDate;
+                    combinedData.ProducerName = SelectedProducts[i].Producer;
+                    combinedData.Amount = Deliveries[i].Amount;
+                    combinedData.CurrentAmount = Deliveries[i].CurrentAmount;
+                    combinedData.FullPrice = Deliveries[i].FullPrice;
+                    combinedData.UnitName = context.Units
+                        .Where(x => x.Id == Deliveries[i].Unitid)
+                        .Select(d => d.Name)
+                        .FirstOrDefault();
+
+                    DelyverysList.Add(combinedData);
+
+                }
+                CombinedDelivery = DelyverysList;
+                Deliveries.Clear();
             }
         }
-
+        public List<CombinedDeliveryData> CombinedDelivery
+        {
+            get 
+            { 
+                return _combinedDelivery; 
+            }
+            set 
+            {
+                _combinedDelivery = value;
+                OnPropertyChanged(nameof(CombinedDelivery));
+            }
+        }
     }
-
 }
