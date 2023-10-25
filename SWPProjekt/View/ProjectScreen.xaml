@@ -21,6 +21,10 @@
                 <TextBlock Text="Nazwa: "/>
                 <TextBlock Text="{Binding CurrentProject.Name}"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Id: "/>
+                <TextBlock Text="{Binding CurrentProject.Id}"/>
+            </StackPanel>
             <StackPanel>
                 <TextBlock Text="Opis: "/>
                 <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentProject.Description}"/>

@@ -43,6 +43,9 @@
             <DataTemplate DataType="{x:Type viewmodels:WarehouseViewModel}">
                 <views:WarehouseScreen/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ProductionViewModel}">
+                <views:ProductionScreen/>
+            </DataTemplate>
             
             <ResourceDictionary.MergedDictionaries>
 

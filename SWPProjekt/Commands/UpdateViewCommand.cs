@@ -34,7 +34,7 @@ namespace SWPProjekt.Commands
                 viewModel.SelectedViewModel = new WarehouseListScreenViewModel(viewModel);
             }else if(parameter.ToString() == "ProductionList")
             {
-                viewModel.SelectedViewModel = new ProductionListScreenViewModel();
+                viewModel.SelectedViewModel = new ProductionListScreenViewModel(viewModel);
             }
             else if (parameter.ToString() == "ArchiveScreen")
             {
@@ -75,6 +75,10 @@ namespace SWPProjekt.Commands
             else if (parameter is Warehouse)
             {
                 viewModel.SelectedViewModel = new WarehouseViewModel((Warehouse)parameter);
+            }
+            else if (parameter is Production)
+            {
+                viewModel.SelectedViewModel = new ProductionViewModel((Production)parameter);
             }
         }        
     }
