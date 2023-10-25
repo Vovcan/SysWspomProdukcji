@@ -16,47 +16,71 @@
                 <Style TargetType="{x:Type StackPanel}">
                     <Setter Property="Margin" Value="10,10,10,10"/>
                 </Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="Gray" />
+                    <Setter Property="BorderThickness" Value="0,0,0,0.5" />
+                </Style>
             </StackPanel.Resources>
-            <StackPanel Orientation="Horizontal">
+            <Border>
+                <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Nazwa: "/>
                 <TextBlock Text="{Binding CurrentProduction.Name}"/>
             </StackPanel>
+            </Border>
+            <Border>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Id: "/>
                 <TextBlock Text="{Binding CurrentProduction.Id}"/>
             </StackPanel>
-            <StackPanel>
+            </Border>
+            <Border>
+                <StackPanel>
                 <TextBlock Text="Opis: "/>
                 <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentProduction.Description}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Data Rozpoczęcia: "/>
                 <TextBlock Text="{Binding CurrentProduction.StartDate}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Data Zakończenia: "/>
                 <TextBlock Text="{Binding CurrentProduction.FinishDate}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Planowana data zakończenia: "/>
                 <TextBlock Text="{Binding CurrentProduction.PlannedFinishDate}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Łączny koszt produkcji: "/>
                 <TextBlock Text="{Binding CurrentProduction.ProductionPrice}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Managerzy: "/>
                 <TextBlock Text=""/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Zadania: "/>
                 <TextBlock Text=""/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Projekt: "/>
                 <TextBlock Text=""/>
             </StackPanel>
+            </Border>
         </StackPanel>
 
     </StackPanel>

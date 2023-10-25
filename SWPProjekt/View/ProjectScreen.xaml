@@ -11,44 +11,65 @@
             <TextBlock Text="Lista Projektów >" Margin="10"/>
             <TextBlock Text="{Binding CurrentProject.Name}" Margin="10"/>
         </StackPanel>
+
         <StackPanel>
             <StackPanel.Resources>
                 <Style TargetType="{x:Type StackPanel}">
                     <Setter Property="Margin" Value="10,10,10,10"/>
                 </Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="Gray" />
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                </Style>
             </StackPanel.Resources>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Nazwa: "/>
-                <TextBlock Text="{Binding CurrentProject.Name}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Id: "/>
-                <TextBlock Text="{Binding CurrentProject.Id}"/>
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Text="Opis: "/>
-                <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentProject.Description}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Data Rozpoczęcia: "/>
-                <TextBlock Text="{Binding CurrentProject.StartDate}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Data Zakończenia: "/>
-                <TextBlock Text="{Binding CurrentProject.FinishDate}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Planowana data zakończenia: "/>
-                <TextBlock Text="{Binding CurrentProject.ProjectTime}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Autor: "/>
-                <TextBlock Text="{Binding CurrentProject.Userid}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Procesy produkcyjne: "/>
-                <TextBlock Text=""/>
-            </StackPanel>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nazwa: "/>
+                    <TextBlock Text="{Binding CurrentProject.Name}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Id: "/>
+                    <TextBlock Text="{Binding CurrentProject.Id}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel>
+                    <TextBlock Text="Opis: "/>
+                    <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentProject.Description}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Data Rozpoczęcia: "/>
+                    <TextBlock Text="{Binding CurrentProject.StartDate}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Data Zakończenia: "/>
+                    <TextBlock Text="{Binding CurrentProject.FinishDate}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Planowana data zakończenia: "/>
+                    <TextBlock Text="{Binding CurrentProject.ProjectTime}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Autor: "/>
+                    <TextBlock Text="{Binding CurrentProject.Userid}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Procesy produkcyjne: "/>
+                    <TextBlock Text=""/>
+                </StackPanel>
+            </Border>
         </StackPanel>
         
     </StackPanel>
