@@ -106,7 +106,8 @@ namespace SWPProjekt.ViewModel
                     combinedData.Id = Deliveries[i].Id;
                     combinedData.DeliveryDate = Deliveries[i].DeliveryDate;
                     combinedData.ExpirationDate = Deliveries[i].ExpirationDate;
-                    combinedData.ProducerName = SelectedProducts[i].Producer;
+                    //combinedData.ProducerName = SelectedProducts[i].Producer; // stary kod, powodował błąd gdy dostaw było więcej od Selected Products
+                    combinedData.ProducerName = Deliveries[i].Product.Producer; // nowy kod, chyba działa poprawnie
                     combinedData.Amount = Deliveries[i].Amount;
                     combinedData.CurrentAmount = Deliveries[i].CurrentAmount;
                     combinedData.FullPrice = Deliveries[i].FullPrice;

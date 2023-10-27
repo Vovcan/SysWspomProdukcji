@@ -22,6 +22,7 @@
                     <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Button Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Projekt"/>
         </StackPanel>
     </Grid>
 </UserControl>

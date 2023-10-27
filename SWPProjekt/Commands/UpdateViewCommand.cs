@@ -68,17 +68,9 @@ namespace SWPProjekt.Commands
             {
                 viewModel.SelectedViewModel = new OdzyskanieHaslaViewModel();
             }
-            else if (parameter is Project)
+            else if (parameter is BaseViewModel)
             {
-                viewModel.SelectedViewModel = new ProjectViewModel((Project)parameter);
-            }
-            else if (parameter is Warehouse)
-            {
-                viewModel.SelectedViewModel = new WarehouseViewModel((Warehouse)parameter);
-            }
-            else if (parameter is Production)
-            {
-                viewModel.SelectedViewModel = new ProductionViewModel((Production)parameter);
+                viewModel.SelectedViewModel = (BaseViewModel)parameter;
             }
         }        
     }

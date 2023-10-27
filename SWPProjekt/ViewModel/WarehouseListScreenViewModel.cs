@@ -30,8 +30,9 @@ namespace SWPProjekt.ViewModel
             set 
             {
                 _currentWarehouse = value;
-                if (MainModel.UpdateViewCommand.CanExecute(CurrentWarehouse))
-                    MainModel.UpdateViewCommand.Execute(CurrentWarehouse);
+                WarehouseViewModel newView = new WarehouseViewModel(CurrentWarehouse);
+                if (MainModel.UpdateViewCommand.CanExecute(newView))
+                    MainModel.UpdateViewCommand.Execute(newView);
             }
         }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
