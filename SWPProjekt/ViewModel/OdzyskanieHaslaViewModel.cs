@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SWPProjekt.Helpers;
 using System.Windows.Controls;
+using System.Windows;
+using SWPProjekt.View;
 
 namespace SWPProjekt.ViewModel
 {
@@ -104,8 +106,7 @@ namespace SWPProjekt.ViewModel
         {
             if (SecretCode == code.ToString())
             {
-                //               LoginModel.OpenNewPassword(true);
-
+                (Application.Current.MainWindow.DataContext as LoginViewModel).CurrentView = new TworzenieNowegoHasla();
             }
         }
         public OdzyskanieHaslaViewModel()
