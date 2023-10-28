@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SWPProjekt.Commands;
+using SWPProjekt.Model;
 
 namespace SWPProjekt.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
         private bool _interfaceChecked;
+        private User _loginuser;
 
         public bool InterfaceChecked
         {
@@ -46,8 +48,9 @@ namespace SWPProjekt.ViewModel
 
         public ICommand UpdateViewCommand { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(User LoginUser)
         {
+            _loginuser = LoginUser;
             FontSize = 16;
             UpdateViewCommand = new UpdateViewCommand(this);
             ChangeInterfaceCommand = new ChangeInterfaceCommand(this);

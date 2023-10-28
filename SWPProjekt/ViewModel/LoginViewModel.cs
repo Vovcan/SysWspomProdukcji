@@ -29,6 +29,7 @@ public class LoginViewModel : BaseViewModel
     }
     private string _username;
     private string _password;
+    private User _loginuser;
 
 
 
@@ -55,7 +56,15 @@ public class LoginViewModel : BaseViewModel
 
     
 
-
+    public User LoginUser 
+    {
+        get { 
+            return _loginuser; 
+        }
+        set { 
+            _loginuser = value;
+        }
+    }
 
 
     private void OnLogin(object a)
@@ -66,11 +75,11 @@ public class LoginViewModel : BaseViewModel
             var user = context.Users.FirstOrDefault(u => u.Login == Username && u.Password == CreateMD5(Password));
             if (user != null)
             {
-
+                _loginuser = user;
                 Window loginWindow = Application.Current.Windows.OfType<Login>().FirstOrDefault();
 
                 // open new window MainWindow.xaml
-                var mainWindow = new MainWindow();
+                var mainWindow = new MainWindow(_loginuser);
 
                 mainWindow.Show();
                 // close Login.xaml

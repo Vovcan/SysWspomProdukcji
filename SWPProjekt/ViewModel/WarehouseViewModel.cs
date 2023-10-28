@@ -64,19 +64,17 @@ namespace SWPProjekt.ViewModel
             }
 
             ProductList.AddRange(Products);
-
-
-            for (int i = 0; i < Products.Count; i++)
+            HashSet<string> productNames = new HashSet<string>();
+            List<Product> uniqueProducts = new List<Product>();
+            foreach (var product in Products)
             {
-                for (int j = i + 1; j < Products.Count; j++)
+                if (productNames.Add(product.Name))
                 {
-                    if (Products[j].Name == Products[i].Name)
-                    {
-                        Products.RemoveAt(j);
-                    }
+                    uniqueProducts.Add(product);
                 }
-
             }
+            Products = uniqueProducts;
+
         }
         public Product _selectedProduct;
 
