@@ -14,6 +14,11 @@ namespace SWPProjekt.ViewModel
         private bool _interfaceChecked;
         private User _loginuser;
 
+        public User LoginUser
+        {
+            get { return _loginuser; }
+        }
+
         public bool InterfaceChecked
         {
             get { return _interfaceChecked; }

@@ -1,4 +1,5 @@
-﻿using SWPProjekt.Model;
+﻿using SWPProjekt.Helpers;
+using SWPProjekt.Model;
 using SWPProjekt.View;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace SWPProjekt.ViewModel
 {
     class ProjectsScreenViewModel : BaseViewModel
     {
+        public RelayCommand CreateProjectCommand { get; set; }
         public ObservableCollection<Project>? ProjectList { get; set; }
         public MainViewModel MainModel { get; set; }
 
@@ -36,6 +38,7 @@ namespace SWPProjekt.ViewModel
         public ProjectsScreenViewModel(MainViewModel mainModel)
         {
             MainModel = mainModel;
+            CreateProjectCommand = new RelayCommand(CreateProject);
             try
             {
                 ProjectList = new ObservableCollection<Project>(context.Projects.ToList());
@@ -45,7 +48,11 @@ namespace SWPProjekt.ViewModel
             {
                 Debug.WriteLine("brak połączenia z bazą");
             }
+        }
 
+        public void CreateProject(Object o)
+        {
+            MainModel.UpdateViewCommand.Execute(new NewProjectViewModel(MainModel));
         }
     }
 }

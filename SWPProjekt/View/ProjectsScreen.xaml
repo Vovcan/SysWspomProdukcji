@@ -7,12 +7,12 @@
              xmlns:helpers="clr-namespace:SWPProjekt.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <UserControl.Resources>
         <helpers:DataContextProxy x:Key="DataContextProxy" DataSource="{Binding}"/>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </UserControl.Resources>
-    
+
     <Grid>
         <StackPanel>
             <TextBlock Text="Lista Projektów" Margin="10"/>
@@ -22,7 +22,7 @@
                     <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Projekt"/>
+            <Button Command="{Binding CreateProjectCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Projekt"/>
         </StackPanel>
     </Grid>
 </UserControl>
