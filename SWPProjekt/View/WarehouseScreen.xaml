@@ -14,7 +14,7 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel Margin="1100,40,-430,377">
-            <Button Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dostawa" />
+            <Button Width="128" Height="32" Background="#0078D4" BorderBrush="#0078D4" Content="+ Dostawa" Command="{Binding CreateNewDelivery}"/>
         </StackPanel>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
             <TextBlock Text="Lista magazynów >" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
@@ -59,7 +59,7 @@
                 <TextBlock FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
                 <ComboBox ItemsSource="{Binding Products}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="184">
+            <StackPanel Orientation="Vertical" Height="184">
                 <DataGrid  IsReadOnly="True" ItemsSource="{Binding CombinedDelivery,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
@@ -72,6 +72,20 @@
                         <DataGridTextColumn Header="Jednostka" Binding="{Binding UnitName}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
+                <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                    <TextBlock Width="150"></TextBlock>
+                    <DatePicker Width="120" SelectedDate="{Binding NewExpirationDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Width="20"></TextBlock>
+                    <DatePicker Width="120" SelectedDate="{Binding NewDeliveryDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Width="20"></TextBlock>
+                    <TextBox MinWidth="100" MaxLength="50" Text="{Binding NewProducent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Width="35"></TextBlock>
+                    <TextBox MinWidth="50" MaxLength="50" Text="{Binding NewProducent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Width="230"></TextBlock>
+                    <TextBox MinWidth="50" MaxLength="50" Text="{Binding NewProducent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Width="70"></TextBlock>
+                    <TextBox MinWidth="100" MaxLength="50" Text="{Binding NewProducent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
 

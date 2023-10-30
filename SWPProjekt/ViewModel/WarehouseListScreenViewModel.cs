@@ -16,7 +16,6 @@ namespace SWPProjekt.ViewModel
     
     public class WarehouseListScreenViewModel : BaseViewModel
     {
-        
         public ObservableCollection<Warehouse>? WarehouseList { get; set; }
         public MainViewModel MainModel { get; set; }
 

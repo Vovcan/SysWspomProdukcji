@@ -6,13 +6,16 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 using MaterialDesignColors.Recommended;
+using SWPProjekt.Helpers;
 using SWPProjekt.Model;
 
 namespace SWPProjekt.ViewModel
 {
     public class WarehouseViewModel : BaseViewModel
-    {
+    { 
         public Warehouse CurrentWarehouse { get; set; }
 
         ProductionDatabaseContext context = new ProductionDatabaseContext();
@@ -32,12 +35,31 @@ namespace SWPProjekt.ViewModel
         public int Id { get; set; }
 
         public List<Product> ProductList { get; set; }
-        //-------------------------
+    
         public List<Product> SelectedProducts { get; set; }
+        public RelayCommand CreateNewDelivery { get; set; }
 
         private List<CombinedDeliveryData> _combinedDelivery;
+
+        //-------------------------
+
+        private Visibility _yourStackPanelVisibility;
+        public Visibility YourStackPanelVisibility
+        {
+            get { return _yourStackPanelVisibility; }
+            set
+            {
+                _yourStackPanelVisibility = value;
+                OnPropertyChanged(nameof(YourStackPanelVisibility));
+            }
+        }
+        private void CreateDelivery(object a)
+        {
+            YourStackPanelVisibility = Visibility.Visible;
+        }
         public WarehouseViewModel(Warehouse warehouse)
         {
+            CreateNewDelivery = new RelayCommand(CreateDelivery);
             CurrentWarehouse = warehouse;
             Delivery = context.Deliveries
                 .Where(x => x.Warehouseid == CurrentWarehouse.Id)
