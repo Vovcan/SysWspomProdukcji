@@ -72,19 +72,20 @@
                         <DataGridTextColumn Header="Jednostka" Binding="{Binding UnitName}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal" Visibility="{Binding StackPanelVisibility}">
                     <TextBlock Width="150"></TextBlock>
-                    <DatePicker Width="120" SelectedDate="{Binding NewExpirationDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DatePicker Width="120" SelectedDate="{Binding Newexpirationdate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="20"></TextBlock>
                     <DatePicker Width="120" SelectedDate="{Binding NewDeliveryDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="20"></TextBlock>
                     <TextBox MinWidth="100" MaxLength="50" Text="{Binding NewProducent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="35"></TextBlock>
-                    <TextBox MinWidth="50" MaxLength="50" Text="{Binding NewProducent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox MinWidth="50" MaxLength="50" Text="{Binding NewAmount,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="230"></TextBlock>
-                    <TextBox MinWidth="50" MaxLength="50" Text="{Binding NewProducent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox MinWidth="50" MaxLength="50" Text="{Binding NewFullPrice,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="70"></TextBlock>
-                    <TextBox MinWidth="100" MaxLength="50" Text="{Binding NewProducent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <ComboBox MinWidth="100" ItemsSource="{Binding units}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUnit, UpdateSourceTrigger=PropertyChanged}" />
+                    
                 </StackPanel>
             </StackPanel>
         </StackPanel>

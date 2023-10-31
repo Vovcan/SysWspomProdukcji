@@ -41,21 +41,58 @@ namespace SWPProjekt.ViewModel
 
         private List<CombinedDeliveryData> _combinedDelivery;
 
-        //-------------------------
-
-        private Visibility _yourStackPanelVisibility;
-        public Visibility YourStackPanelVisibility
+        private Visibility stackPanelVisibility = Visibility.Collapsed;
+        public Visibility StackPanelVisibility
         {
-            get { return _yourStackPanelVisibility; }
+            get { return stackPanelVisibility; }
             set
             {
-                _yourStackPanelVisibility = value;
-                OnPropertyChanged(nameof(YourStackPanelVisibility));
+                if (stackPanelVisibility != value)
+                {
+                    stackPanelVisibility = value;
+                    OnPropertyChanged(nameof(StackPanelVisibility));
+                }
             }
         }
+
+
+        private DateTime _newexpirationdate { get; set; }
+        public DateTime Newexpirationdate
+        {
+            get { return _newexpirationdate; }
+            set { 
+                _newexpirationdate = value; 
+                OnPropertyChanged(nameof(Newexpirationdate)); 
+            }
+        }
+        private DateTime _newdeliverydate { get; set; }
+        public DateTime NewDeliveryDate
+        {
+            get { return _newdeliverydate; }
+            set
+            {
+                _newdeliverydate = value;
+                OnPropertyChanged(nameof(NewDeliveryDate));
+            }
+        }
+        public string NewAmount { get; set; }
+        public List<Unit> units { get; set; }
+
+        private Unit _selectedUnit;
+        public Unit SelectedUnit
+        {
+            get{return _selectedUnit;}
+            set{_selectedUnit = value;}
+        }
+
         private void CreateDelivery(object a)
         {
-            YourStackPanelVisibility = Visibility.Visible;
+            StackPanelVisibility = Visibility.Visible;
+            Delivery NewDeliveryData = new Delivery();
+            NewDeliveryData.Id = context.Deliveries.Count() + 1;
+            NewDeliveryData.ExpirationDate = Newexpirationdate;
+            NewDeliveryData.DeliveryDate = NewDeliveryDate;
+            NewDeliveryData.Amount = Convert.ToInt32(NewAmount);
         }
         public WarehouseViewModel(Warehouse warehouse)
         {
@@ -97,8 +134,12 @@ namespace SWPProjekt.ViewModel
             }
             Products = uniqueProducts;
 
+
+            units = new List<Unit>();
+            units.AddRange(context.Units);
+
         }
-        public Product _selectedProduct;
+        private Product _selectedProduct;
 
         public Product SelectedProduct
         {

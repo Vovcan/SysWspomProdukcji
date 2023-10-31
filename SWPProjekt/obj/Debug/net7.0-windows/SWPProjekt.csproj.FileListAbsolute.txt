@@ -699,3 +699,14 @@ C:\Users\user\Desktop\swp_29commit\SWPProjekt\obj\Debug\net7.0-windows\refint\SW
 C:\Users\user\Desktop\swp_29commit\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.pdb
 C:\Users\user\Desktop\swp_29commit\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.genruntimeconfig.cache
 C:\Users\user\Desktop\swp_29commit\SWPProjekt\obj\Debug\net7.0-windows\ref\SWPProjekt.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\Enums.NET.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\MathNet.Numerics.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\NPOI.Core.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\NPOI.OOXML.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\NPOI.OpenXml4Net.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\NPOI.OpenXmlFormats.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\ICSharpCode.SharpZipLib.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\SixLabors.Fonts.dll
+C:\Users\user\Desktop\swp_29commit\SWPProjekt\bin\Debug\net7.0-windows\SixLabors.ImageSharp.dll
