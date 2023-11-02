@@ -17,29 +17,83 @@ namespace SWPProjekt.ViewModel
     public class WarehouseViewModel : BaseViewModel
     { 
         public Warehouse CurrentWarehouse { get; set; }
-
         ProductionDatabaseContext context = new ProductionDatabaseContext();
-
         public List<int> DeliverysId { get; set; }
-
         public List<Product> Products { get; set; }
-
-        public Product Product { get; set; }
-
-        public List<string> ProductsName { get; set; }
-
         public List<int> Delivery { get; set; }
-
         public List<Delivery> Deliveries { get; set; }
-
-        public int Id { get; set; }
-
         public List<Product> ProductList { get; set; }
-    
         public List<Product> SelectedProducts { get; set; }
         public RelayCommand CreateNewDelivery { get; set; }
+        public RelayCommand CreateNewUnit { get; set; }
+
+        private bool isNewDeliveryButtonPressed = false;
+
+        private bool isNewUnitButtonPressed = false;
 
         private List<CombinedDeliveryData> _combinedDelivery;
+
+        // --- new unit button binding
+
+        private Brush textUnitForeground;
+
+        private Brush buttonUnitBackground;
+        public Brush ButtonUnitBackground
+        {
+            get {
+
+                return isNewUnitButtonPressed ? Brushes.White : new SolidColorBrush(Color.FromRgb(0, 120, 212)); 
+            }
+            set
+            {
+                buttonUnitBackground = value;
+                OnPropertyChanged(nameof(ButtonUnitBackground)); 
+            }
+        }
+        public Brush TextUnitForeground
+        {
+            get {
+
+                return isNewUnitButtonPressed ? new SolidColorBrush(Color.FromRgb(0, 120, 212)) : Brushes.White; 
+            }
+            set
+            {
+                textUnitForeground = value;
+                OnPropertyChanged(nameof(TextUnitForeground)); 
+            }
+        }
+
+        // --- new delivery button binding
+
+        private Brush textDeliveryForeground;
+
+        private Brush buttonDeliveryBackground;
+        public Brush ButtonDeliveryBackground
+        {
+            get
+            {
+
+                return isNewDeliveryButtonPressed ? Brushes.White : new SolidColorBrush(Color.FromRgb(0, 120, 212));
+            }
+            set
+            {
+                buttonDeliveryBackground = value;
+                OnPropertyChanged(nameof(ButtonDeliveryBackground));
+            }
+        }
+        public Brush TextDeliveryForeground
+        {
+            get
+            {
+
+                return isNewDeliveryButtonPressed ? new SolidColorBrush(Color.FromRgb(0, 120, 212)) : Brushes.White;
+            }
+            set
+            {
+                textDeliveryForeground = value;
+                OnPropertyChanged(nameof(TextDeliveryForeground));
+            }
+        }
 
         private Visibility stackPanelVisibility = Visibility.Collapsed;
         public Visibility StackPanelVisibility
@@ -55,7 +109,19 @@ namespace SWPProjekt.ViewModel
             }
         }
 
-
+        private Visibility unitFormVisibility = Visibility.Collapsed;
+        public Visibility UnitFormVisibility
+        {
+            get { return unitFormVisibility; }
+            set
+            {
+                if (unitFormVisibility != value)
+                {
+                    unitFormVisibility = value;
+                    OnPropertyChanged(nameof(UnitFormVisibility));
+                }
+            }
+        }
         private DateTime _newexpirationdate { get; set; }
         public DateTime Newexpirationdate
         {
@@ -88,15 +154,39 @@ namespace SWPProjekt.ViewModel
         private void CreateDelivery(object a)
         {
             StackPanelVisibility = Visibility.Visible;
+            isNewDeliveryButtonPressed = !isNewDeliveryButtonPressed;
+            if (isNewDeliveryButtonPressed)
+            {
+                ButtonDeliveryBackground = Brushes.White;
+                TextDeliveryForeground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
+            }
+            else
+            {
+                ButtonDeliveryBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
+                TextDeliveryForeground = Brushes.White;
+            }
             Delivery NewDeliveryData = new Delivery();
             NewDeliveryData.Id = context.Deliveries.Count() + 1;
             NewDeliveryData.ExpirationDate = Newexpirationdate;
             NewDeliveryData.DeliveryDate = NewDeliveryDate;
             NewDeliveryData.Amount = Convert.ToInt32(NewAmount);
         }
+        private void CreateUnit(object a)
+        {
+            UnitFormVisibility = Visibility.Visible;
+            isNewUnitButtonPressed = !isNewUnitButtonPressed;
+            if (isNewUnitButtonPressed){
+                ButtonUnitBackground = Brushes.White;
+                TextUnitForeground = new SolidColorBrush(Color.FromRgb(0, 120, 212)); 
+            }else{
+                ButtonUnitBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
+                TextUnitForeground = Brushes.White;}
+
+        }
         public WarehouseViewModel(Warehouse warehouse)
         {
             CreateNewDelivery = new RelayCommand(CreateDelivery);
+            CreateNewUnit = new RelayCommand(CreateUnit);
             CurrentWarehouse = warehouse;
             Delivery = context.Deliveries
                 .Where(x => x.Warehouseid == CurrentWarehouse.Id)

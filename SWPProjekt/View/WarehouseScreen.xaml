@@ -13,8 +13,13 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </UserControl.Resources>
     <Grid>
-        <StackPanel Margin="1100,40,-430,377">
-            <Button Width="128" Height="32" Background="#0078D4" BorderBrush="#0078D4" Content="+ Dostawa" Command="{Binding CreateNewDelivery}"/>
+        <StackPanel Margin="1091,40,-432,280" >
+            <Button Width="128" Height="32" BorderBrush="#0078D4" Content="+ Dostawa" Margin="5" 
+                    Command="{Binding CreateNewDelivery}" Background="{Binding ButtonDeliveryBackground}" Foreground="{Binding TextDeliveryForeground}"/>
+            <Button Width="128" Height="32" Background="{Binding ButtonUnitBackground}" Foreground="{Binding TextUnitForeground}" 
+                    BorderBrush="#0078D4" Content="+ Jednostka" Margin="5" Command="{Binding CreateNewUnit}"/>
+            <TextBox Visibility="{Binding UnitFormVisibility}" MinWidth="50" MaxLength="50" Margin="5"
+                     Text="{Binding NewUnit,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="128"/>
         </StackPanel>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
             <TextBlock Text="Lista magazynów >" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
@@ -85,7 +90,6 @@
                     <TextBox MinWidth="50" MaxLength="50" Text="{Binding NewFullPrice,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="70"></TextBlock>
                     <ComboBox MinWidth="100" ItemsSource="{Binding units}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUnit, UpdateSourceTrigger=PropertyChanged}" />
-                    
                 </StackPanel>
             </StackPanel>
         </StackPanel>
