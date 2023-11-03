@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using MaterialDesignColors.Recommended;
+using NPOI.Util;
 using SWPProjekt.Helpers;
 using SWPProjekt.Model;
 
@@ -17,6 +18,7 @@ namespace SWPProjekt.ViewModel
     public class WarehouseViewModel : BaseViewModel
     { 
         public Warehouse CurrentWarehouse { get; set; }
+
         ProductionDatabaseContext context = new ProductionDatabaseContext();
         public List<int> DeliverysId { get; set; }
         public List<Product> Products { get; set; }
@@ -24,6 +26,14 @@ namespace SWPProjekt.ViewModel
         public List<Delivery> Deliveries { get; set; }
         public List<Product> ProductList { get; set; }
         public List<Product> SelectedProducts { get; set; }
+        private Product _selectedProducer { get; set; }
+        public Product SelectedProducer
+        {
+            get { return _selectedProducer; }
+            set { _selectedProducer = value;
+                OnPropertyChanged(nameof(SelectedProducer));
+            }
+        }
         public RelayCommand CreateNewDelivery { get; set; }
         public RelayCommand CreateNewUnit { get; set; }
 
@@ -95,6 +105,8 @@ namespace SWPProjekt.ViewModel
             }
         }
 
+        // --- widoczność tworzenia delivery
+
         private Visibility stackPanelVisibility = Visibility.Collapsed;
         public Visibility StackPanelVisibility
         {
@@ -109,6 +121,8 @@ namespace SWPProjekt.ViewModel
             }
         }
 
+        // --- widoczność pola dla tworzenia unit
+
         private Visibility unitFormVisibility = Visibility.Collapsed;
         public Visibility UnitFormVisibility
         {
@@ -122,6 +136,10 @@ namespace SWPProjekt.ViewModel
                 }
             }
         }
+
+        // --- new delivery
+
+        public string NewFullPrice { get; set; }
         private DateTime _newexpirationdate { get; set; }
         public DateTime Newexpirationdate
         {
@@ -131,6 +149,7 @@ namespace SWPProjekt.ViewModel
                 OnPropertyChanged(nameof(Newexpirationdate)); 
             }
         }
+        public string NewUnit { get; set; }
         private DateTime _newdeliverydate { get; set; }
         public DateTime NewDeliveryDate
         {
@@ -150,51 +169,83 @@ namespace SWPProjekt.ViewModel
             get{return _selectedUnit;}
             set{_selectedUnit = value;}
         }
-
         private void CreateDelivery(object a)
         {
-            StackPanelVisibility = Visibility.Visible;
             isNewDeliveryButtonPressed = !isNewDeliveryButtonPressed;
             if (isNewDeliveryButtonPressed)
             {
+                StackPanelVisibility = Visibility.Visible;
                 ButtonDeliveryBackground = Brushes.White;
                 TextDeliveryForeground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
             }
             else
             {
+                StackPanelVisibility = Visibility.Hidden;
                 ButtonDeliveryBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
                 TextDeliveryForeground = Brushes.White;
             }
             Delivery NewDeliveryData = new Delivery();
-            NewDeliveryData.Id = context.Deliveries.Count() + 1;
-            NewDeliveryData.ExpirationDate = Newexpirationdate;
-            NewDeliveryData.DeliveryDate = NewDeliveryDate;
-            NewDeliveryData.Amount = Convert.ToInt32(NewAmount);
+
+            if (!isNewDeliveryButtonPressed && SelectedUnit != null)
+            {
+                NewDeliveryData.ExpirationDate = Newexpirationdate;
+                NewDeliveryData.DeliveryDate = NewDeliveryDate;
+                NewDeliveryData.Amount = Convert.ToInt32(NewAmount);
+                NewDeliveryData.CurrentAmount = Convert.ToInt32(NewAmount);
+                NewDeliveryData.FullPrice = Convert.ToInt32(NewFullPrice);
+                NewDeliveryData.DeliveryNumber = context.Deliveries.Count() + 1;
+                NewDeliveryData.Unitid = SelectedUnit.Id;
+                NewDeliveryData.Productid = SelectedProducer.Id;
+                NewDeliveryData.Warehouseid = CurrentWarehouse.Id;
+                NewDeliveryData.PriceByUnit = (float)(Convert.ToDouble(NewFullPrice)/Convert.ToDouble(NewAmount));
+                context.Add<Delivery>(NewDeliveryData);
+                context.SaveChanges();
+                MessageBox.Show("Utworzyłeś nową dostawe");
+
+            }
+            
         }
         private void CreateUnit(object a)
         {
-            UnitFormVisibility = Visibility.Visible;
             isNewUnitButtonPressed = !isNewUnitButtonPressed;
             if (isNewUnitButtonPressed){
+                UnitFormVisibility = Visibility.Visible;
                 ButtonUnitBackground = Brushes.White;
                 TextUnitForeground = new SolidColorBrush(Color.FromRgb(0, 120, 212)); 
             }else{
-                ButtonUnitBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
-                TextUnitForeground = Brushes.White;}
+                if (NewUnit != null)
+                {
+                    Unit unit = new Unit { Name = NewUnit };
+                    context.Add<Unit>(unit);
+                    context.SaveChanges();
+                    MessageBox.Show("Jednostka " + NewUnit + " jest zapisana do bazy");
+                    NewUnit = null;
+                    units.Clear();
+                    units.AddRange(context.Units);
+                    UnitFormVisibility = Visibility.Hidden;
+                    ButtonUnitBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
+                    TextUnitForeground = Brushes.White;
+                }
+                else
+                {
+                    isNewUnitButtonPressed = !isNewUnitButtonPressed;
+                    MessageBox.Show("Wpisałeś nieprawidłowe dane");
+                }
 
+            }
+            
         }
-        public WarehouseViewModel(Warehouse warehouse)
+        public List<Product> ProductsSercher(Warehouse warehouse)
         {
-            CreateNewDelivery = new RelayCommand(CreateDelivery);
-            CreateNewUnit = new RelayCommand(CreateUnit);
             CurrentWarehouse = warehouse;
+            DeliverysId = new List<int>();
+            Products = new List<Product>();
+            ProductList = new List<Product>();
+            Deliveries = new List<Delivery>();
             Delivery = context.Deliveries
                 .Where(x => x.Warehouseid == CurrentWarehouse.Id)
                 .Select(d => d.Id)
                 .ToList();
-
-            DeliverysId = new List<int>();
-
             for (int i = 0; i < Delivery.Count; i++)
             {
                 DeliverysId.AddRange(context.Deliveries
@@ -202,16 +253,12 @@ namespace SWPProjekt.ViewModel
                 .Select(d => d.Productid)
                 .ToList());
             }
-            Products = new List<Product>();
-            ProductList = new List<Product>();
-            Deliveries = new List<Delivery>();
             for (int i = 0; i < DeliverysId.Count; i++)
             {
                 Products.AddRange(context.Products
                 .Where(s => s.Id == DeliverysId[i])
                 .ToList());
             }
-
             ProductList.AddRange(Products);
             HashSet<string> productNames = new HashSet<string>();
             List<Product> uniqueProducts = new List<Product>();
@@ -222,15 +269,19 @@ namespace SWPProjekt.ViewModel
                     uniqueProducts.Add(product);
                 }
             }
-            Products = uniqueProducts;
+            return uniqueProducts;
+        }
+        public WarehouseViewModel(Warehouse warehouse)
+        {
 
-
+            Products = ProductsSercher(warehouse);
             units = new List<Unit>();
             units.AddRange(context.Units);
-
+            CreateNewDelivery = new RelayCommand(CreateDelivery);
+            CreateNewUnit = new RelayCommand(CreateUnit);
         }
-        private Product _selectedProduct;
 
+        private Product _selectedProduct;
         public Product SelectedProduct
         {
             get
