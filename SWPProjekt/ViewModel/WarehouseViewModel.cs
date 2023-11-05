@@ -294,6 +294,7 @@ namespace SWPProjekt.ViewModel
                 OnPropertyChanged(nameof(SelectedProduct));
                 SelectedProducts = new List<Product>();
                 SelectedProducts.AddRange(ProductList.Where(x => x.Name == _selectedProduct.Name).ToList());
+                SelectedProducts = SelectedProducts.Distinct().ToList();
 
                 for (int i = 0; i < SelectedProducts.Count(); i++)
                 {
