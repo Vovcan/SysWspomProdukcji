@@ -61,13 +61,21 @@
             <Border>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Autor: "/>
-                    <TextBlock Text="{Binding CurrentProject.Userid}"/>
+                    <TextBlock>
+                        <Run Text="{Binding ProjectOwner.Name}"/>
+                        <Run Text="{Binding ProjectOwner.Surname}"/>
+                    </TextBlock>
                 </StackPanel>
             </Border>
             <Border>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <TextBlock Text="Procesy produkcyjne: "/>
-                    <TextBlock Text=""/>
+                    <DataGrid  IsReadOnly="True" ItemsSource="{Binding ProductionList,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="400" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                            <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
             </Border>
         </StackPanel>
