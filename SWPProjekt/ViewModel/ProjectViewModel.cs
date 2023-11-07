@@ -15,9 +15,24 @@ namespace SWPProjekt.ViewModel
         public User ProjectOwner { get; set; }
         public ProductionDatabaseContext db { get; set; }
         public ObservableCollection<Production>? ProductionList { get; set; }
+        public MainViewModel MainModel { get; set; }
 
-        public ProjectViewModel(Project project)
+        private Production _currentProduction;
+        public Production CurrentProduction
         {
+            get { return _currentProduction; }
+            set
+            {
+                _currentProduction = value;
+                ProductionViewModel newView = new ProductionViewModel(CurrentProduction);
+                if (MainModel.UpdateViewCommand.CanExecute(newView))
+                    MainModel.UpdateViewCommand.Execute(newView);
+            }
+        }
+
+        public ProjectViewModel(Project project, MainViewModel mainView)
+        {
+            MainModel = mainView;
             CurrentProject=project;
             try
             {

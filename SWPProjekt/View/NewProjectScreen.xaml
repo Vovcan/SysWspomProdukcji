@@ -28,14 +28,14 @@
             </StackPanel.Resources>
             <Border>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Nazwa: " Width="90"/>
+                    <TextBlock Text="Nazwa: * " Width="90"/>
                     <TextBox MinWidth="310" MaxLength="50"
                              Text="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </Border>
             <Border>
                 <DockPanel Margin="10" >
-                    <TextBlock Text="Opis: " Width="90"/>
+                    <TextBlock Text="Opis: * " Width="90"/>
                     <TextBox TextWrapping="Wrap" AcceptsReturn="True"  MinHeight="40" MaxLength="500" 
                              Text="{Binding Description,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </DockPanel>
@@ -54,7 +54,7 @@
             </Border>
 
         </StackPanel>
-        <Button Command="{Binding SaveProjectCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="Zapisz"/>
+        <Button Command="{Binding SaveProjectCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="Zapisz" Margin="20"/>
 
     </StackPanel>
 

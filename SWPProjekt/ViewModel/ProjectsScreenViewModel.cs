@@ -27,7 +27,7 @@ namespace SWPProjekt.ViewModel
             set
             {
                 _currentProject = value;
-                ProjectViewModel newView = new ProjectViewModel(CurrentProject);
+                ProjectViewModel newView = new ProjectViewModel(CurrentProject,MainModel);
                 if (MainModel.UpdateViewCommand.CanExecute(newView))
                     MainModel.UpdateViewCommand.Execute(newView);
             }

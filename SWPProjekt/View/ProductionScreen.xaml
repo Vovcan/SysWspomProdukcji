@@ -36,6 +36,7 @@
             <Border>
                 <StackPanel>
                 <TextBlock Text="Opis: "/>
+                <TextBlock/>
                 <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentProduction.Description}"/>
             </StackPanel>
             </Border>

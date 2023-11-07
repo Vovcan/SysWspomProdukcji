@@ -37,6 +37,7 @@
             <Border>
                 <StackPanel>
                     <TextBlock Text="Opis: "/>
+                    <TextBlock/>
                     <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentProject.Description}"/>
                 </StackPanel>
             </Border>
@@ -70,7 +71,7 @@
             <Border>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <TextBlock Text="Procesy produkcyjne: "/>
-                    <DataGrid  IsReadOnly="True" ItemsSource="{Binding ProductionList,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="400" >
+                    <DataGrid  IsReadOnly="True" ItemsSource="{Binding ProductionList,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding CurrentProduction}" AutoGenerateColumns="False" Width="400" FontSize="{Binding MainModel.FontSize}" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                             <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
