@@ -21,7 +21,7 @@ namespace SWPProjekt.ViewModel
             set
             {
                 _currentProduction = value;
-                ProductionViewModel newView = new ProductionViewModel(CurrentProduction);
+                ProductionViewModel newView = new ProductionViewModel(CurrentProduction, MainModel);
                 if (MainModel.UpdateViewCommand.CanExecute(newView))
                     MainModel.UpdateViewCommand.Execute(newView);
             }

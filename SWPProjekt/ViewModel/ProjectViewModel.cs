@@ -24,7 +24,7 @@ namespace SWPProjekt.ViewModel
             set
             {
                 _currentProduction = value;
-                ProductionViewModel newView = new ProductionViewModel(CurrentProduction);
+                ProductionViewModel newView = new ProductionViewModel(CurrentProduction,MainModel);
                 if (MainModel.UpdateViewCommand.CanExecute(newView))
                     MainModel.UpdateViewCommand.Execute(newView);
             }
@@ -37,8 +37,8 @@ namespace SWPProjekt.ViewModel
             try
             {
                 db = new ProductionDatabaseContext();
-                ProjectOwner = db.Users.Single(u => u.Id == project.Userid);
-                ProductionList = new ObservableCollection<Production>(db.Productions.Where(p => p.Projectid == project.Id).ToList());
+                ProjectOwner = db.Users.Single(u => u.Id == CurrentProject.Userid);
+                ProductionList = new ObservableCollection<Production>(db.Productions.Where(p => p.Projectid == CurrentProject.Id).ToList());
             }
             catch
             {
