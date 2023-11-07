@@ -30,9 +30,6 @@ public class LoginViewModel : BaseViewModel
     private string _username;
     private string _password;
     private User _loginuser;
-
-
-
     public string Username
     {
         get { return _username; }
@@ -52,10 +49,6 @@ public class LoginViewModel : BaseViewModel
     public RelayCommand LoginCommand { get; set; }
 
     public RelayCommand PasswordRecoveryCommand { get; set; }
-
-
-    
-
     public User LoginUser 
     {
         get { 
@@ -64,34 +57,6 @@ public class LoginViewModel : BaseViewModel
         set { 
             _loginuser = value;
         }
-    }
-
-
-    private void OnLogin(object a)
-    {
-
-        using (var context = new ProductionDatabaseContext())
-        {
-            var user = context.Users.FirstOrDefault(u => u.Login == Username && u.Password == CreateMD5(Password));
-            if (user != null)
-            {
-                _loginuser = user;
-                Window loginWindow = Application.Current.Windows.OfType<Login>().FirstOrDefault();
-
-                // open new window MainWindow.xaml
-                var mainWindow = new MainWindow(_loginuser);
-
-                mainWindow.Show();
-                // close Login.xaml
-                loginWindow.Close();
-            }
-            else
-            {
-                MessageBox.Show("Failed");
-            }
-        }
-
-
     }
     private UserControl _currentView;
 
@@ -104,7 +69,37 @@ public class LoginViewModel : BaseViewModel
             OnPropertyChanged(nameof(CurrentView));
         }
     }
+    private void OnLogin(object a)
+    {
 
+        using (var context = new ProductionDatabaseContext())
+        {
+            var user = context.Users.FirstOrDefault(u => u.Login == Username && u.Password == CreateMD5(Password));
+            if(user.TemporaryPassword == 1)
+            {
+                var tworzenienowegohasla = new TworzenieNowegoHasla(user.Email);
+                CurrentView = tworzenienowegohasla;
+            }
+            else if(user != null)
+            {
+                _loginuser = user;
+                Window loginWindow = Application.Current.Windows.OfType<Login>().FirstOrDefault();
+
+                // open new window MainWindow.xaml
+                var mainWindow = new MainWindow(_loginuser);
+
+                mainWindow.Show();
+                // close Login.xaml
+                loginWindow.Close();
+            }else
+            {
+                MessageBox.Show("Failed");
+            }
+        }
+
+
+    }
+    
     private void OpenForgetPasswordView(object a)
     {
         var passwordRecoveryPage = new OdzyskanieHasla();

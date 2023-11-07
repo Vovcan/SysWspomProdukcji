@@ -21,10 +21,10 @@ namespace SWPProjekt.View
     /// </summary>
     public partial class TworzenieNowegoHasla : UserControl
     {
-        public TworzenieNowegoHasla()
+        public TworzenieNowegoHasla(string Email)
         {
             InitializeComponent();
-            DataContext = new TworzenieNowegoHaslaViewModel();
+            DataContext = new TworzenieNowegoHaslaViewModel(Email);
         }
     }
 }
