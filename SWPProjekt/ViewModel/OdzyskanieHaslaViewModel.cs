@@ -106,7 +106,7 @@ namespace SWPProjekt.ViewModel
         {
             if (SecretCode == code.ToString())
             {
-                (Application.Current.MainWindow.DataContext as LoginViewModel).CurrentView = new TworzenieNowegoHasla();
+                (Application.Current.MainWindow.DataContext as LoginViewModel).CurrentView = new TworzenieNowegoHasla(Email);
             }
         }
         public OdzyskanieHaslaViewModel()

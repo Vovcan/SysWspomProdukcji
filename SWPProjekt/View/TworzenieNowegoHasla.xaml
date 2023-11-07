@@ -13,13 +13,14 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock MinWidth="69" MinHeight="20" VerticalAlignment="Center" Text="Tworzenie nowego hasła" HorizontalAlignment="Center" FontSize="24" Padding="20"></TextBlock>
-            <TextBox MinWidth="300" MinHeight="32" MaxWidth="300" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20"/>
-
+            <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20" 
+                     Text="{Binding FirstPassword,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20" />
+                <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20" 
+                     Text="{Binding SecondPassword,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <Button MinWidth="89" MinHeight="32" Background="#0078D4" Width="203" Height="32" Margin="20"
-                        >Tworzenie nowego hasła</Button>
+                        Command="{Binding CreatingNewPassword}">Tworzenie nowego hasła</Button>
         </StackPanel>
     </Grid>
 </UserControl>
