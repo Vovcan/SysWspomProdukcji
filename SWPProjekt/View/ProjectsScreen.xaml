@@ -22,7 +22,7 @@
                     <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Command="{Binding CreateProjectCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Projekt"/>
+            <Button Command="{Binding CreateProjectCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Projekt" Margin="20"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -49,6 +49,7 @@
             <DataTemplate DataType="{x:Type viewmodels:NewProjectViewModel}">
                 <views:NewProjectScreen/>
             </DataTemplate>
+
             
             <ResourceDictionary.MergedDictionaries>
 

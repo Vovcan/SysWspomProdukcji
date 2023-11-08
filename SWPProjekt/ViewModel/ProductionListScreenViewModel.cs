@@ -44,6 +44,11 @@ namespace SWPProjekt.ViewModel
             }
 
         }
+
+        public void Create(Object o)
+        {
+            MainModel.UpdateViewCommand.Execute(new NewProductionViewModel(MainModel));
+        }
     }
 }
 

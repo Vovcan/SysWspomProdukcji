@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SWPProjekt.View.NewProjectScreen"
+﻿<UserControl x:Class="SWPProjekt.View.NewProductionScreen"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -54,8 +54,7 @@
             </Border>
 
         </StackPanel>
-        <TextBlock Text="{Binding ValidationFailedText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"/>
         <Button Command="{Binding SaveProjectCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="Zapisz" Margin="20"/>
-    </StackPanel>
 
+    </StackPanel>
 </UserControl>

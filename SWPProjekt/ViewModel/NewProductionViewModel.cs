@@ -2,7 +2,6 @@
 using SWPProjekt.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -10,35 +9,23 @@ using System.Threading.Tasks;
 
 namespace SWPProjekt.ViewModel
 {
-    internal class NewProjectViewModel : BaseViewModel, INotifyPropertyChanged
+    class NewProductionViewModel : BaseViewModel
     {
-        
-
         public MainViewModel MainModel { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? PlannedFinishDate { get; set; }
-        public RelayCommand SaveProjectCommand { get; set; }
+        public RelayCommand SaveCommand { get; set; }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
-        private string validationFailedText;
-        public string ValidationFailedText 
-        {
-            get => validationFailedText;
-            set {
-                validationFailedText = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("ValidationFailedText"));
-            } 
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        public NewProjectViewModel(MainViewModel mainModel)
+        public NewProductionViewModel(MainViewModel mainModel)
         {
-            SaveProjectCommand = new RelayCommand(SaveProject);
+            SaveCommand = new RelayCommand(Save);
             MainModel = mainModel;
         }
 
-        public void SaveProject(object o)
+        public void Save(object o)
         {
             if (Validate())
             {
@@ -54,14 +41,13 @@ namespace SWPProjekt.ViewModel
             }
             else
             {
-                ValidationFailedText = "Wymagane pola nie są wypełnione";
-                Debug.WriteLine(ValidationFailedText);
+                Debug.WriteLine("Walidacja nieudana");
             }
         }
 
         public bool Validate()
         {
-            if (Name != "" && Name != null && Description != "" && Description != null && MainModel.LoginUser != null)
+            if (Name != "" && Description != "" && MainModel.LoginUser != null)
                 return true;
             else
                 return false;
