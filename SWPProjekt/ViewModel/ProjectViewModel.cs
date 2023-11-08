@@ -11,6 +11,7 @@ namespace SWPProjekt.ViewModel
 {
     class ProjectViewModel : BaseViewModel
     {
+        User LoginUser;
         public Project CurrentProject { get; set; }
         public User ProjectOwner { get; set; }
         public ProductionDatabaseContext db { get; set; }
@@ -24,14 +25,15 @@ namespace SWPProjekt.ViewModel
             set
             {
                 _currentProduction = value;
-                ProductionViewModel newView = new ProductionViewModel(CurrentProduction,MainModel);
+                ProductionViewModel newView = new ProductionViewModel(CurrentProduction,MainModel, LoginUser);
                 if (MainModel.UpdateViewCommand.CanExecute(newView))
                     MainModel.UpdateViewCommand.Execute(newView);
             }
         }
 
-        public ProjectViewModel(Project project, MainViewModel mainView)
+        public ProjectViewModel(Project project, MainViewModel mainView, User LoginUser)
         {
+            this.LoginUser = LoginUser;
             MainModel = mainView;
             CurrentProject=project;
             try

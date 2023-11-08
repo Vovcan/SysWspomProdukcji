@@ -17,7 +17,7 @@ namespace SWPProjekt.ViewModel
         public ProductionDatabaseContext db { get; set; }
         public Project Project { get; set; }
         public MainViewModel MainModel { get; set; }
-        public ProductionViewModel(Production production, MainViewModel mainView)
+        public ProductionViewModel(Production production, MainViewModel mainView, User LoginUser)
         {
             MainModel = mainView;
             CurrentProduction = production;

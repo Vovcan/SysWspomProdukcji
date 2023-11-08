@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -16,6 +17,7 @@ namespace SWPProjekt.ViewModel
 {
     class ProjectsScreenViewModel : BaseViewModel
     {
+        User LoginUser;
         public RelayCommand CreateProjectCommand { get; set; }
         public ObservableCollection<Project>? ProjectList { get; set; }
         public MainViewModel MainModel { get; set; }
@@ -27,7 +29,7 @@ namespace SWPProjekt.ViewModel
             set
             {
                 _currentProject = value;
-                ProjectViewModel newView = new ProjectViewModel(CurrentProject,MainModel);
+                ProjectViewModel newView = new ProjectViewModel(CurrentProject,MainModel, LoginUser);
                 if (MainModel.UpdateViewCommand.CanExecute(newView))
                     MainModel.UpdateViewCommand.Execute(newView);
             }
@@ -36,8 +38,9 @@ namespace SWPProjekt.ViewModel
 
 
 
-        public ProjectsScreenViewModel(MainViewModel mainModel)
+        public ProjectsScreenViewModel(MainViewModel mainModel, User loginUser)
         {
+            LoginUser = loginUser;
             MainModel = mainModel;
             CreateProjectCommand = new RelayCommand(CreateProject);
             try
@@ -49,11 +52,20 @@ namespace SWPProjekt.ViewModel
             {
                 Debug.WriteLine("brak połączenia z bazą");
             }
+            LoginUser = loginUser;
         }
 
         public void CreateProject(Object o)
         {
-            MainModel.UpdateViewCommand.Execute(new NewProjectViewModel(MainModel));
+            if(LoginUser.JobTitleid == 2 || LoginUser.JobTitleid == 3)
+            {
+                MainModel.UpdateViewCommand.Execute(new NewProjectViewModel(MainModel));
+            }
+            else
+            {
+                MessageBox.Show("Niemasz dostępu do tego komponentu");
+            }
+
         }
     }
 }

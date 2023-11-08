@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace SWPProjekt.ViewModel
 {
-    internal class ProductionListScreenViewModel : BaseViewModel
+    public class ProductionListScreenViewModel : BaseViewModel
     {
+        User LoginUser;
         public ObservableCollection<Production>? ProductionList { get; set; }
         public MainViewModel MainModel { get; set; }
 
@@ -21,7 +22,7 @@ namespace SWPProjekt.ViewModel
             set
             {
                 _currentProduction = value;
-                ProductionViewModel newView = new ProductionViewModel(CurrentProduction, MainModel);
+                ProductionViewModel newView = new ProductionViewModel(CurrentProduction, MainModel, LoginUser);
                 if (MainModel.UpdateViewCommand.CanExecute(newView))
                     MainModel.UpdateViewCommand.Execute(newView);
             }
@@ -30,8 +31,9 @@ namespace SWPProjekt.ViewModel
 
 
 
-        public ProductionListScreenViewModel(MainViewModel mainModel)
+        public ProductionListScreenViewModel(MainViewModel mainModel, User user)
         {
+            LoginUser = user;
             MainModel = mainModel;
             try
             {

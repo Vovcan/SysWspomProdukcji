@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 using SWPProjekt.Model;
@@ -14,10 +15,12 @@ namespace SWPProjekt.Commands
     internal class UpdateViewCommand : ICommand
     {
         private MainViewModel viewModel;
+        User Login;
 
-        public UpdateViewCommand(MainViewModel viewModel)
+        public UpdateViewCommand(MainViewModel viewModel, User LoginUser)
         {
             this.viewModel = viewModel;
+            Login = LoginUser;
         }
 
         public event EventHandler? CanExecuteChanged;
@@ -31,10 +34,10 @@ namespace SWPProjekt.Commands
         {
             if (parameter.ToString() == "WarehouseList")
             {
-                viewModel.SelectedViewModel = new WarehouseListScreenViewModel(viewModel);
+                viewModel.SelectedViewModel = new WarehouseListScreenViewModel(viewModel, Login);
             }else if(parameter.ToString() == "ProductionList")
             {
-                viewModel.SelectedViewModel = new ProductionListScreenViewModel(viewModel);
+                viewModel.SelectedViewModel = new ProductionListScreenViewModel(viewModel, Login);
             }
             else if (parameter.ToString() == "ArchiveScreen")
             {
@@ -46,7 +49,14 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "EmployeeListScreen")
             {
-                viewModel.SelectedViewModel = new EmployeeListScreenViewModel();
+                if(Login.JobTitleid == 5)
+                {
+                    MessageBox.Show("Niemasz dostępu do tego komponentu");
+                }
+                else
+                {
+                    viewModel.SelectedViewModel = new EmployeeListScreenViewModel();
+                }
             }
             else if (parameter.ToString() == "HoursScreen")
             {
@@ -54,7 +64,7 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "ProjectsScreen")
             {
-                viewModel.SelectedViewModel = new ProjectsScreenViewModel(viewModel);
+                viewModel.SelectedViewModel = new ProjectsScreenViewModel(viewModel, Login);
             }
             else if (parameter.ToString() == "SaleScreen")
             {

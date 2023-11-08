@@ -75,29 +75,31 @@ public class LoginViewModel : BaseViewModel
         using (var context = new ProductionDatabaseContext())
         {
             var user = context.Users.FirstOrDefault(u => u.Login == Username && u.Password == CreateMD5(Password));
-            if(user.TemporaryPassword == 1)
+            if(user != null)
             {
-                var tworzenienowegohasla = new TworzenieNowegoHasla(user.Email);
-                CurrentView = tworzenienowegohasla;
+                if(user.TemporaryPassword == 1)
+                {
+                    var tworzenienowegohasla = new TworzenieNowegoHasla(user.Email);
+                    CurrentView = tworzenienowegohasla;
+                }
+                else
+                {
+                    _loginuser = user;
+                    Window loginWindow = Application.Current.Windows.OfType<Login>().FirstOrDefault();
+
+                    // open new window MainWindow.xaml
+                    var mainWindow = new MainWindow(_loginuser);
+
+                    mainWindow.Show();
+                    // close Login.xaml
+                    loginWindow.Close();
+                }
             }
-            else if(user != null)
-            {
-                _loginuser = user;
-                Window loginWindow = Application.Current.Windows.OfType<Login>().FirstOrDefault();
-
-                // open new window MainWindow.xaml
-                var mainWindow = new MainWindow(_loginuser);
-
-                mainWindow.Show();
-                // close Login.xaml
-                loginWindow.Close();
-            }else
+            else
             {
                 MessageBox.Show("Failed");
             }
         }
-
-
     }
     
     private void OpenForgetPasswordView(object a)
