@@ -57,7 +57,7 @@ namespace SWPProjekt.ViewModel
         {
             _loginuser = LoginUser;
             FontSize = 16;
-            UpdateViewCommand = new UpdateViewCommand(this);
+            UpdateViewCommand = new UpdateViewCommand(this, LoginUser);
             ChangeInterfaceCommand = new ChangeInterfaceCommand(this);
         }
     }

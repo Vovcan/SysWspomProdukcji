@@ -16,6 +16,7 @@ namespace SWPProjekt.ViewModel
     
     public class WarehouseListScreenViewModel : BaseViewModel
     {
+        User LoginUser;
         public ObservableCollection<Warehouse>? WarehouseList { get; set; }
         public MainViewModel MainModel { get; set; }
 
@@ -29,7 +30,7 @@ namespace SWPProjekt.ViewModel
             set 
             {
                 _currentWarehouse = value;
-                WarehouseViewModel newView = new WarehouseViewModel(CurrentWarehouse);
+                WarehouseViewModel newView = new WarehouseViewModel(CurrentWarehouse, LoginUser);
                 if (MainModel.UpdateViewCommand.CanExecute(newView))
                     MainModel.UpdateViewCommand.Execute(newView);
             }
@@ -38,7 +39,8 @@ namespace SWPProjekt.ViewModel
 
 
 
-        public WarehouseListScreenViewModel(MainViewModel mainModel) {
+        public WarehouseListScreenViewModel(MainViewModel mainModel, User User) {
+            LoginUser = User;
             MainModel = mainModel;
             try
             {

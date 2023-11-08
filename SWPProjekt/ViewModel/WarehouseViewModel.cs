@@ -16,7 +16,8 @@ using SWPProjekt.Model;
 namespace SWPProjekt.ViewModel
 {
     public class WarehouseViewModel : BaseViewModel
-    { 
+    {
+        User LoginUser;
         public Warehouse CurrentWarehouse { get; set; }
 
         ProductionDatabaseContext context = new ProductionDatabaseContext();
@@ -171,67 +172,82 @@ namespace SWPProjekt.ViewModel
         }
         private void CreateDelivery(object a)
         {
-            isNewDeliveryButtonPressed = !isNewDeliveryButtonPressed;
-            if (isNewDeliveryButtonPressed)
+            if(LoginUser.JobTitleid == 5)
             {
-                StackPanelVisibility = Visibility.Visible;
-                ButtonDeliveryBackground = Brushes.White;
-                TextDeliveryForeground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
-            }
-            else
-            {
-                StackPanelVisibility = Visibility.Hidden;
-                ButtonDeliveryBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
-                TextDeliveryForeground = Brushes.White;
-            }
-            Delivery NewDeliveryData = new Delivery();
-
-            if (!isNewDeliveryButtonPressed && SelectedUnit != null)
-            {
-                NewDeliveryData.ExpirationDate = Newexpirationdate;
-                NewDeliveryData.DeliveryDate = NewDeliveryDate;
-                NewDeliveryData.Amount = Convert.ToInt32(NewAmount);
-                NewDeliveryData.CurrentAmount = Convert.ToInt32(NewAmount);
-                NewDeliveryData.FullPrice = Convert.ToInt32(NewFullPrice);
-                NewDeliveryData.DeliveryNumber = context.Deliveries.Count() + 1;
-                NewDeliveryData.Unitid = SelectedUnit.Id;
-                NewDeliveryData.Productid = SelectedProducer.Id;
-                NewDeliveryData.Warehouseid = CurrentWarehouse.Id;
-                NewDeliveryData.PriceByUnit = (float)(Convert.ToDouble(NewFullPrice)/Convert.ToDouble(NewAmount));
-                context.Add<Delivery>(NewDeliveryData);
-                context.SaveChanges();
-                MessageBox.Show("Utworzyłeś nową dostawe");
-
-            }
-            
-        }
-        private void CreateUnit(object a)
-        {
-            isNewUnitButtonPressed = !isNewUnitButtonPressed;
-            if (isNewUnitButtonPressed){
-                UnitFormVisibility = Visibility.Visible;
-                ButtonUnitBackground = Brushes.White;
-                TextUnitForeground = new SolidColorBrush(Color.FromRgb(0, 120, 212)); 
-            }else{
-                if (NewUnit != null)
+                isNewDeliveryButtonPressed = !isNewDeliveryButtonPressed;
+                if (isNewDeliveryButtonPressed)
                 {
-                    Unit unit = new Unit { Name = NewUnit };
-                    context.Add<Unit>(unit);
-                    context.SaveChanges();
-                    MessageBox.Show("Jednostka " + NewUnit + " jest zapisana do bazy");
-                    NewUnit = null;
-                    units.Clear();
-                    units.AddRange(context.Units);
-                    UnitFormVisibility = Visibility.Hidden;
-                    ButtonUnitBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
-                    TextUnitForeground = Brushes.White;
+                    StackPanelVisibility = Visibility.Visible;
+                    ButtonDeliveryBackground = Brushes.White;
+                    TextDeliveryForeground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
                 }
                 else
                 {
-                    isNewUnitButtonPressed = !isNewUnitButtonPressed;
-                    MessageBox.Show("Wpisałeś nieprawidłowe dane");
+                    StackPanelVisibility = Visibility.Hidden;
+                    ButtonDeliveryBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
+                    TextDeliveryForeground = Brushes.White;
                 }
+                Delivery NewDeliveryData = new Delivery();
 
+                if (!isNewDeliveryButtonPressed && SelectedUnit != null)
+                {
+                    NewDeliveryData.ExpirationDate = Newexpirationdate;
+                    NewDeliveryData.DeliveryDate = NewDeliveryDate;
+                    NewDeliveryData.Amount = Convert.ToInt32(NewAmount);
+                    NewDeliveryData.CurrentAmount = Convert.ToInt32(NewAmount);
+                    NewDeliveryData.FullPrice = Convert.ToInt32(NewFullPrice);
+                    NewDeliveryData.DeliveryNumber = context.Deliveries.Count() + 1;
+                    NewDeliveryData.Unitid = SelectedUnit.Id;
+                    NewDeliveryData.Productid = SelectedProducer.Id;
+                    NewDeliveryData.Warehouseid = CurrentWarehouse.Id;
+                    NewDeliveryData.PriceByUnit = (float)(Convert.ToDouble(NewFullPrice) / Convert.ToDouble(NewAmount));
+                    context.Add<Delivery>(NewDeliveryData);
+                    context.SaveChanges();
+                    MessageBox.Show("Utworzyłeś nową dostawe");
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Niemasz dostępu do tego komponentu");
+            }
+        }
+        private void CreateUnit(object a)
+        {
+            if(LoginUser.JobTitleid == 5)
+            {
+                isNewUnitButtonPressed = !isNewUnitButtonPressed;
+                if (isNewUnitButtonPressed)
+                {
+                    UnitFormVisibility = Visibility.Visible;
+                    ButtonUnitBackground = Brushes.White;
+                    TextUnitForeground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
+                }
+                else
+                {
+                    if (NewUnit != null)
+                    {
+                        Unit unit = new Unit { Name = NewUnit };
+                        context.Add<Unit>(unit);
+                        context.SaveChanges();
+                        MessageBox.Show("Jednostka " + NewUnit + " jest zapisana do bazy");
+                        NewUnit = null;
+                        units.Clear();
+                        units.AddRange(context.Units);
+                        UnitFormVisibility = Visibility.Hidden;
+                        ButtonUnitBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
+                        TextUnitForeground = Brushes.White;
+                    }
+                    else
+                    {
+                        isNewUnitButtonPressed = !isNewUnitButtonPressed;
+                        MessageBox.Show("Wpisałeś nieprawidłowe dane");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Niemasz dostępu do tego komponentu");
             }
             
         }
@@ -271,14 +287,15 @@ namespace SWPProjekt.ViewModel
             }
             return uniqueProducts;
         }
-        public WarehouseViewModel(Warehouse warehouse)
+        public WarehouseViewModel(Warehouse warehouse, User LoginUser)
         {
-
+            this.LoginUser = LoginUser;
             Products = ProductsSercher(warehouse);
             units = new List<Unit>();
             units.AddRange(context.Units);
             CreateNewDelivery = new RelayCommand(CreateDelivery);
             CreateNewUnit = new RelayCommand(CreateUnit);
+
         }
 
         private Product _selectedProduct;
