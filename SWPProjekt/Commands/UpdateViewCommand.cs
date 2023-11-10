@@ -82,6 +82,11 @@ namespace SWPProjekt.Commands
             {
                 viewModel.SelectedViewModel = (BaseViewModel)parameter;
             }
+            else if (parameter.ToString() == "EmployeeScreen")
+            {
+                viewModel.SelectedViewModel = new EmployeeScreenViewModel(viewModel, Login);
+                ((EmployeeScreenViewModel)viewModel.SelectedViewModel).LoadImage();
+            }
         }        
     }
 }

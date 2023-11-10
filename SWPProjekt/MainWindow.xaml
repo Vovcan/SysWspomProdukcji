@@ -29,10 +29,19 @@
 
         <StackPanel Name="TopBar" Grid.Row="0" Background="DodgerBlue">
             <!-- Pasek górny -->
-            <StackPanel Background="Transparent" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Interfejs" Foreground="white" VerticalAlignment="Center"/>
-                <ToggleButton IsChecked="{Binding InterfaceChecked}" Command="{Binding ChangeInterfaceCommand}"  Margin="16"/>
-                <MenuItem Header="Ustawienia" Foreground="white" Name="SettingsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="SettingsScreen"/>
+            <StackPanel Background="Transparent" Orientation="Horizontal" HorizontalAlignment="Right" Height="40">
+                <TextBlock Text="Interfejs" Foreground="white" VerticalAlignment="Center" Height="17"/>
+                <ToggleButton IsChecked="{Binding InterfaceChecked}" Command="{Binding ChangeInterfaceCommand}" Height="16" Width="65" RenderTransformOrigin="0.608,0.354"/>
+                <Button Command="{Binding UpdateViewCommand}" CommandParameter="SettingsScreen" Background="#0078D4" BorderBrush="#0078D4" BorderThickness="0" >
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/String-icon.png" />
+                        </Image.Source>
+                    </Image>
+                </Button>
+                <Button Command="{Binding UpdateViewCommand}" CommandParameter="EmployeeScreen">
+
+                </Button>
             </StackPanel>
         </StackPanel>
 

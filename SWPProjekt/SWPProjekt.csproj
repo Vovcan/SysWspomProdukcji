@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Screenshot_1.png" />
+    <None Remove="Images\String-icon-waffle.png" />
+    <None Remove="Images\String-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
@@ -20,6 +26,12 @@
     </PackageReference>
     <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="NPOI" Version="2.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Screenshot_1.png" />
+    <Resource Include="Images\String-icon-waffle.png" />
+    <Resource Include="Images\String-icon.png" />
   </ItemGroup>
 
 </Project>
