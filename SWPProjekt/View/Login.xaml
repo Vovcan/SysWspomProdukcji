@@ -9,20 +9,24 @@
         xmlns:customcontrols="clr-namespace:SWPProjekt.CustomControls"
         xmlns:components="clr-namespace:SWPProjekt.Components"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="{Binding FontSize}"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Login" Height="450" Width="800">
     <Window.Resources>
         <helpers:DataContextProxy x:Key="DataContextProxy" DataSource="{Binding}"/>
     </Window.Resources>
     
     <Grid>
-        <Border MinWidth="1920" MinHeight="48" Background ="#0078D4" VerticalAlignment="Top"></Border>
-        <StackPanel   MinHeight="48" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image Source="/Images/String-icon-waffle.png" Width="16" Height="16" Margin="16"/>
-            <TextBlock Text="Produkt name" FontSize="16" Foreground="white" VerticalAlignment="Center"/>
-        </StackPanel>
+        <Border MinWidth="1920" MinHeight="48" Background ="DodgerBlue" VerticalAlignment="Top"></Border>
         <StackPanel   MinHeight="48" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <TextBlock Text="Interface" FontSize="10" Foreground="white" VerticalAlignment="Center"/>
-            <ToggleButton Margin="16"/>
+            <TextBlock Text="Interfejs" Foreground="white" VerticalAlignment="Center"/>
+            <ToggleButton IsChecked="{Binding InterfaceChecked}" Command="{Binding ChangeInterfaceCommand}"  Margin="16"/>
         </StackPanel>
         <Grid Margin="0,48,0,0">
             <ContentControl Content="{Binding CurrentView}" />

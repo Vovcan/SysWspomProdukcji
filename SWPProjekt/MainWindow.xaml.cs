@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using NPOI.HSSF.Record;
 using SWPProjekt.Model;
 using SWPProjekt.ViewModel;
 
@@ -10,10 +11,10 @@ namespace SWPProjekt
     public partial class MainWindow : Window
     {
 
-        public MainWindow(User Loginuser)
+        public MainWindow(User Loginuser, bool interfaceChecked)
         {
             InitializeComponent();
-            DataContext = new MainViewModel(Loginuser);
+            DataContext = new MainViewModel(Loginuser, interfaceChecked);
 
         }
     }

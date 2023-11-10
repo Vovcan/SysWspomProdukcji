@@ -32,7 +32,7 @@
             <StackPanel Background="Transparent" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Interfejs" Foreground="white" VerticalAlignment="Center"/>
                 <ToggleButton IsChecked="{Binding InterfaceChecked}" Command="{Binding ChangeInterfaceCommand}"  Margin="16"/>
-                <MenuItem Header="Ustawienia" Name="SettingsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="SettingsScreen"/>
+                <MenuItem Header="Ustawienia" Foreground="white" Name="SettingsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="SettingsScreen"/>
             </StackPanel>
         </StackPanel>
 

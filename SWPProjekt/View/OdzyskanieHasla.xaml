@@ -16,13 +16,13 @@
             <StackPanel Orientation="Horizontal">
                 <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20" 
                      Text="{Binding Email,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button MinWidth="116" MinHeight="32" Background="#0078D4" Width="89" Height="32" Margin="20"
+                <Button MinWidth="116" MinHeight="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Width="89" Height="32" Margin="20"
                         Command="{Binding SendEmailMassage}">Wysłać kod</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20" 
                      Text="{Binding SecretCode,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button MinWidth="89" MinHeight="32" Background="#0078D4" Width="203" Height="32" Margin="20"
+                <Button MinWidth="89" MinHeight="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Width="203" Height="32" Margin="20"
                         Command="{Binding CheckCode}">Tworzenie nowego hasła</Button>
             </StackPanel>
         </StackPanel>

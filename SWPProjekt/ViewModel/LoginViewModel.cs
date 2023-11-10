@@ -13,10 +13,43 @@ using System.Windows;
 using System.Windows.Navigation;
 using SWPProjekt;
 using System.Windows.Controls;
+using SWPProjekt.Commands;
+using MaterialDesignThemes.Wpf;
+using System.Diagnostics;
 
 public class LoginViewModel : BaseViewModel
 {
-    public static string CreateMD5(string input)
+    private bool _interfaceChecked;
+    public bool InterfaceChecked
+    {
+        get { return _interfaceChecked; }
+        set
+        {
+            _interfaceChecked = value;
+            OnPropertyChanged(nameof(InterfaceChecked));
+        }
+    }
+    public RelayCommand ChangeInterfaceCommand { get; set; }
+    private void ChangeInterface(object a)
+    {
+        Debug.WriteLine("test");
+        PaletteHelper helper = new PaletteHelper();
+        ITheme theme = helper.GetTheme();
+
+        if (InterfaceChecked == true)
+        {
+            Debug.WriteLine("test1");
+            theme.SetBaseTheme(Theme.Dark);
+        }
+        else
+        {
+            Debug.WriteLine("test2");
+            theme.SetBaseTheme(Theme.Light);
+        }
+
+        helper.SetTheme(theme);
+    }
+        public static string CreateMD5(string input)
     {
         // Use input string to calculate MD5 hash
         using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
@@ -88,7 +121,7 @@ public class LoginViewModel : BaseViewModel
                     Window loginWindow = Application.Current.Windows.OfType<Login>().FirstOrDefault();
 
                     // open new window MainWindow.xaml
-                    var mainWindow = new MainWindow(_loginuser);
+                    var mainWindow = new MainWindow(_loginuser,InterfaceChecked);
 
                     mainWindow.Show();
                     // close Login.xaml
@@ -109,6 +142,7 @@ public class LoginViewModel : BaseViewModel
     }
     public LoginViewModel()
     {
+        ChangeInterfaceCommand = new RelayCommand(ChangeInterface);
         LoginCommand = new RelayCommand(OnLogin);
         PasswordRecoveryCommand = new RelayCommand(OpenForgetPasswordView);
         CurrentView = new LoginStartPage();

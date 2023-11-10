@@ -19,7 +19,7 @@
                 <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20" 
                      Text="{Binding SecondPassword,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
-            <Button MinWidth="89" MinHeight="32" Background="#0078D4" Width="203" Height="32" Margin="20"
+            <Button MinWidth="89" MinHeight="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Width="203" Height="32" Margin="20"
                         Command="{Binding CreatingNewPassword}">Tworzenie nowego hasła</Button>
         </StackPanel>
     </Grid>

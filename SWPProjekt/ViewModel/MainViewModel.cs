@@ -53,8 +53,9 @@ namespace SWPProjekt.ViewModel
 
         public ICommand UpdateViewCommand { get; set; }
 
-        public MainViewModel(User LoginUser)
+        public MainViewModel(User LoginUser, bool interaceChecked)
         {
+            InterfaceChecked = interaceChecked;
             _loginuser = LoginUser;
             FontSize = 16;
             UpdateViewCommand = new UpdateViewCommand(this, LoginUser);

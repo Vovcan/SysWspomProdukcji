@@ -15,17 +15,17 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock MinWidth="69" MinHeight="20" VerticalAlignment="Center" Text="Log in" HorizontalAlignment="Center" FontSize="24" Padding="20"></TextBlock>
+        <TextBlock MinWidth="69" MinHeight="20" VerticalAlignment="Center" Text="Login" HorizontalAlignment="Center" FontSize="24" Padding="20"></TextBlock>
         <TextBox MinWidth="300" MinHeight="32" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Margin="20" 
                      Text="{Binding Username,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <components:BindablePasswordBox Password="{Binding Source={StaticResource DataContextProxy}, Path=DataSource.Password}" 
                      BorderBrush="Black" BorderThickness="1" MinWidth="300" Height="32" VerticalAlignment="Center" Margin="20"></components:BindablePasswordBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button MinWidth="89" MinHeight="32" Background="#0078D4" Width="89" Height="32" Margin="20"
+                <Button MinWidth="89" MinHeight="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Width="89" Height="32" Margin="20"
                         Command="{Binding LoginCommand}" CommandParameter="WarehouseList">Zaloguj</Button>
                 <Button MinWidth="89" MinHeight="32" BorderBrush="Black" BorderThickness="1" Background="White" Foreground="Black" 
-                        Content="Zapomniałem hasło" Width="168" Height="32" Command="{Binding PasswordRecoveryCommand}" CommandParameter="OdzyskanieHasla"></Button>
+                        Content="Zapomniałem hasła" Width="168" Height="32" Command="{Binding PasswordRecoveryCommand}" CommandParameter="OdzyskanieHasla"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>
