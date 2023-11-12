@@ -42,11 +42,6 @@ namespace SWPProjekt.ViewModel
         {
             if (Validate())
             {
-                Debug.WriteLine("Walidacja udana");
-                Debug.WriteLine(Name);
-                Debug.WriteLine(Description);
-                Debug.WriteLine(StartDate);
-                Debug.WriteLine(PlannedFinishDate);
                 Project project = new Project { Name = Name, Description = Description, StartDate = StartDate, ProjectTime = PlannedFinishDate, Userid = MainModel.LoginUser.Id };
                 context.Add<Project>(project);
                 context.SaveChanges();
@@ -55,7 +50,6 @@ namespace SWPProjekt.ViewModel
             else
             {
                 ValidationFailedText = "Wymagane pola nie są wypełnione";
-                Debug.WriteLine(ValidationFailedText);
             }
         }
 

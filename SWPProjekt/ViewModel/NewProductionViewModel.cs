@@ -2,6 +2,8 @@
 using SWPProjekt.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -9,45 +11,54 @@ using System.Threading.Tasks;
 
 namespace SWPProjekt.ViewModel
 {
-    class NewProductionViewModel : BaseViewModel
+    class NewProductionViewModel : BaseViewModel, INotifyPropertyChanged
     {
         public MainViewModel MainModel { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? PlannedFinishDate { get; set; }
+        public Project Project { get; set; }
         public RelayCommand SaveCommand { get; set; }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
+        public ObservableCollection<Project>? Projects { get; set; }
+        private string validationFailedText;
+        public string ValidationFailedText
+        {
+            get => validationFailedText;
+            set
+            {
+                validationFailedText = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("ValidationFailedText"));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public NewProductionViewModel(MainViewModel mainModel)
         {
             SaveCommand = new RelayCommand(Save);
             MainModel = mainModel;
+            Projects = new ObservableCollection<Project>(context.Projects.ToList());
         }
 
         public void Save(object o)
         {
             if (Validate())
             {
-                Debug.WriteLine("Walidacja udana");
-                Debug.WriteLine(Name);
-                Debug.WriteLine(Description);
-                Debug.WriteLine(StartDate);
-                Debug.WriteLine(PlannedFinishDate);
-                Project project = new Project { Name = Name, Description = Description, StartDate = StartDate, ProjectTime = PlannedFinishDate, Userid = MainModel.LoginUser.Id };
-                context.Add<Project>(project);
+                Production production = new Production { Name = Name, Description = Description, StartDate = StartDate, PlannedFinishDate = PlannedFinishDate, Projectid=Project.Id};
+                context.Add<Production>(production);
                 context.SaveChanges();
-                MainModel.UpdateViewCommand.Execute("ProjectsScreen");
+                MainModel.UpdateViewCommand.Execute("ProductionList");
             }
             else
             {
-                Debug.WriteLine("Walidacja nieudana");
+                ValidationFailedText = "Wymagane pola nie są wypełnione";
             }
         }
 
         public bool Validate()
         {
-            if (Name != "" && Description != "" && MainModel.LoginUser != null)
+            if (Name != "" && Name != null && Description != "" && Description != null && MainModel.LoginUser != null && Project != null)
                 return true;
             else
                 return false;

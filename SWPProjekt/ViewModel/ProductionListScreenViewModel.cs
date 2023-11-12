@@ -1,4 +1,5 @@
-﻿using SWPProjekt.Model;
+﻿using SWPProjekt.Helpers;
+using SWPProjekt.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ namespace SWPProjekt.ViewModel
     public class ProductionListScreenViewModel : BaseViewModel
     {
         User LoginUser;
+        public RelayCommand CreateCommand { get; set; }
         public ObservableCollection<Production>? ProductionList { get; set; }
         public MainViewModel MainModel { get; set; }
 
@@ -33,6 +35,7 @@ namespace SWPProjekt.ViewModel
 
         public ProductionListScreenViewModel(MainViewModel mainModel, User user)
         {
+            CreateCommand = new RelayCommand(Create);
             LoginUser = user;
             MainModel = mainModel;
             try
