@@ -8,5 +8,6 @@ namespace SWPProjekt.ViewModel
 {
     class SaleScreenViewModel : BaseViewModel
     {
+
     }
 }

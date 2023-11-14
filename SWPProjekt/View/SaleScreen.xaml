@@ -7,6 +7,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Sprzedaż" Margin="10"/>
+        <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock Text="Sprzedaż" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock Text="{Binding CurrentWarehouse.Name}"   FontSize="18" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Width="1103" Margin="0,43,0,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Nazwa : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Name}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Id: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Id}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Adres: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Address}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Kod pocztowy: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Zip}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

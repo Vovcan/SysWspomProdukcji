@@ -59,8 +59,78 @@
                         <VirtualizingStackPanel Orientation="Vertical"/>
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
-
-                <MenuItem Header="Lista magazynów" Name="WarehouseListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="WarehouseList"/>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/inbox.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Lista magazynów" Command="{Binding UpdateViewCommand}" CommandParameter="WarehouseList"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/symbol-property.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Produkcja" Command="{Binding UpdateViewCommand}" CommandParameter="ProductionList"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/skarga.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Projekty" Command="{Binding UpdateViewCommand}" CommandParameter="ProjectsScreen"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/output.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Lista Zadań" Command="{Binding UpdateViewCommand}" CommandParameter="TasksScreen"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/account.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Lista pracowników" Command="{Binding UpdateViewCommand}" CommandParameter="EmployeeListScreen"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/graph.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Sprzedaż" Command="{Binding UpdateViewCommand}" CommandParameter="SaleScreen"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/history.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Godziny" Command="{Binding UpdateViewCommand}" CommandParameter="HoursScreen"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/folder-opened.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Archiwum" Command="{Binding UpdateViewCommand}" CommandParameter="ArchiveScreen"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/skarga.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Skargi" Command="{Binding UpdateViewCommand}" CommandParameter="ComplaintsScreen"/>
+                </StackPanel>
                 <MenuItem Header="Produkcja" Name="ProductionScreenBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ProductionList"/>
                 <MenuItem Header="Projekty" Name="ProjectsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ProjectsScreen"/>
                 <MenuItem Header="Lista Zadań" Name="TaskListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="TasksScreen"/>

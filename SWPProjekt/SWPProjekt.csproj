@@ -8,9 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\account.png" />
+    <None Remove="Images\folder-opened.png" />
+    <None Remove="Images\graph.png" />
+    <None Remove="Images\history.png" />
+    <None Remove="Images\inbox.png" />
+    <None Remove="Images\output.png" />
     <None Remove="Images\Screenshot_1.png" />
+    <None Remove="Images\skarga.png" />
     <None Remove="Images\String-icon-waffle.png" />
     <None Remove="Images\String-icon.png" />
+    <None Remove="Images\symbol-property.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,9 +37,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\account.png" />
+    <Resource Include="Images\folder-opened.png" />
+    <Resource Include="Images\graph.png" />
+    <Resource Include="Images\history.png" />
+    <Resource Include="Images\inbox.png" />
+    <Resource Include="Images\output.png" />
     <Resource Include="Images\Screenshot_1.png" />
+    <Resource Include="Images\skarga.png" />
     <Resource Include="Images\String-icon-waffle.png" />
     <Resource Include="Images\String-icon.png" />
+    <Resource Include="Images\symbol-property.png" />
   </ItemGroup>
 
 </Project>
