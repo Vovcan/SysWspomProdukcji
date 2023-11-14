@@ -15,6 +15,7 @@ namespace SWPProjekt.View
 
         public void MenuItem_Click(object sender, RoutedEventArgs e)   //metoda wyświetlająca odpowieni ekran zależnie od wybranego przycisku
         {
+            /*
             MenuItem item = (MenuItem)sender;
             UserControl? screen=null;
             ContentGrid.Children.Clear();
@@ -61,6 +62,7 @@ namespace SWPProjekt.View
             
             if(screen!=null)
             ContentGrid.Children.Add(screen);
+            */
         }
     }
 }

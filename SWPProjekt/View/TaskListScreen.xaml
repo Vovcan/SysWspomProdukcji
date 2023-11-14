@@ -7,6 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Lista zadań"/>
+        <StackPanel>
+            <TextBlock Text="Lista zadań" Margin="10"/>
+            <DataGrid IsReadOnly="True" ItemsSource="{Binding TaskList}" SelectedItem ="{Binding CurrentTask}" AutoGenerateColumns="False" FontSize="{Binding MainModel.FontSize}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn/>
+                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Command="{Binding CreateCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Zadanie" Margin="20"/>
+        </StackPanel>
     </Grid>
 </UserControl>

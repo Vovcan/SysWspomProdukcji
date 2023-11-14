@@ -63,12 +63,7 @@
                 <MenuItem Header="Lista magazynów" Name="WarehouseListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="WarehouseList"/>
                 <MenuItem Header="Produkcja" Name="ProductionScreenBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ProductionList"/>
                 <MenuItem Header="Projekty" Name="ProjectsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ProjectsScreen"/>
-                <Expander Header="Praca" Name="WorkBtn">
-                    <StackPanel>
-                        <MenuItem Header="Lista Zadań" Name="TaskListBtn" />
-                        <MenuItem Header="Tworzenie zadań" Name="TaskCreationBtn" />
-                    </StackPanel>
-                </Expander>
+                <MenuItem Header="Lista Zadań" Name="TaskListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="TasksScreen"/>
                 <MenuItem Header="Lista pracowników" Name="EmployeeListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="EmployeeListScreen"/>
                 <MenuItem Header="Sprzedaż" Name="SaleBtn" Command="{Binding UpdateViewCommand}" CommandParameter="SaleScreen"/>
                 <MenuItem Header="Godziny" Name="HoursBtn" Command="{Binding UpdateViewCommand}" CommandParameter="HoursScreen"/>

@@ -66,6 +66,10 @@ namespace SWPProjekt.Commands
             {
                 viewModel.SelectedViewModel = new ProjectsScreenViewModel(viewModel, Login);
             }
+            else if (parameter.ToString() == "TasksScreen")
+            {
+                viewModel.SelectedViewModel = new TaskListScreenViewModel(viewModel, Login);
+            }
             else if (parameter.ToString() == "SaleScreen")
             {
                 viewModel.SelectedViewModel = new SaleScreenViewModel();

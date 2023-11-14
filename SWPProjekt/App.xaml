@@ -52,6 +52,15 @@
             <DataTemplate DataType="{x:Type viewmodels:NewProductionViewModel}">
                 <views:NewProductionScreen/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:NewTaskViewModel}">
+                <views:NewTaskScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:TaskViewModel}">
+                <views:TaskScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:TaskListScreenViewModel}">
+                <views:TaskListScreen/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:EmployeeScreenViewModel}">
                 <views:EmployeeScreen/>
             </DataTemplate>
