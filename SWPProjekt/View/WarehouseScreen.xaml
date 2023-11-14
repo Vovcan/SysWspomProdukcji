@@ -89,7 +89,7 @@
                     <TextBlock Width="230"></TextBlock>
                     <TextBox MinWidth="50" MaxLength="50" Text="{Binding NewFullPrice,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="70"></TextBlock>
-                    <ComboBox MinWidth="100" ItemsSource="{Binding units}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUnit, UpdateSourceTrigger=PropertyChanged}" />
+                    <ComboBox MinWidth="100" ItemsSource="{Binding Units}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUnit, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>

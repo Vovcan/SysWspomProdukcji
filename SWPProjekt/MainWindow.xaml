@@ -39,8 +39,8 @@
                         </Image.Source>
                     </Image>
                 </Button>
-                <Button Command="{Binding UpdateViewCommand}" CommandParameter="EmployeeScreen">
-
+                <Button Command="{Binding UpdateViewCommand}" CommandParameter="EmployeeScreen" Width="50" Height="32" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                    <Image Width="20" Height="20" Source="{Binding LoginUser.Picture}"/>
                 </Button>
             </StackPanel>
         </StackPanel>

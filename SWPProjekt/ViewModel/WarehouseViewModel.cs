@@ -162,7 +162,17 @@ namespace SWPProjekt.ViewModel
             }
         }
         public string NewAmount { get; set; }
-        public List<Unit> units { get; set; }
+
+        private ObservableCollection<Unit> _units;
+        public ObservableCollection<Unit> Units
+        {
+            get { return _units; }
+            set
+            {
+                _units = value;
+                OnPropertyChanged(nameof(Units));
+            }
+        }
 
         private Unit _selectedUnit;
         public Unit SelectedUnit
@@ -172,7 +182,7 @@ namespace SWPProjekt.ViewModel
         }
         private void CreateDelivery(object a)
         {
-            if(LoginUser.JobTitleid == 5)
+            if (LoginUser.JobTitleid == 5)
             {
                 isNewDeliveryButtonPressed = !isNewDeliveryButtonPressed;
                 if (isNewDeliveryButtonPressed)
@@ -189,7 +199,7 @@ namespace SWPProjekt.ViewModel
                 }
                 Delivery NewDeliveryData = new Delivery();
 
-                if (!isNewDeliveryButtonPressed && SelectedUnit != null)
+                if (!isNewDeliveryButtonPressed && SelectedUnit != null && SelectedUnit != null && NewAmount != null && NewFullPrice != null)
                 {
                     NewDeliveryData.ExpirationDate = Newexpirationdate;
                     NewDeliveryData.DeliveryDate = NewDeliveryDate;
@@ -231,9 +241,7 @@ namespace SWPProjekt.ViewModel
                         context.Add<Unit>(unit);
                         context.SaveChanges();
                         MessageBox.Show("Jednostka " + NewUnit + " jest zapisana do bazy");
-                        NewUnit = null;
-                        units.Clear();
-                        units.AddRange(context.Units);
+                        Units.Add(unit);
                         UnitFormVisibility = Visibility.Hidden;
                         ButtonUnitBackground = new SolidColorBrush(Color.FromRgb(0, 120, 212));
                         TextUnitForeground = Brushes.White;
@@ -285,14 +293,13 @@ namespace SWPProjekt.ViewModel
                     uniqueProducts.Add(product);
                 }
             }
+            Units = new ObservableCollection<Unit>(context.Units);
             return uniqueProducts;
         }
         public WarehouseViewModel(Warehouse warehouse, User LoginUser)
         {
             this.LoginUser = LoginUser;
             Products = ProductsSercher(warehouse);
-            units = new List<Unit>();
-            units.AddRange(context.Units);
             CreateNewDelivery = new RelayCommand(CreateDelivery);
             CreateNewUnit = new RelayCommand(CreateUnit);
 
