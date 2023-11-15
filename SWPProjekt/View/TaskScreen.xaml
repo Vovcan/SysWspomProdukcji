@@ -7,6 +7,78 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Produkcja >" Margin="10"/>
+                <TextBlock Text="{Binding CurrentTask.Name}" Margin="10"/>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type StackPanel}">
+                        <Setter Property="Margin" Value="10,10,10,10"/>
+                    </Style>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="BorderBrush" Value="Gray" />
+                        <Setter Property="BorderThickness" Value="0,0,0,0.5" />
+                    </Style>
+                </StackPanel.Resources>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Nazwa: "/>
+                        <TextBlock Text="{Binding CurrentTask.Name}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Id: "/>
+                        <TextBlock Text="{Binding CurrentTask.Id}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel>
+                        <TextBlock Text="Opis: "/>
+                        <TextBlock/>
+                        <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentTask.Description}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Data Stworzenia: "/>
+                        <TextBlock Text="{Binding CurrentTask.CreationDate}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Data Rozpoczęcia: "/>
+                        <TextBlock Text="{Binding CurrentTask.StartDate}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Status: "/>
+                        <TextBlock Text="{Binding CurrentTask.TaskStatus}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Termin: "/>
+                        <TextBlock Text="{Binding CurrentTask.Deadline}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Priorytet: "/>
+                        <TextBlock Text="{Binding CurrentTask.Priority}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Produkcja: "/>
+                        <TextBlock Text="{Binding Production.Name}"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </UserControl>

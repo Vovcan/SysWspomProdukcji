@@ -12,7 +12,10 @@
             <DataGrid IsReadOnly="True" ItemsSource="{Binding TaskList}" SelectedItem ="{Binding CurrentTask}" AutoGenerateColumns="False" FontSize="{Binding MainModel.FontSize}">
                 <DataGrid.Columns>
                     <DataGridTextColumn/>
-                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="2*"/>
+                    <DataGridTextColumn Header="Data utworzenia" Binding="{Binding CreationDate}" Width="*"/>
+                    <DataGridTextColumn Header="Termin Docelowy" Binding="{Binding Deadline}" Width="*"/>
+                    <DataGridTextColumn Header="Priorytet" Binding="{Binding Priority}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button Command="{Binding CreateCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Zadanie" Margin="20"/>
