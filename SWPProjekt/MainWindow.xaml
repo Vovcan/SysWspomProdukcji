@@ -78,7 +78,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Width="20" Height="20" >
                         <Image.Source>
-                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/skarga.png" />
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/Vector.png" />
                         </Image.Source>
                     </Image>
                     <MenuItem Header="Projekty" Command="{Binding UpdateViewCommand}" CommandParameter="ProjectsScreen"/>
@@ -121,7 +121,7 @@
                             <BitmapImage DecodePixelWidth="300" UriSource="/Images/folder-opened.png" />
                         </Image.Source>
                     </Image>
-                    <MenuItem Header="Archiwum" Command="{Binding UpdateViewCommand}" CommandParameter="ArchiveScreen"/>
+                    <MenuItem Header="Archiwum" Command="{Binding UpdateViewCommand}" CommandParameter="ArchiveListScreen"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Image Width="20" Height="20" >

@@ -19,6 +19,8 @@
     <None Remove="Images\String-icon-waffle.png" />
     <None Remove="Images\String-icon.png" />
     <None Remove="Images\symbol-property.png" />
+    <None Remove="Images\tools.png" />
+    <None Remove="Images\Vector.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +50,8 @@
     <Resource Include="Images\String-icon-waffle.png" />
     <Resource Include="Images\String-icon.png" />
     <Resource Include="Images\symbol-property.png" />
+    <Resource Include="Images\tools.png" />
+    <Resource Include="Images\Vector.png" />
   </ItemGroup>
 
 </Project>

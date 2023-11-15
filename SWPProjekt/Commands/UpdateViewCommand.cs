@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,10 +39,6 @@ namespace SWPProjekt.Commands
             }else if(parameter.ToString() == "ProductionList")
             {
                 viewModel.SelectedViewModel = new ProductionListScreenViewModel(viewModel, Login);
-            }
-            else if (parameter.ToString() == "ArchiveScreen")
-            {
-                viewModel.SelectedViewModel = new ArchiveScreenViewModel();
             }
             else if (parameter.ToString() == "ComplaintsScreen")
             {
@@ -90,6 +87,10 @@ namespace SWPProjekt.Commands
             {
                 viewModel.SelectedViewModel = new EmployeeScreenViewModel(viewModel, Login);
                 ((EmployeeScreenViewModel)viewModel.SelectedViewModel).LoadImage();
+            }
+            else if (parameter.ToString() == "ArchiveListScreen")
+            {
+                viewModel.SelectedViewModel = new ArchiveListScreenViewModel(viewModel);
             }
         }        
     }
