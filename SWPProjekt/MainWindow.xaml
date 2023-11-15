@@ -131,14 +131,6 @@
                     </Image>
                     <MenuItem Header="Skargi" Command="{Binding UpdateViewCommand}" CommandParameter="ComplaintsScreen"/>
                 </StackPanel>
-                <MenuItem Header="Produkcja" Name="ProductionScreenBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ProductionList"/>
-                <MenuItem Header="Projekty" Name="ProjectsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ProjectsScreen"/>
-                <MenuItem Header="Lista Zadań" Name="TaskListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="TasksScreen"/>
-                <MenuItem Header="Lista pracowników" Name="EmployeeListBtn" Command="{Binding UpdateViewCommand}" CommandParameter="EmployeeListScreen"/>
-                <MenuItem Header="Sprzedaż" Name="SaleBtn" Command="{Binding UpdateViewCommand}" CommandParameter="SaleScreen"/>
-                <MenuItem Header="Godziny" Name="HoursBtn" Command="{Binding UpdateViewCommand}" CommandParameter="HoursScreen"/>
-                <MenuItem Header="Archiwum" Name="ArchiveBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ArchiveScreen"/>
-                <MenuItem Header="Skargi" Name="ComplaintsBtn" Command="{Binding UpdateViewCommand}" CommandParameter="ComplaintsScreen"/>
             </Menu>
 
             <Grid Grid.Column="1">

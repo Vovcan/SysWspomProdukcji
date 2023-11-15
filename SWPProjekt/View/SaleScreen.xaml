@@ -7,27 +7,43 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <StackPanel Margin="1091,40,-432,280" >
+            <Button Width="128" Height="32" BorderBrush="#0078D4" Content="Sprzedać" Margin="5" Background="#0078D4" Command="{Binding CreateNewSale}"/>
+        </StackPanel>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
             <TextBlock Text="Sprzedaż" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-            <TextBlock Text="{Binding CurrentWarehouse.Name}"   FontSize="18" />
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Width="1103" Margin="0,43,0,0">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Nazwa : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Name}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <ComboBox ItemsSource="{Binding Warehauses}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWarehouse, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel>
+                <DataGrid  IsReadOnly="True" ItemsSource="{Binding Deliverys,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                        <DataGridTextColumn Header="Termin ważności" Binding="{Binding DeliveryDate}" Width="*"/>
+                        <DataGridTextColumn Header="Data dostarczenia" Binding="{Binding ExpirationDate}" Width="*"/>
+                        <DataGridTextColumn Header="Obecna ilość" Binding="{Binding CurrentAmount}" Width="*"/>
+                        <DataGridTextColumn Header="Numer dostawy" Binding="{Binding DeliveryNumber}" Width="*"/>
+                        <DataGridTextColumn Header="Pełna cena" Binding="{Binding FullPrice}" Width="*"/>
+                        <DataGridTextColumn Header="Jednostka" Binding="{Binding UnitName}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Id: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Id}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Numer dostawy: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <ComboBox ItemsSource="{Binding Deliverys}" DisplayMemberPath="DeliveryNumber" SelectedItem="{Binding SelectedDelivery, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Adres: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Address}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Liczba sprzedanych surowców: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBox MinWidth="50" MaxLength="50" Text="{Binding Amount,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Kod pocztowy: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Zip}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Cena sprzedanych surowców: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBox MinWidth="50" MaxLength="50" Text="{Binding SelingPrice,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30"/>
             </StackPanel>
+
         </StackPanel>
     </Grid>
 </UserControl>
