@@ -7,7 +7,7 @@ public partial class Sale
 {
     public int Id { get; set; }
 
-    public DateTime DateOfSale { get; set; }
+    public DateTime? DateOfSale { get; set; }
 
     public float Amount { get; set; }
 

@@ -401,7 +401,7 @@ public partial class ProductionDatabaseContext : DbContext
                 .HasColumnName("id");
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.DateOfSale)
-                .ValueGeneratedOnAddOrUpdate()
+               //.ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("'current_timestamp()'")
                 .HasColumnType("timestamp")
                 .HasColumnName("date_of_sale");

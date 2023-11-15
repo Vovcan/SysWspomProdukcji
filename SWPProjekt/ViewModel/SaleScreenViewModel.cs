@@ -8,21 +8,33 @@ using System.Threading.Tasks;
 using System.Windows;
 using SWPProjekt.Helpers;
 using SWPProjekt.Model;
+using SWPProjekt.View;
 
 namespace SWPProjekt.ViewModel
 {
     class SaleScreenViewModel : BaseViewModel
     {
+        public MainViewModel MainModel { get; set; }
+
         ProductionDatabaseContext context = new ProductionDatabaseContext();
         public Sale NewSale { get; set; }
         public RelayCommand CreateNewSale { get; set; }
+        private DateTime _newdeliverydate { get; set; }
+        public DateTime NewDeliveryDate
+        {
+            get { return _newdeliverydate; }
+            set
+            {
+                _newdeliverydate = value;
+                OnPropertyChanged(nameof(NewDeliveryDate));
+            }
+        }
         private string _amount;
         public string Amount
         {
             get { return _amount; }
             set
             {
-                // Перевірка наявності символів, окрім цифр
                 if (IsNumeric(value))
                 {
                     _amount = value;
@@ -114,18 +126,34 @@ namespace SWPProjekt.ViewModel
 
         public void CreateSale(object a)
         {
-            NewSale = new Sale();
-            NewSale.Deliveryid = SelectedDelivery.Id;
-            NewSale.Id = context.Sales.Count() + 1;
-            NewSale.Price = Convert.ToInt32(SelingPrice);
-            NewSale.Amount = Convert.ToInt32(Amount);
-            context.Add<Sale>(NewSale);
-            context.SaveChanges();
-            MessageBox.Show("Utworzyłeś nową sprzedaże");
+            if(SelectedDelivery.CurrentAmount >= Convert.ToSingle(Amount))
+            {
+                NewSale = new Sale();
+                NewSale.DateOfSale = DateTime.Now;
+                NewSale.Deliveryid = SelectedDelivery.Id;
+                NewSale.Id = context.Sales.Count() + 1;
+                NewSale.Price = Convert.ToInt32(SelingPrice);
+                NewSale.Amount = Convert.ToInt32(Amount);
+                if (int.TryParse(_amount, out int amountValue))
+                {
+                    SelectedDelivery.CurrentAmount -= amountValue;
+                }
+                context.Add<Sale>(NewSale);
+                context.SaveChanges();
+                MessageBox.Show("Utworzyłeś nową sprzedaże");
+                MainModel.UpdateViewCommand.Execute("SaleScreen");
+                
+            }
+            else
+            {
+                MessageBox.Show("Obecna ilość w magazynie jest mniejsza");
+            }
+            
         }
 
-        public SaleScreenViewModel()
+        public SaleScreenViewModel(MainViewModel mainModel)
         {
+            MainModel = mainModel;
             FindData();
             CreateNewSale = new RelayCommand(CreateSale);
         }

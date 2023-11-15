@@ -43,7 +43,6 @@
                 <TextBlock Text="Cena sprzedanych surowców: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
                 <TextBox MinWidth="50" MaxLength="50" Text="{Binding SelingPrice,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30"/>
             </StackPanel>
-
         </StackPanel>
     </Grid>
 </UserControl>

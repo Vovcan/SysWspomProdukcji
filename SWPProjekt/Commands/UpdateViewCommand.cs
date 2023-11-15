@@ -72,7 +72,7 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "SaleScreen")
             {
-                viewModel.SelectedViewModel = new SaleScreenViewModel();
+                viewModel.SelectedViewModel = new SaleScreenViewModel(viewModel);
             }
             else if (parameter.ToString() == "SettingsScreen")
             {
