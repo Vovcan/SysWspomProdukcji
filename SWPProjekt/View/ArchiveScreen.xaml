@@ -13,9 +13,24 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </UserControl.Resources>
     <Grid>
-        <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <TextBlock Text="Archiwum >" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-            <TextBlock Text="{Binding CurrentWarehouse.Name}" FontSize="18" />
+        <StackPanel>
+            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                <TextBlock Text="Archiwum > " FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock Text="{Binding CurrentWarehouse.Name}" FontSize="18" />
+            </StackPanel>
+            <StackPanel>
+            <DataGrid IsReadOnly="True" ItemsSource="{Binding CustomArchiveElements,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"  >
+                <DataGrid.Columns>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status, Converter={StaticResource BooleanToVisibility}}" Width="*"/>
+                        <DataGridTextColumn Header="Data" Binding="{Binding Date}" Width="*"/>
+                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                        <DataGridTextColumn Header="Ilość" Binding="{Binding Amount}" Width="*"/>
+                        <DataGridTextColumn Header="Jednostka" Binding="{Binding Product}" Width="*"/>
+
+                    </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

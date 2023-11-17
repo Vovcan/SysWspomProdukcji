@@ -16,6 +16,9 @@
             <DataTemplate DataType="{x:Type viewmodels:ArchiveListScreenViewModel}">
                 <views:ArchiveListScreen/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ArchiveScreenViewModel}">
+                <views:ArchiveScreen/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:ComplaintsScreenViewModel}">
                 <views:ComplaintsScreen/>
             </DataTemplate>
