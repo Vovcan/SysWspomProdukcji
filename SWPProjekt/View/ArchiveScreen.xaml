@@ -19,7 +19,7 @@
                 <TextBlock Text="{Binding CurrentWarehouse.Name}" FontSize="18" />
             </StackPanel>
             <StackPanel>
-            <DataGrid IsReadOnly="True" ItemsSource="{Binding CustomArchiveElements,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged"  >
+                <DataGrid IsReadOnly="True" ItemsSource="{Binding CustomArchiveElements,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged" FontSize="{Binding MainModel.FontSize}" >
                 <DataGrid.Columns>
                         <DataGridTextColumn Header="Status" Width="*" >
                             <DataGridTextColumn.ElementStyle>
@@ -38,7 +38,7 @@
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                         <DataGridTextColumn Header="Ilość" Binding="{Binding Amount}" Width="*"/>
                         <DataGridTextColumn Header="Jednostka" Binding="{Binding Product}" Width="*"/>
-                    </DataGrid.Columns>
+                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
         </StackPanel>

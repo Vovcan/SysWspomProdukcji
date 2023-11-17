@@ -19,7 +19,7 @@
                 <ComboBox ItemsSource="{Binding Warehauses}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWarehouse, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
             <StackPanel>
-                <DataGrid  IsReadOnly="True" ItemsSource="{Binding Deliverys,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100" >
+                <DataGrid  IsReadOnly="True" ItemsSource="{Binding Deliverys,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100" FontSize="{Binding MainModel.FontSize}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                         <DataGridTextColumn Header="Termin ważności" Binding="{Binding DeliveryDate}" Width="*"/>

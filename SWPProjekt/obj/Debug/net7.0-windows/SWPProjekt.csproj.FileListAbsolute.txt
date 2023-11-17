@@ -1576,3 +1576,5 @@ C:\Users\user\Desktop\52\SWPProjekt\obj\Debug\net7.0-windows\refint\SWPProjekt.d
 C:\Users\user\Desktop\52\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.pdb
 C:\Users\user\Desktop\52\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.genruntimeconfig.cache
 C:\Users\user\Desktop\52\SWPProjekt\obj\Debug\net7.0-windows\ref\SWPProjekt.dll
+C:\Users\user\Desktop\52\SWPProjekt\obj\Debug\net7.0-windows\View\ComplaintsListScreen.g.cs
+C:\Users\user\Desktop\52\SWPProjekt\obj\Debug\net7.0-windows\View\ComplaintsListScreen.baml

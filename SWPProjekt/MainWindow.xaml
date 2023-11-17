@@ -129,7 +129,7 @@
                             <BitmapImage DecodePixelWidth="300" UriSource="/Images/skarga.png" />
                         </Image.Source>
                     </Image>
-                    <MenuItem Header="Skargi" Command="{Binding UpdateViewCommand}" CommandParameter="ComplaintsScreen"/>
+                    <MenuItem Header="Skargi" Command="{Binding UpdateViewCommand}" CommandParameter="ComplaintsListScreen"/>
                 </StackPanel>
             </Menu>
 

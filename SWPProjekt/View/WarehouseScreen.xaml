@@ -65,7 +65,7 @@
                 <ComboBox ItemsSource="{Binding Products}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
             <StackPanel Orientation="Vertical" Height="520">
-                <DataGrid  IsReadOnly="True" ItemsSource="{Binding CombinedDelivery,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100" >
+                <DataGrid  IsReadOnly="True" ItemsSource="{Binding CombinedDelivery,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100" FontSize="{Binding MainModel.FontSize}" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                         <DataGridTextColumn Header="Termin ważności" Binding="{Binding DeliveryDate}" Width="*"/>
@@ -77,7 +77,7 @@
                         <DataGridTextColumn Header="Jednostka" Binding="{Binding UnitName}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <StackPanel Orientation="Horizontal" Visibility="{Binding StackPanelVisibility}">
+                <StackPanel Orientation="Horizontal" Visibility="{Binding StackPanelVisibility}" >
                     <TextBlock Width="150"></TextBlock>
                     <DatePicker Width="120" SelectedDate="{Binding Newexpirationdate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Width="20"></TextBlock>

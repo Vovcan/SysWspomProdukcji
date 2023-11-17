@@ -4,10 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SWPProjekt.View"
+             xmlns:viewModel="clr-namespace:SWPProjekt.ViewModel"
+             xmlns:helpers="clr-namespace:SWPProjekt.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <helpers:DataContextProxy x:Key="DataContextProxy" DataSource="{Binding}"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </UserControl.Resources>
     <Grid>
-
-        <TextBlock Text="Skargi" Margin="10"/>
+        <StackPanel>
+            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                <TextBlock Text="Lista magazynów >" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock Text="{Binding CurrentComplaint.Subject}"   FontSize="18"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <TextBlock Text="Tytuł : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                <TextBlock Text="{Binding CurrentComplaint.Subject}"   FontSize="18"  />
+            </StackPanel>
+            <Rectangle Fill="Gray" Height="1" Margin="20,0"/>
+            <StackPanel Orientation="Horizontal"  Height="120" Margin="20">
+                <TextBlock Text="Opis : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                <TextBlock Text="{Binding CurrentComplaint.Description}"   FontSize="18"  />
+            </StackPanel>
+            <Rectangle Fill="Gray" Height="1" Margin="20,0"/>
+            <StackPanel Orientation="Horizontal" Margin="20" Visibility="{Binding StackPanelVisibility}">
+                <TextBlock Text="Odpowiedż: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                <TextBlock Text="{Binding Response.Description}"   FontSize="18"  />
+            </StackPanel>
+            <Rectangle Fill="Gray" Height="1" Margin="20,0"/>
+        </StackPanel>
     </Grid>
 </UserControl>

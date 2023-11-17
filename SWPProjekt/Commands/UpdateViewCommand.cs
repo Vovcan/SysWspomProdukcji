@@ -40,9 +40,9 @@ namespace SWPProjekt.Commands
             {
                 viewModel.SelectedViewModel = new ProductionListScreenViewModel(viewModel, Login);
             }
-            else if (parameter.ToString() == "ComplaintsScreen")
+            else if (parameter.ToString() == "ComplaintsListScreen")
             {
-                viewModel.SelectedViewModel = new ComplaintsScreenViewModel();
+                viewModel.SelectedViewModel = new ComplaintsListScreenViewModel(viewModel, Login);
             }
             else if (parameter.ToString() == "EmployeeListScreen")
             {

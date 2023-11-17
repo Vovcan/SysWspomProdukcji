@@ -19,8 +19,8 @@
             <DataTemplate DataType="{x:Type viewmodels:ArchiveScreenViewModel}">
                 <views:ArchiveScreen/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:ComplaintsScreenViewModel}">
-                <views:ComplaintsScreen/>
+            <DataTemplate DataType="{x:Type viewmodels:ComplaintsListScreenViewModel}">
+                <views:ComplaintsListScreen/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:EmployeeListScreenViewModel}">
                 <views:EmployeeListScreen/>
@@ -66,6 +66,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:EmployeeScreenViewModel}">
                 <views:EmployeeScreen/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ComplaintsScreenViewModel}">
+                <views:ComplaintsScreen/>
             </DataTemplate>
 
             
