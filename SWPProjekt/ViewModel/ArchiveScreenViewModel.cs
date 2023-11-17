@@ -29,6 +29,7 @@ namespace SWPProjekt.ViewModel
         }
 
         public List<Sale> SaleItems { get; set; }
+        public List<Delivery> AddDostaws { get; set; }
 
         List<CustomArchiveElement> LocalHelpArchiveElements;
         public List<CustomArchiveElement> SaleItemsFu()
@@ -53,16 +54,40 @@ namespace SWPProjekt.ViewModel
 
                 LocalHelpArchiveElements.Add(a);
             }
-            CustomArchiveElements = LocalHelpArchiveElements;
+            
             return LocalHelpArchiveElements;
         }
 
+        public List<CustomArchiveElement> DeliveryItemsFu()
+        {
+            LocalHelpArchiveElements = new List<CustomArchiveElement>();
+            AddDostaws = new List<Delivery>();
+            AddDostaws.AddRange(context.Deliveries);
+            for(int i = 0; i < AddDostaws.Count; i++)
+            {
+                CustomArchiveElement a = new CustomArchiveElement(AddDostaws[i].Id,
+                                                                   AddDostaws[i].DeliveryDate,
+                                                                   context.Deliveries
+                                                                    .Where(delivery => delivery.Id == AddDostaws[i].Id)
+                                                                    .Select(delivery => delivery.Product.Name)
+                                                                    .FirstOrDefault(),
+                                                                   true,
+                                                                   AddDostaws[i].Amount,
+                                                                   context.Deliveries
+                                                                    .Where(delivery => delivery.Id == AddDostaws[i].Id)
+                                                                    .Select(delivery => delivery.Unit.Name)
+                                                                    .FirstOrDefault());
+                LocalHelpArchiveElements.Add(a);
+            }
+            return LocalHelpArchiveElements;
+        }
         public ArchiveScreenViewModel(MainViewModel mainModel, Warehouse CurrentWarehouse)
         {
             MainModel = mainModel;
             this.CurrentWarehouse = CurrentWarehouse;
             CustomArchiveElements = new List<CustomArchiveElement>();
             CustomArchiveElements.AddRange(SaleItemsFu());
+            CustomArchiveElements.AddRange(DeliveryItemsFu());
         }
     }
 }

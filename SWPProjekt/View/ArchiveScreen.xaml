@@ -19,15 +19,25 @@
                 <TextBlock Text="{Binding CurrentWarehouse.Name}" FontSize="18" />
             </StackPanel>
             <StackPanel>
-            <DataGrid IsReadOnly="True" ItemsSource="{Binding CustomArchiveElements,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"  >
+            <DataGrid IsReadOnly="True" ItemsSource="{Binding CustomArchiveElements,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged"  >
                 <DataGrid.Columns>
-                        <DataGridTextColumn Header="Status" Binding="{Binding Status, Converter={StaticResource BooleanToVisibility}}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Width="*" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="-"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Status}" Value="True">
+                                            <Setter Property="Text" Value="+"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                         <DataGridTextColumn Header="Data" Binding="{Binding Date}" Width="*"/>
                         <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                         <DataGridTextColumn Header="Ilość" Binding="{Binding Amount}" Width="*"/>
                         <DataGridTextColumn Header="Jednostka" Binding="{Binding Product}" Width="*"/>
-
                     </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
