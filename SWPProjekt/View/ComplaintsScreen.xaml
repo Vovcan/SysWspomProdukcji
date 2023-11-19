@@ -22,17 +22,25 @@
                 <TextBlock Text="Tytuł : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
                 <TextBlock Text="{Binding CurrentComplaint.Subject}"   FontSize="18"  />
             </StackPanel>
-            <Rectangle Fill="Gray" Height="1" Margin="20,0"/>
+            <Rectangle HorizontalAlignment="Left" Fill="Gray" Height="1" Margin="20,0" Width="800"/>
             <StackPanel Orientation="Horizontal"  Height="120" Margin="20">
                 <TextBlock Text="Opis : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
                 <TextBlock Text="{Binding CurrentComplaint.Description}"   FontSize="18"  />
             </StackPanel>
+            <Rectangle HorizontalAlignment="Left" Fill="Gray" Height="1" Margin="20,0" Width="800"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="20,274,20,20" Visibility="{Binding StackPanelVisibilityForUser}">
+            <TextBlock Text="Odpowiedż: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+            <TextBlock Text="{Binding Response.Description}"   FontSize="18"  />
             <Rectangle Fill="Gray" Height="1" Margin="20,0"/>
-            <StackPanel Orientation="Horizontal" Margin="20" Visibility="{Binding StackPanelVisibility}">
-                <TextBlock Text="Odpowiedż: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                <TextBlock Text="{Binding Response.Description}"   FontSize="18"  />
-            </StackPanel>
-            <Rectangle Fill="Gray" Height="1" Margin="20,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="20,274,20,20" Visibility="{Binding StackPanelVisibilityForAdmin}" VerticalAlignment="Top">
+            <TextBlock Text="Odpowiedż: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+            <TextBox MinWidth="50" MaxLength="255" Text="{Binding NewResponse,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="50" Width="430"/>
+        </StackPanel>
+        <StackPanel >
+            <Button  Width="128" Height="32" BorderBrush="#0078D4" Content="+ Dostawa" Margin="878,41,-206,377" 
+                     Command="{Binding CreateNewResponse}" Background="#0078D4" Visibility="{Binding StackPanelVisibilityForAdmin}"/>
         </StackPanel>
     </Grid>
 </UserControl>

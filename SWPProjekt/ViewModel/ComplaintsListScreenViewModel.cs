@@ -20,7 +20,14 @@ namespace SWPProjekt.ViewModel
             }
             set
             {
-                _complaintsList = context.Complaints.Where(x => x.Userid == LoginUser.Id).ToList();
+                if (LoginUser.JobTitleid == 5)
+                {
+                    _complaintsList = context.Complaints.ToList();
+                }
+                else
+                {
+                    _complaintsList = context.Complaints.Where(x => x.Userid == LoginUser.Id).ToList();
+                }
                 OnPropertyChanged(nameof(ComplaintsList));
             }
         }

@@ -17,18 +17,33 @@ namespace SWPProjekt.ViewModel
         public Complaint CurrentComplaint { get; set; }
 
         User LoginUser;
+        public string NewResponse { get; set; }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
 
-        private Visibility stackPanelVisibility = Visibility.Collapsed;
-        public Visibility StackPanelVisibility
+        private Visibility stackPanelVisibilityForUser = Visibility.Collapsed;
+        public Visibility StackPanelVisibilityForUser
         {
-            get { return stackPanelVisibility; }
+            get { return stackPanelVisibilityForUser; }
             set
             {
-                if (stackPanelVisibility != value)
+                if (stackPanelVisibilityForUser != value)
                 {
-                    stackPanelVisibility = value;
-                    OnPropertyChanged(nameof(StackPanelVisibility));
+                    stackPanelVisibilityForUser = value;
+                    OnPropertyChanged(nameof(StackPanelVisibilityForUser));
+                }
+            }
+        }
+
+        private Visibility stackPanelVisibilityForAdmin = Visibility.Collapsed;
+        public Visibility StackPanelVisibilityForAdmin
+        {
+            get { return stackPanelVisibilityForAdmin; }
+            set
+            {
+                if (stackPanelVisibilityForAdmin != value)
+                {
+                    stackPanelVisibilityForAdmin = value;
+                    OnPropertyChanged(nameof(StackPanelVisibilityForAdmin));
                 }
             }
         }
@@ -44,6 +59,26 @@ namespace SWPProjekt.ViewModel
                 _response =  value;
             }
         }
+
+        public RelayCommand CreateNewResponse { get; set; }
+
+        public void NewResponseFu(object a)
+        {
+            Response = new Response();
+            Response.Description = NewResponse;
+            Response.Userid = LoginUser.Id;
+
+            context.Add<Response>(Response);
+            context.SaveChanges();
+
+            CurrentComplaint.Responseid = Response.Id;
+
+            context.Update(CurrentComplaint);
+            context.SaveChanges();
+
+            MessageBox.Show("Zapisałeś odpowiedź");
+            MainModel.UpdateViewCommand.Execute("ComplaintsListScreen");
+        }
         public ComplaintsScreenViewModel(MainViewModel mainModel, Complaint CurrentComplaint, User user)
         {
             LoginUser = user;
@@ -52,8 +87,16 @@ namespace SWPProjekt.ViewModel
             Response = context.Responses.FirstOrDefault(x => x.Id == CurrentComplaint.Responseid);
             if (CurrentComplaint.Responseid != null)
             {
-                StackPanelVisibility = Visibility.Visible;
+                StackPanelVisibilityForAdmin = Visibility.Hidden;
+                StackPanelVisibilityForUser = Visibility.Visible;
             }
+            else if(LoginUser.JobTitleid == 5)
+            {
+                StackPanelVisibilityForUser = Visibility.Hidden;
+                StackPanelVisibilityForAdmin = Visibility.Visible;
+            }
+
+            CreateNewResponse = new RelayCommand(NewResponseFu);
         }
     }
 }
