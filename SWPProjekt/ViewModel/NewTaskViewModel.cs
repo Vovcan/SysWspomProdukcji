@@ -20,7 +20,8 @@ namespace SWPProjekt.ViewModel
         public Production Production { get; set; }
         public RelayCommand SaveCommand { get; set; }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
-        public ObservableCollection<Production>? Productions { get; set; }
+        public ObservableCollection<User>? Employees { get; set; }
+        public int Priority { get; set; }
         private string validationFailedText;
         public string ValidationFailedText
         {
@@ -37,11 +38,12 @@ namespace SWPProjekt.ViewModel
         {
             SaveCommand = new RelayCommand(Save);
             MainModel = mainModel;
-            Productions = new ObservableCollection<Production>(context.Productions.ToList());
+            //Productions = new ObservableCollection<Production>(context.Productions.ToList());
         }
 
         public void Save(object o)
         {
+            /*
             if (Validate())
             {
                 Model.Task task = new Model.Task { Name = Name, Description = Description, StartDate = StartDate, Deadline = Deadline, Productionid = Production.Id };
@@ -53,6 +55,7 @@ namespace SWPProjekt.ViewModel
             {
                 ValidationFailedText = "Wymagane pola nie są wypełnione";
             }
+            */
         }
 
         public bool Validate()

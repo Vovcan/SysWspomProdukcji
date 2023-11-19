@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Produkcja >" Margin="10"/>
+                <TextBlock Text="Lista zadań >" Margin="10"/>
                 <TextBlock Text="{Binding CurrentTask.Name}" Margin="10"/>
             </StackPanel>
             <StackPanel>
