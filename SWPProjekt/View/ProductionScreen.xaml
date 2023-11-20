@@ -71,7 +71,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                             <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="*"/>
-                            <DataGridTextColumn Header="Imię" Binding="{Binding Surname}" Width="*"/>
+                            <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>

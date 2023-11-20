@@ -73,8 +73,29 @@
                 </Border>
                 <Border>
                     <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Autor: "/>
+                        <TextBlock>
+                        <Run Text="{Binding Author.Name}"/>
+                        <Run Text="{Binding Author.Surname}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Produkcja: "/>
                         <TextBlock Text="{Binding Production.Name}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                        <TextBlock Text="Pracownicy: "/>
+                        <DataGrid  IsReadOnly="True" ItemsSource="{Binding Employees,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding SelectedEmployee}" AutoGenerateColumns="False" Width="400" FontSize="{Binding MainModel.FontSize}" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                                <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </StackPanel>
                 </Border>
             </StackPanel>
