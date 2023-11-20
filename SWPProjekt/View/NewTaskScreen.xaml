@@ -50,7 +50,7 @@
                 <Border>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Planowana data zakończenia:" Width="250"/>
-                        <DatePicker Width="150" SelectedDate="{Binding PlannedFinishDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DatePicker Width="150" SelectedDate="{Binding Deadline,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </Border>
                 <Border>
@@ -63,7 +63,7 @@
                 <Border>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Produkcja: *" Width="250"/>
-                        <ComboBox ItemsSource="{Binding Productions}" DisplayMemberPath="Name" SelectedItem="{Binding Project, UpdateSourceTrigger=PropertyChanged}" MinWidth="150"/>
+                        <ComboBox ItemsSource="{Binding Productions}" DisplayMemberPath="Name" SelectedItem="{Binding Production, UpdateSourceTrigger=PropertyChanged}" MinWidth="150"/>
                     </StackPanel>
                 </Border>
                 <Border>

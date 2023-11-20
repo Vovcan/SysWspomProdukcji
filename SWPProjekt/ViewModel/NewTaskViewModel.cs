@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SWPProjekt.ViewModel
 {
-    internal class NewTaskViewModel : BaseViewModel
+    internal class NewTaskViewModel : BaseViewModel, INotifyPropertyChanged
     {
         public MainViewModel MainModel { get; set; }
         public string Name { get; set; }
@@ -20,6 +21,7 @@ namespace SWPProjekt.ViewModel
         public Production Production { get; set; }
         public RelayCommand SaveCommand { get; set; }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
+        public ObservableCollection<Production>? Productions { get; set; }
         public ObservableCollection<User>? Employees { get; set; }
         public int Priority { get; set; }
         private string validationFailedText;
@@ -38,32 +40,37 @@ namespace SWPProjekt.ViewModel
         {
             SaveCommand = new RelayCommand(Save);
             MainModel = mainModel;
-            //Productions = new ObservableCollection<Production>(context.Productions.ToList());
+            Productions = new ObservableCollection<Production>(context.Productions.ToList());
         }
 
         public void Save(object o)
-        {
-            /*
+        {   
             if (Validate())
             {
-                Model.Task task = new Model.Task { Name = Name, Description = Description, StartDate = StartDate, Deadline = Deadline, Productionid = Production.Id };
-                context.Add(task);
+                Model.Task task = new Model.Task { Name = Name, Description = Description, StartDate = StartDate,Priority=Priority,CreationDate= DateTime.Now, Deadline = Deadline, Productionid = Production.Id };
+                TaskUser taskUser = new TaskUser {Task=task,Userid=MainModel.LoginUser.Id };
+                context.Add(taskUser);
                 context.SaveChanges();
-                MainModel.UpdateViewCommand.Execute("TaskList");
+                MainModel.UpdateViewCommand.Execute("TasksScreen");
             }
-            else
-            {
-                ValidationFailedText = "Wymagane pola nie są wypełnione";
-            }
-            */
         }
 
         public bool Validate()
         {
-            if (Name != "" && Name != null && Description != "" && Description != null && MainModel.LoginUser != null && Production != null)
-                return true;
-            else
+            if (Priority < 1 || Priority> 10)
+            {
+                ValidationFailedText = "Priorytet ma błędną wartość. Podaj liczbę całkowitą od 1 do 10";
                 return false;
+            }
+            else if (Name == "" || Description == "" || MainModel.LoginUser == null || Production == null)
+            {
+                ValidationFailedText = "Wymagane pola nie są wypełnione";
+                return false;
+            }
+            else
+            {
+                return true;
+            }     
         }
     }
 }
