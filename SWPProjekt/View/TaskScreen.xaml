@@ -95,6 +95,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Pracownicy: " MinWidth="150"/>
                             <Button Command="{Binding AddCommand}" Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj pracownika"/>
+                            <Button Command="{Binding RemoveCommand}" Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="- Usuń pracownika"/>
                         </StackPanel>
                         <DataGrid  IsReadOnly="True" ItemsSource="{Binding Employees,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding SelectedEmployee}" AutoGenerateColumns="False" Width="400" FontSize="{Binding MainModel.FontSize}" >
                             <DataGrid.Columns>
@@ -114,7 +115,7 @@
                     <TextBlock Text="Pracownicy: " Margin="10"/>
                     <Button Width="40" Command="{Binding CloseCommand}" Content="X" Background="DodgerBlue" BorderBrush="DodgerBlue" HorizontalAlignment="Right"></Button>
                 </DockPanel>
-                    <DataGrid  IsReadOnly="True" ItemsSource="{Binding AllEmployees,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding AddedEmployee}" AutoGenerateColumns="False" Width="Auto" FontSize="{Binding MainModel.FontSize}" >
+                    <DataGrid  IsReadOnly="True" ItemsSource="{Binding AllEmployees,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding ModifiedEmployee}" AutoGenerateColumns="False" Width="Auto" FontSize="{Binding MainModel.FontSize}" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="Auto"/>
                         <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="Auto"/>
