@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using SWPProjekt.Helpers;
 using SWPProjekt.Model;
 
 namespace SWPProjekt.ViewModel
@@ -48,11 +51,39 @@ namespace SWPProjekt.ViewModel
                     MainModel.UpdateViewCommand.Execute(newView);
             }
         }
+
+        private Visibility stackPanelVisibilityForUser = Visibility.Collapsed;
+        public Visibility StackPanelVisibilityForUser
+        {
+            get { return stackPanelVisibilityForUser; }
+            set
+            {
+                if (stackPanelVisibilityForUser != value)
+                {
+                    stackPanelVisibilityForUser = value;
+                    OnPropertyChanged(nameof(StackPanelVisibilityForUser));
+                }
+            }
+        }
+
+        public RelayCommand CreateNewComplaint { get; set; }
+
+        public void NewComplaintFu(object a)
+        {
+            CreateComplaintScreenViewModel newView = new CreateComplaintScreenViewModel(MainModel, LoginUser);
+            if (MainModel.UpdateViewCommand.CanExecute(newView))
+                MainModel.UpdateViewCommand.Execute(newView);
+        }
         public ComplaintsListScreenViewModel(MainViewModel mainModel, User user)
         {
             LoginUser = user;
             MainModel = mainModel;
             ComplaintsList = new List<Complaint>();
+            if (LoginUser.JobTitleid == 5)
+            {
+                StackPanelVisibilityForUser = Visibility.Hidden;
+            }
+            CreateNewComplaint = new RelayCommand(NewComplaintFu);
         }
     }
 }

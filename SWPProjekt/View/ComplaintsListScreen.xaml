@@ -22,5 +22,9 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+        <StackPanel >
+            <Button  Width="128" Height="32" BorderBrush="#0078D4" Content="Nowa skarga" Margin="1300,41,-206,377" 
+                     Command="{Binding CreateNewComplaint}" Background="#0078D4" Visibility="{Binding StackPanelVisibilityForAdmin}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

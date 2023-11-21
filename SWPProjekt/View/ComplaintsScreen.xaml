@@ -39,7 +39,7 @@
             <TextBox MinWidth="50" MaxLength="255" Text="{Binding NewResponse,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="50" Width="430"/>
         </StackPanel>
         <StackPanel >
-            <Button  Width="128" Height="32" BorderBrush="#0078D4" Content="+ Dostawa" Margin="878,41,-206,377" 
+            <Button  Width="128" Height="32" BorderBrush="#0078D4" Content="Wysłać odpowiedż" Margin="1300,41,-206,377" 
                      Command="{Binding CreateNewResponse}" Background="#0078D4" Visibility="{Binding StackPanelVisibilityForAdmin}"/>
         </StackPanel>
     </Grid>

@@ -90,7 +90,7 @@ namespace SWPProjekt.ViewModel
                 StackPanelVisibilityForAdmin = Visibility.Hidden;
                 StackPanelVisibilityForUser = Visibility.Visible;
             }
-            else if(LoginUser.JobTitleid == 5)
+            else if(LoginUser.JobTitleid == 3)
             {
                 StackPanelVisibilityForUser = Visibility.Hidden;
                 StackPanelVisibilityForAdmin = Visibility.Visible;

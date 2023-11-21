@@ -14,6 +14,9 @@
     <Compile Update="View\ComplaintsListScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CreateComplaintScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\EmployeeScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -56,6 +59,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ComplaintsScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CreateComplaintScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\EmployeeListScreen.xaml">
