@@ -18,18 +18,18 @@ namespace SWPProjekt.ViewModel
 
         public Model.Task CurrentTask { get; set; }
         public ProductionDatabaseContext db { get; set; }
-        public Production Production { get; set; }
+        public Production? Production { get; set; }
         public MainViewModel MainModel { get; set; }
         public User LoginUser { get; set; }
-        public ObservableCollection<User> Employees { get => employees; set { employees = value; } }
-        public ObservableCollection<User> AllEmployees { get => allEmployees; set { allEmployees = value; PropertyChanged(this, new PropertyChangedEventArgs("AllEmployees")); } }
-        public User Author { get; set; }
-        public User SelectedEmployee { get; set; }
-        private ObservableCollection<User> allEmployees;
-        private User modifiedEmployee;
-        private ObservableCollection<User> employees;
+        public ObservableCollection<User>? Employees { get => employees; set { employees = value; } }
+        public ObservableCollection<User>? AllEmployees { get => allEmployees; set { allEmployees = value; PropertyChanged(this, new PropertyChangedEventArgs("AllEmployees")); } }
+        public User? Author { get; set; }
+        public User? SelectedEmployee { get; set; }
+        private ObservableCollection<User>? allEmployees;
+        private User? modifiedEmployee;
+        private ObservableCollection<User>? employees;
 
-        public User ModifiedEmployee
+        public User? ModifiedEmployee
         {
             get { return modifiedEmployee; }
             set
@@ -52,12 +52,12 @@ namespace SWPProjekt.ViewModel
             MainModel = mainView;
             CurrentTask = task;
             LoginUser = loginUser;
-            AddCommand = new RelayCommand(AddList);
+            AddCommand = new RelayCommand(AdditionList);
             CloseCommand = new RelayCommand(Close);
-            RemoveCommand = new RelayCommand(RemoveList);
+            RemoveCommand = new RelayCommand(RemovalList);
+            db = new ProductionDatabaseContext();
             try
-            {  
-                db = new ProductionDatabaseContext();
+            {     
                 Production = db.Productions.Single(u => u.Id == CurrentTask.Productionid);
                 Author = db.Users.Where(u => u.TaskUsers.Any(p => p.Taskid == CurrentTask.Id) && u.JobTitleid == 2).FirstOrDefault();
                 Employees = new ObservableCollection<User>(db.Users.Where(u => u.TaskUsers.Any(p => p.Taskid == CurrentTask.Id) && u.JobTitleid != 2));
@@ -68,14 +68,16 @@ namespace SWPProjekt.ViewModel
             }
         }
 
-        public void AddList(object o)
+        public void AdditionList(object o)
         {
+            AllEmployees = null;
             Visibility = Visibility.Visible;
             Removing = false;
             AllEmployees = new ObservableCollection<User>(db.Users.Where(u => !u.TaskUsers.Any(p => p.Taskid == CurrentTask.Id) && (u.JobTitleid == 4 || u.JobTitleid == 5)));
         }
-        public void RemoveList(object o)
+        public void RemovalList(object o)
         {
+            AllEmployees = null;
             Visibility = Visibility.Visible;
             Removing = true;
             AllEmployees = Employees;
