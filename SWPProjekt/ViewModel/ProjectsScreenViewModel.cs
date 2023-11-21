@@ -46,13 +46,11 @@ namespace SWPProjekt.ViewModel
             try
             {
                 ProjectList = new ObservableCollection<Project>(context.Projects.ToList());
-                Debug.WriteLine("połączono");
             }
-            catch
+            catch(Exception e)
             {
-                Debug.WriteLine("brak połączenia z bazą");
+                Debug.WriteLine(e.ToString());
             }
-            LoginUser = loginUser;
         }
 
         public void CreateProject(Object o)

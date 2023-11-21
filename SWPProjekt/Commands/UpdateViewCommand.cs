@@ -52,7 +52,7 @@ namespace SWPProjekt.Commands
                 }
                 else
                 {
-                    viewModel.SelectedViewModel = new EmployeeListScreenViewModel();
+                    viewModel.SelectedViewModel = new EmployeeListScreenViewModel(viewModel, Login);
                 }
             }
             else if (parameter.ToString() == "HoursScreen")
