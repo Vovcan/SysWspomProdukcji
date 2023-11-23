@@ -4,9 +4,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SWPProjekt.View"
+             xmlns:helpers="clr-namespace:SWPProjekt.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <helpers:DataContextProxy x:Key="DataContextProxy" DataSource="{Binding}"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </UserControl.Resources>
     <Grid>
-        <TextBlock Text="Godziny" Margin="10"/>
+        <StackPanel>
+            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                <TextBlock Text="Ustawienie godzin" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+                <DataGrid IsReadOnly="True" ItemsSource="{Binding Employees,UpdateSourceTrigger=PropertyChanged}" 
+                       AutoGenerateColumns="False"  FontSize="{Binding MainModel.FontSize}" Width="610">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="*"/>
+                        <DataGridTextColumn Header="Rola" Binding="{Binding JobTitleid }" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Margin="614,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock Text="Dzisiejsza data: " FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock Text="{Binding TodayDate,StringFormat='yyyy-MM-dd'}" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+        </StackPanel>
     </Grid>
 </UserControl>

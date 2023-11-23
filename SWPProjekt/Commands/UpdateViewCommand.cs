@@ -57,7 +57,11 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "HoursScreen")
             {
-                viewModel.SelectedViewModel = new HoursScreenViewModel();
+                viewModel.SelectedViewModel = new HoursScreenViewModel(viewModel);
+            }
+            else if (parameter.ToString() == "HistoryHoursScreen")
+            {
+                viewModel.SelectedViewModel = new HistoryHoursScreenViewModel();
             }
             else if (parameter.ToString() == "ProjectsScreen")
             {

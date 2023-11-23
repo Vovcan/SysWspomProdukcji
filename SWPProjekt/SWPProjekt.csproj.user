@@ -20,6 +20,9 @@
     <Compile Update="View\EmployeeScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\HistoryHoursScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -68,6 +71,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\EmployeeScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\HistoryHoursScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\HoursScreen.xaml">

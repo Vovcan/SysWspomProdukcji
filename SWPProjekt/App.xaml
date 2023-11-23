@@ -28,6 +28,9 @@
             <DataTemplate DataType="{x:Type viewmodels:HoursScreenViewModel}">
                 <views:HoursScreen/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:HistoryHoursScreenViewModel}">
+                <views:HistoryHoursScreen/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:SaleScreenViewModel}">
                 <views:SaleScreen/>
             </DataTemplate>

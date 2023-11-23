@@ -113,7 +113,15 @@
                             <BitmapImage DecodePixelWidth="300" UriSource="/Images/history.png" />
                         </Image.Source>
                     </Image>
-                    <MenuItem Header="Godziny" Command="{Binding UpdateViewCommand}" CommandParameter="HoursScreen"/>
+                    <MenuItem Header="Ustawienie godzin" Command="{Binding UpdateViewCommand}" CommandParameter="HoursScreen"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="/Images/output.png" />
+                        </Image.Source>
+                    </Image>
+                    <MenuItem Header="Historia godzin pracy" Command="{Binding UpdateViewCommand}" CommandParameter="HistoryHoursScreen"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Image Width="20" Height="20" >
