@@ -38,6 +38,9 @@
     <Compile Update="View\ProductionListScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\TimeHistoryOfUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\TworzenieNowegoHasla.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -110,6 +113,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\TaskListScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TimeHistoryOfUser.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\TworzenieNowegoHasla.xaml">

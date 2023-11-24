@@ -17,20 +17,34 @@
                 <TextBlock Text="Ustawienie godzin" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
             </StackPanel>
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
-                <DataGrid IsReadOnly="True" ItemsSource="{Binding Employees,UpdateSourceTrigger=PropertyChanged}" 
-                       AutoGenerateColumns="False"  FontSize="{Binding MainModel.FontSize}" Width="610">
+                <DataGrid IsReadOnly="True" ItemsSource="{Binding combinedUsers,UpdateSourceTrigger=PropertyChanged}" 
+                       AutoGenerateColumns="False"  FontSize="{Binding MainModel.FontSize}" Width="712">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="*"/>
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="*"/>
                         <DataGridTextColumn Header="Rola" Binding="{Binding JobTitleid }" Width="*"/>
+                        <DataGridTextColumn Header="Nazwa zadania" Binding="{Binding TaskName }" Width="*"/>
+                        <DataGridTemplateColumn Header="Godziny pracy">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding HoursNumber,UpdateSourceTrigger=PropertyChanged}" Width="50" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
 
         </StackPanel>
-        <StackPanel Margin="614,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <TextBlock Text="Dzisiejsza data: " FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-            <TextBlock Text="{Binding TodayDate,StringFormat='yyyy-MM-dd'}" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+        <StackPanel Margin="1400,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Dzisiejsza data: " FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock Text="{Binding TodayDate,StringFormat='yyyy-MM-dd'}" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+        </StackPanel>
+        <StackPanel>
+                <Button Width="128" Height="32" BorderBrush="#0078D4" Content="Zapisz zmiany" Margin="5" 
+                    Command="{Binding CreateNewWorkingHours}" Background="#0078D4" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

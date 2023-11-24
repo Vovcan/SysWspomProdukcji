@@ -1846,3 +1846,5 @@ C:\Users\user\Desktop\64\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.genrunti
 C:\Users\user\Desktop\64\SWPProjekt\obj\Debug\net7.0-windows\ref\SWPProjekt.dll
 C:\Users\user\Desktop\64\SWPProjekt\obj\Debug\net7.0-windows\View\HistoryHoursScreen.g.cs
 C:\Users\user\Desktop\64\SWPProjekt\obj\Debug\net7.0-windows\View\HistoryHoursScreen.baml
+C:\Users\user\Desktop\64\SWPProjekt\obj\Debug\net7.0-windows\View\TimeHistoryOfUser.g.cs
+C:\Users\user\Desktop\64\SWPProjekt\obj\Debug\net7.0-windows\View\TimeHistoryOfUser.baml

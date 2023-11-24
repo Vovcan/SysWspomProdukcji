@@ -76,6 +76,9 @@
             <DataTemplate DataType="{x:Type viewmodels:CreateComplaintScreenViewModel}">
                 <views:CreateComplaintScreen/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:TimeHistoryOfUserViewModel}">
+                <views:TimeHistoryOfUser/>
+            </DataTemplate>
 
             
             <ResourceDictionary.MergedDictionaries>

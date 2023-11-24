@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using NPOI.SS.Formula.Functions;
+using SWPProjekt.Helpers;
 using SWPProjekt.Model;
 
 namespace SWPProjekt.ViewModel
@@ -14,28 +17,57 @@ namespace SWPProjekt.ViewModel
         public MainViewModel MainModel { get; set; }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
         public List<User>? Employees { get; set; }
+        public List<CombinedUser> combinedUsers { get; set; }
         public DateTime TodayDate { get; set; }
+
+        public RelayCommand CreateNewWorkingHours { get; set; }
 
         DateTime today = DateTime.Today;
 
         DateTime Nextday = DateTime.Today.AddDays(1);
+
+        public void TableGenerator(List<CombinedUser> combinedUsers)
+        {
+            var usersWithTasks1 = context.TaskUsers
+    .Where(taskUser => taskUser.Task.FinishDate == today)
+    .Select(taskUser => Tuple.Create(taskUser.User, taskUser.Task))
+    .ToList();
+
+            for (int i = 0; i < usersWithTasks1.Count; i++)
+            {
+                
+                CombinedUser a = new CombinedUser(usersWithTasks1[i].Item1.Id, usersWithTasks1[i].Item1.Name, usersWithTasks1[i].Item1.Surname, usersWithTasks1[i].Item1.JobTitleid, usersWithTasks1[i].Item2.Name, usersWithTasks1[i].Item2.Id);
+                combinedUsers.Add(a);
+            }
+        }
+
+        public void CreateNewWorkingHoursFu(object a)
+        {
+            List<CombinedUser> sortedAndFilteredUsers = combinedUsers
+            .Where(user => user.HoursNumber != 0)
+            .OrderBy(user => user.HoursNumber)
+            .ToList();
+            List<WorkingHour> ListToAdd = new List<WorkingHour>();
+            for(int i = 0;i < sortedAndFilteredUsers.Count; i++)
+            {
+                var b = new WorkingHour();
+                b.Date = today;
+                b.Hours = sortedAndFilteredUsers[i].HoursNumber;
+                b.Userid = sortedAndFilteredUsers[i].Id;
+                b.Productionid = context.Tasks.Where(x => x.Id == sortedAndFilteredUsers[i].TaskId).Select(x => x.Productionid).FirstOrDefault();
+                ListToAdd.Add(b);
+                context.Add<WorkingHour>(b);
+            }
+            context.SaveChanges();
+            MessageBox.Show("Utworzyłeś godziny pracy");
+        }
         public HoursScreenViewModel(MainViewModel mainModel) 
         {
             MainModel = mainModel;
-            var allUsers = context.Users.Where(user => user.JobTitleid == 5).ToList();
-            var usersWithTasks = context.TaskUsers
-    .Where(taskUser => taskUser.Task.FinishDate == today)
-    .Select(taskUser => taskUser.User)
-    .ToList();
-            Employees = allUsers.Intersect(usersWithTasks).ToList();
-            var usersWithWorkingHoursToday = context.WorkingHours
-    .Where(wh => wh.Date == DateTime.Today)
-    .Select(wh => wh.User)
-    .Distinct()
-    .ToList();
-            Employees = Employees.Except(usersWithWorkingHoursToday).ToList();
+            combinedUsers = new List<CombinedUser>();
             TodayDate = today;
-
+            TableGenerator(combinedUsers);
+            CreateNewWorkingHours = new RelayCommand(CreateNewWorkingHoursFu);
         }
     }
 }
