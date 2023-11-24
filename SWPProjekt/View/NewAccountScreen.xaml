@@ -6,7 +6,79 @@
              xmlns:local="clr-namespace:SWPProjekt.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Lista Pracowników >" Margin="10"/>
+            <TextBlock Text="Nowe Konto" Margin="10"/>
+        </StackPanel>
+
+        <StackPanel>
+
+            <StackPanel.Resources>
+
+                <Style TargetType="{x:Type StackPanel}">
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="Gray" />
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                </Style>
+                <Style TargetType="{x:Type TextBox}">
+                </Style>
+            </StackPanel.Resources>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Imię: * " Width="90"/>
+                    <TextBox MinWidth="310" MaxLength="30"
+                             Text="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nazwisko: * " Width="90"/>
+                    <TextBox MinWidth="310" MaxLength="30"
+                             Text="{Binding Surname,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Login: * " Width="90"/>
+                    <TextBox MinWidth="310" MaxLength="30"
+                             Text="{Binding Login,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Numer Telefonu: * " Width="150"/>
+                    <TextBox MinWidth="250"
+                             Text="{Binding PhoneNumber,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Email: * " Width="90"/>
+                    <TextBox MinWidth="310" MaxLength="50"
+                             Text="{Binding Email,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Rola: * " Width="90"/>
+                    <ComboBox ItemsSource="{Binding Roles}" DisplayMemberPath="Name" SelectedItem="{Binding Role, UpdateSourceTrigger=PropertyChanged}" MinWidth="150"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Hasło tymczasowe: * " Width="160"/>
+                    <TextBox MinWidth="240" MaxLength="30"
+                             Text="{Binding Password,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Border>
+
+
+        </StackPanel>
+        <TextBlock Text="{Binding ValidationFailedText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"/>
+        <Button Command="{Binding SaveCommand}" Width="128" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="Zapisz" Margin="20"/>
+
+    </StackPanel>
 </UserControl>

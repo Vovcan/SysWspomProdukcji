@@ -89,7 +89,7 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "EmployeeScreen")
             {
-                viewModel.SelectedViewModel = new EmployeeScreenViewModel(viewModel, Login);
+                viewModel.SelectedViewModel = new EmployeeScreenViewModel(Login,viewModel, Login);
                 ((EmployeeScreenViewModel)viewModel.SelectedViewModel).LoadImage();
             }
             else if (parameter.ToString() == "ArchiveListScreen")

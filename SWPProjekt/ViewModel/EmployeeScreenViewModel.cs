@@ -13,6 +13,7 @@ namespace SWPProjekt.ViewModel
     class EmployeeScreenViewModel : BaseViewModel
     {
         public User CurrentUser { get; set; }
+        public User LoginUser { get; set; }
         public MainViewModel MainModel { get; set; }
         private ImageSource _imageSource;
         public ImageSource ImageSource
@@ -36,10 +37,11 @@ namespace SWPProjekt.ViewModel
             string imagePath = CurrentUser.Picture;
             ImageSource = new BitmapImage(new Uri(imagePath, UriKind.Relative));
         }
-        public EmployeeScreenViewModel(MainViewModel mainModel, User loginUser)
+        public EmployeeScreenViewModel(User user, MainViewModel mainModel, User loginUser)
         {
+            LoginUser = loginUser;
             MainModel = mainModel;
-            CurrentUser = loginUser;
+            CurrentUser = user;
         }
     }
 }

@@ -14,7 +14,7 @@
     <Grid >
         <Image Source="{Binding ImageSource}" Margin="650,72,10,238"/>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <TextBlock Text="Własne konto" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock Text="Konto Użytkownika" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Width="1103" Margin="0,43,0,0">
             <Border>
@@ -25,7 +25,7 @@
             </Border>
             <Border BorderBrush="#808080">
                 <StackPanel Orientation="Horizontal" Margin="20">
-                    <TextBlock Text="Naziwsko: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                    <TextBlock Text="Nazwisko: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
                     <TextBlock Text="{Binding CurrentUser.Surname}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
                 </StackPanel>
             </Border>

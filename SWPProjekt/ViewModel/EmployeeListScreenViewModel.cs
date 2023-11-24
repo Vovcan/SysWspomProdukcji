@@ -25,9 +25,9 @@ namespace SWPProjekt.ViewModel
             set
             {
                 _currentEmployee = value;
-                //ProjectViewModel newView = new EmployeeScreenViewModel(CurrentEmployee, MainModel, LoginUser);
-                //if (MainModel.UpdateViewCommand.CanExecute(newView))
-                //    MainModel.UpdateViewCommand.Execute(newView);
+                EmployeeScreenViewModel newView = new EmployeeScreenViewModel(CurrentEmployee, MainModel, LoginUser);
+                if (MainModel.UpdateViewCommand.CanExecute(newView))
+                    MainModel.UpdateViewCommand.Execute(newView);
             }
         }
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
@@ -51,7 +51,7 @@ namespace SWPProjekt.ViewModel
 
         public void Create(Object o)
         {
-            if (LoginUser.JobTitleid == 2 || LoginUser.JobTitleid == 3)
+            if (LoginUser.JobTitleid == 1)
             {
                 MainModel.UpdateViewCommand.Execute(new NewAccountViewModel(MainModel,LoginUser));
             }

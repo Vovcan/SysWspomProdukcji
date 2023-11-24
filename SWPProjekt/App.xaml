@@ -79,6 +79,9 @@
             <DataTemplate DataType="{x:Type viewmodels:TimeHistoryOfUserViewModel}">
                 <views:TimeHistoryOfUser/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:NewAccountViewModel}">
+                <views:NewAccountScreen/>
+            </DataTemplate>
 
             
             <ResourceDictionary.MergedDictionaries>
