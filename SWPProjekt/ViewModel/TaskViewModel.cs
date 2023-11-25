@@ -21,6 +21,40 @@ namespace SWPProjekt.ViewModel
         public Production? Production { get; set; }
         public MainViewModel MainModel { get; set; }
         public User LoginUser { get; set; }
+        public string StatusMessage { get => statusMessage; set { statusMessage = value;} }
+        public bool StatusCheck
+        {
+            get => statusCheck;
+            set
+            {
+                if (statusCheck != true)
+                {
+                    if(LoginUser.JobTitleid == 2 || LoginUser.JobTitleid == 4 || LoginUser.JobTitleid == 5)
+                    {
+                        if (LoginUser.JobTitleid == 2)
+                            CurrentTask.TaskStatus = 1;
+                        else
+                            CurrentTask.TaskStatus = 2;
+                        try
+                        {
+                            db.Update(CurrentTask);
+                            db.SaveChanges();
+                        }
+                        catch
+                        {
+
+                        }
+                        statusCheck = value;
+                        UpdateStatusMessage();
+                        PropertyChanged(this, new PropertyChangedEventArgs("StatusMessage"));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie masz uprawnień do tego działania");
+                    }
+                }        
+            }
+        }
         public ObservableCollection<User>? Employees { get => employees; set { employees = value; } }
         public ObservableCollection<User>? AllEmployees { get => allEmployees; set { allEmployees = value; PropertyChanged(this, new PropertyChangedEventArgs("AllEmployees")); } }
         public User? Author { get; set; }
@@ -28,6 +62,8 @@ namespace SWPProjekt.ViewModel
         private ObservableCollection<User>? allEmployees;
         private User? modifiedEmployee;
         private ObservableCollection<User>? employees;
+        private bool statusCheck;
+        private string statusMessage;
 
         public User? ModifiedEmployee
         {
@@ -56,8 +92,13 @@ namespace SWPProjekt.ViewModel
             CloseCommand = new RelayCommand(Close);
             RemoveCommand = new RelayCommand(RemovalList);
             db = new ProductionDatabaseContext();
+            if (CurrentTask.TaskStatus == 1 || CurrentTask.TaskStatus==2 && (LoginUser.JobTitleid==4 || LoginUser.JobTitleid==5))
+                statusCheck = true;
+            else
+                statusCheck = false;
+            UpdateStatusMessage();
             try
-            {     
+            {
                 Production = db.Productions.Single(u => u.Id == CurrentTask.Productionid);
                 Author = db.Users.Where(u => u.TaskUsers.Any(p => p.Taskid == CurrentTask.Id) && u.JobTitleid == 2).FirstOrDefault();
                 Employees = new ObservableCollection<User>(db.Users.Where(u => u.TaskUsers.Any(p => p.Taskid == CurrentTask.Id) && u.JobTitleid != 2));
@@ -95,7 +136,7 @@ namespace SWPProjekt.ViewModel
                 {
                     TaskUser taskUser = db.TaskUsers.Single(t => t.Taskid == CurrentTask.Id && t.Userid == employee.Id);
                     db.Remove(taskUser);
-                    db.SaveChanges();   
+                    db.SaveChanges();
                 }
                 else
                 {
@@ -111,6 +152,15 @@ namespace SWPProjekt.ViewModel
             {
                 Debug.WriteLine($"{e.Message}");
             }
+        }
+        public void UpdateStatusMessage()
+        {
+            if (CurrentTask.TaskStatus == 1)
+                StatusMessage = "Potwierdzono ukończenie";
+            else if (CurrentTask.TaskStatus == 2)
+                StatusMessage = "Zgłoszono ukończenie";
+            else
+                StatusMessage = "Nieukończone";
         }
 
     }

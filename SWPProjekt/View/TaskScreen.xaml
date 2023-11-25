@@ -60,7 +60,8 @@
                 <Border>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Status: "/>
-                        <TextBlock Text="{Binding CurrentTask.TaskStatus}"/>
+                        <TextBlock Text="{Binding StatusMessage}" Width="200"/>
+                        <CheckBox IsChecked="{Binding Path=StatusCheck, Mode=TwoWay}"/>
                     </StackPanel>
                 </Border>
                 <Border>

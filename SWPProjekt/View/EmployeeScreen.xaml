@@ -14,46 +14,78 @@
     <Grid >
         <Image Source="{Binding ImageSource}" Margin="650,72,10,238"/>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <TextBlock Text="Konto Użytkownika" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock Text="Konto Użytkownika >"  Margin="10"/>
+            <TextBlock Margin="10">
+                <Run Text="{Binding CurrentUser.Name}"/>
+                <Run Text="{Binding CurrentUser.Surname}"/>
+            </TextBlock>
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Width="1103" Margin="0,43,0,0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type StackPanel}">
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                </Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="Gray" />
+                    <Setter Property="BorderThickness" Value="0,0,0,0.5" />
+                </Style>
+            </StackPanel.Resources>
             <Border>
-                <StackPanel Orientation="Horizontal" Margin="20">
-                    <TextBlock Text="Imię: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                    <TextBlock Text="{Binding CurrentUser.Name}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Imię: "/>
+                    <TextBlock Text="{Binding CurrentUser.Name}"/>
                 </StackPanel>
             </Border>
-            <Border BorderBrush="#808080">
-                <StackPanel Orientation="Horizontal" Margin="20">
-                    <TextBlock Text="Nazwisko: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                    <TextBlock Text="{Binding CurrentUser.Surname}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nazwisko: "/>
+                    <TextBlock Text="{Binding CurrentUser.Surname}"/>
                 </StackPanel>
             </Border>
-            <StackPanel Orientation="Horizontal" Margin="20">
-                <TextBlock Text="id: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                <TextBlock Text="{Binding CurrentUser.Id}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="20">
-                <TextBlock Text="Status: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                <TextBlock Text="{Binding CurrentUser.Active}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="20">
-                <TextBlock Text="Numer Telefonu: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                <TextBlock Text="{Binding CurrentUser.PhoneNumber}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="20">
-                <TextBlock Text="Adres mailowy: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                <TextBlock Text="{Binding CurrentUser.Email}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="20">
-                <TextBlock Text="Rola: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-                <TextBlock Text="{Binding CurrentUser.JobTitleid}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="20">
-                <TextBlock Text="Wynagrodzenie: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                <TextBlock Text="{Binding CurrentUser.SalaryByHour}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
-                <TextBlock Text=" zł./g." FontSize="20"  />
-            </StackPanel>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="id: "/>
+                    <TextBlock Text="{Binding CurrentUser.Id}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+            <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Status: "/>
+                    <TextBlock Text="{Binding CurrentUser.Active}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Numer Telefonu: "/>
+                    <TextBlock Text="{Binding CurrentUser.PhoneNumber}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Adres mailowy: "/>
+                    <TextBlock Text="{Binding CurrentUser.Email}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Rola: "/>
+                    <TextBlock Text="{Binding CurrentUser.JobTitleid}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Wynagrodzenie godzinowe: "/>
+                    <TextBlock Text="{Binding CurrentUser.SalaryByHour}"/>
+                    <TextBlock Text=" zł./g." />
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Wynagrodzenie miesięczne: "/>
+                    <TextBlock Text="{Binding CurrentUser.SalaryByMonth}"/>
+                    <TextBlock Text=" zł./g." />
+                </StackPanel>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

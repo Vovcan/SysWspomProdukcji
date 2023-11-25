@@ -48,7 +48,7 @@ namespace SWPProjekt.Commands
             {
                 if(Login.JobTitleid == 5)
                 {
-                    MessageBox.Show("Niemasz dostępu do tego komponentu");
+                    MessageBox.Show("Nie masz dostępu do tego komponentu");
                 }
                 else
                 {
