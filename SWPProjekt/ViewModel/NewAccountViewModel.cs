@@ -83,6 +83,16 @@ namespace SWPProjekt.ViewModel
                 ValidationFailedText = "Wymagane pola nie są wypełnione";
                 return false;
             }
+            if(context.Users.Any(u=>u.Login==Login))
+            {
+                ValidationFailedText = "Użytkownik z tym loginem już istnieje";
+                return false;
+            }
+            if (context.Users.Any(u => u.Email == Email))
+            {
+                ValidationFailedText = "Użytkownik z tym adresem email już istnieje";
+                return false;
+            }
             else
             {
                 return true;

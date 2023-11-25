@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
 
 namespace SWPProjekt.ViewModel
 {
@@ -41,7 +42,7 @@ namespace SWPProjekt.ViewModel
             CreateCommand = new RelayCommand(Create);
             try
             {
-                EmployeeList = new ObservableCollection<User>(context.Users.ToList());
+                EmployeeList = new ObservableCollection<User>(context.Users.Include(u=>u.JobTitle).ToList());
             }
             catch(Exception e)
             {

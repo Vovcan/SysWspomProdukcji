@@ -69,7 +69,7 @@
             <Border>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Rola: "/>
-                    <TextBlock Text="{Binding CurrentUser.JobTitleid}"/>
+                    <TextBlock Text="{Binding CurrentUser.JobTitle.Name}"/>
                 </StackPanel>
             </Border>
             <Border>

@@ -15,6 +15,7 @@
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
                     <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="*"/>
+                    <DataGridTextColumn Header="Rola" Binding="{Binding JobTitle.Name}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button Command="{Binding CreateCommand}" Width="250" Height="32" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Utwórz konto użytkownika" Margin="20"/>

@@ -1,21 +1,15 @@
-﻿using System.Windows.Input;
-using System.Security;
+﻿using MaterialDesignThemes.Wpf;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using SWPProjekt;
 using SWPProjekt.Helpers;
 using SWPProjekt.Model;
-using System.Runtime.InteropServices;
-using System;
-using System.ComponentModel;
-using SWPProjekt.ViewModel;
 using SWPProjekt.View;
-using System.Windows;
-using System.Windows.Navigation;
-using SWPProjekt;
-using System.Windows.Controls;
-using SWPProjekt.Commands;
-using MaterialDesignThemes.Wpf;
+using SWPProjekt.ViewModel;
+using System;
 using System.Diagnostics;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 public class LoginViewModel : BaseViewModel
 {
@@ -107,7 +101,7 @@ public class LoginViewModel : BaseViewModel
 
         using (var context = new ProductionDatabaseContext())
         {
-            var user = context.Users.FirstOrDefault(u => u.Login == Username && u.Password == CreateMD5(Password));
+            var user = context.Users.Include(u=>u.JobTitle).FirstOrDefault(u => u.Login == Username && u.Password == CreateMD5(Password));
             if(user != null)
             {
                 if(user.TemporaryPassword == 1)
