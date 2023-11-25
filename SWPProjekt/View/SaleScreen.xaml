@@ -27,7 +27,7 @@
                         <DataGridTextColumn Header="Obecna ilość" Binding="{Binding CurrentAmount}" Width="*"/>
                         <DataGridTextColumn Header="Numer dostawy" Binding="{Binding DeliveryNumber}" Width="*"/>
                         <DataGridTextColumn Header="Pełna cena" Binding="{Binding FullPrice}" Width="*"/>
-                        <DataGridTextColumn Header="Jednostka" Binding="{Binding UnitName}" Width="*"/>
+                        <DataGridTextColumn Header="Jednostka" Binding="{Binding Unit.Name}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

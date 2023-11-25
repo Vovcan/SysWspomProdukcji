@@ -87,8 +87,25 @@ namespace SWPProjekt.ViewModel
                 _selectedWarehouse = value;
                 OnPropertyChanged(nameof(SelectedWarehouse));
                 Deliverys = new ObservableCollection<Delivery>();
-                var deliveriesToAdd = context.Deliveries.Where(x => x.Warehouseid == SelectedWarehouse.Id).ToList();
-                foreach (var delivery in deliveriesToAdd)
+                var deliveriesToAdd = context.Deliveries
+                .Where(x => x.Warehouseid == SelectedWarehouse.Id)
+                .ToList();
+                var unitIds = deliveriesToAdd.Select(delivery => delivery.Unitid).ToList();
+                var units = context.Units
+                    .Where(unit => unitIds.Contains(unit.Id))
+                    .ToList();
+                var deliveriesWithUnits = deliveriesToAdd
+                    .Join(units,
+                        delivery => delivery.Unitid,
+                        unit => unit.Id,
+                        (delivery, unit) =>
+                        {
+                            delivery.Unit = unit;
+                            return delivery;
+                        })
+                    .ToList();
+
+                foreach (var delivery in deliveriesWithUnits)
                 {
                     Deliverys.Add(delivery);
                 }

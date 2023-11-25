@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xjeDyJDIsUMoyma5SMQBuELBpjbSzxf3XJPOA8FkjxbKsdNgV0sPOVr+JIhBoRSXI9PhvSDXmhGJffWYmyLhpw==",
+  "dgSpecHash": "nQ/LvWyh+uKK0jNdYzTKsCZqM1aFg3hXjviBZDk1FW6Gl4F4sXhnEHDk23R+7Sw9vY7Pd1OP0PLyunMm6VcO2g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\64\\SWPProjekt\\SWPProjekt.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\69\\SWPProjekt\\SWPProjekt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
