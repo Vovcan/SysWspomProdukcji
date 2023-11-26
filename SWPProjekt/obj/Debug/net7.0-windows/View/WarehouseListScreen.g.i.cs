@@ -63,7 +63,7 @@ namespace SWPProjekt.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SWPProjekt;V1.0.0.0;component/view/warehouselistscreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SWPProjekt;component/view/warehouselistscreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\WarehouseListScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

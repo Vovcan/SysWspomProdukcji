@@ -14,22 +14,23 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel >
-            <Button Height="32" BorderBrush="#0078D4" Content="Tworzenie skargi" Margin="1300,41,-206,377" 
-                     Command="{Binding CreateComplaint}" Background="#0078D4" Width="144"/>
+            <Button Height="32" BorderBrush="#0078D4" Content="Złóż skargę" Margin="10" HorizontalAlignment="Right" 
+                     Command="{Binding CreateComplaint}" Background="DodgerBlue" Width="144"/>
         </StackPanel>
         <StackPanel>
             <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                <TextBlock Text="Tworzenie skargi" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock Text="Lista Skarg >"   VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"></TextBlock>
+                <TextBlock Text="{Binding CurrentComplaint.Subject}"   Margin="10"  />
             </StackPanel>
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="20">
-                    <TextBlock Text="Tytuł : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                    <TextBlock Text="Temat : "   VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
                     <TextBox MinWidth="50" MaxLength="255" Text="{Binding NewTitle,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="28" Width="430"/>
                 </StackPanel>
                 <Rectangle HorizontalAlignment="Left" Fill="Gray" Height="1" Margin="20,0" Width="800"/>
                 <StackPanel Orientation="Horizontal"  Height="101" Margin="20" HorizontalAlignment="Left">
-                    <TextBlock Text="Opis : " FontSize="20" ></TextBlock>
-                    <TextBox  MaxLength="255" Text="{Binding NewDescription,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="50" Width="430"/>
+                    <TextBlock Text="Treść : "  ></TextBlock>
+                    <TextBox  MaxLength="255" Text="{Binding NewDescription,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Width="430"/>
                 </StackPanel>
                 <Rectangle HorizontalAlignment="Left" Fill="Gray" Height="1" Margin="20,0" Width="800"/>
             </StackPanel>

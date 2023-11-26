@@ -15,16 +15,15 @@
     <Grid>
         <StackPanel HorizontalAlignment="Left">
             <TextBlock Text="Lista Skarg" Margin="10"/>
-            <DataGrid Name="WarehouseListGrid" IsReadOnly="True" ItemsSource="{Binding ComplaintsList}" SelectedItem ="{Binding CurrentComplaint}" AutoGenerateColumns="False" FontSize="{Binding MainModel.FontSize}" Width="500">
+            <DataGrid Name="WarehouseListGrid" IsReadOnly="True" ItemsSource="{Binding ComplaintsList}" SelectedItem ="{Binding CurrentComplaint}" AutoGenerateColumns="False" FontSize="{Binding MainModel.FontSize}" Width="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn/>
-                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Subject}" Width="*"/>
+                    <DataGridTextColumn Header="Temat" Binding="{Binding Subject}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
         <StackPanel >
-            <Button  Width="128" Height="32" BorderBrush="#0078D4" Content="Nowa skarga" Margin="1300,41,-206,377" 
-                     Command="{Binding CreateNewComplaint}" Background="#0078D4" Visibility="{Binding StackPanelVisibilityForAdmin}"/>
+            <Button  Width="128" Height="32" BorderBrush="DodgerBlue" Content="+ Nowa Skarga" Margin="10" HorizontalAlignment="Right" 
+                     Command="{Binding CreateNewComplaint}" Background="DodgerBlue" Visibility="{Binding StackPanelVisibilityForAdmin}"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -30,7 +30,7 @@ namespace SWPProjekt.ViewModel
             set 
             {
                 _currentWarehouse = value;
-                WarehouseViewModel newView = new WarehouseViewModel(CurrentWarehouse, LoginUser);
+                WarehouseViewModel newView = new WarehouseViewModel(MainModel,CurrentWarehouse, LoginUser);
                 if (MainModel.UpdateViewCommand.CanExecute(newView))
                     MainModel.UpdateViewCommand.Execute(newView);
             }

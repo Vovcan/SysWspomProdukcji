@@ -18,6 +18,7 @@ namespace SWPProjekt.ViewModel
     public class WarehouseViewModel : BaseViewModel
     {
         User LoginUser;
+        public MainViewModel MainModel { get; set; }
         public Warehouse CurrentWarehouse { get; set; }
 
         ProductionDatabaseContext context = new ProductionDatabaseContext();
@@ -141,8 +142,8 @@ namespace SWPProjekt.ViewModel
         // --- new delivery
 
         public string NewFullPrice { get; set; }
-        private DateTime _newexpirationdate { get; set; }
-        public DateTime Newexpirationdate
+        private DateTime? _newexpirationdate { get; set; }
+        public DateTime? Newexpirationdate
         {
             get { return _newexpirationdate; }
             set { 
@@ -151,8 +152,8 @@ namespace SWPProjekt.ViewModel
             }
         }
         public string NewUnit { get; set; }
-        private DateTime _newdeliverydate { get; set; }
-        public DateTime NewDeliveryDate
+        private DateTime? _newdeliverydate { get; set; }
+        public DateTime? NewDeliveryDate
         {
             get { return _newdeliverydate; }
             set
@@ -296,8 +297,9 @@ namespace SWPProjekt.ViewModel
             Units = new ObservableCollection<Unit>(context.Units);
             return uniqueProducts;
         }
-        public WarehouseViewModel(Warehouse warehouse, User LoginUser)
+        public WarehouseViewModel(MainViewModel mainModel, Warehouse warehouse, User LoginUser)
         {
+            MainModel = mainModel;
             this.LoginUser = LoginUser;
             Products = ProductsSercher(warehouse);
             CreateNewDelivery = new RelayCommand(CreateDelivery);

@@ -13,57 +13,77 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </UserControl.Resources>
     <Grid>
-        <StackPanel Margin="1091,40,-432,280" >
-            <Button Width="128" Height="32" BorderBrush="#0078D4" Content="+ Dostawa" Margin="5" 
+        <Grid.Resources>
+            <Style TargetType="{x:Type StackPanel}">
+                <Setter Property="Margin" Value="10,10,10,10"/>
+            </Style>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="BorderBrush" Value="Gray" />
+                <Setter Property="BorderThickness" Value="0,0,0,0.5" />
+            </Style>
+        </Grid.Resources>
+        <StackPanel HorizontalAlignment="Right">
+            <Button Width="128" Height="32" BorderBrush="DodgerBlue" Content="+ Dostawa" Margin="5" 
                     Command="{Binding CreateNewDelivery}" Background="{Binding ButtonDeliveryBackground}" Foreground="{Binding TextDeliveryForeground}"/>
             <Button Width="128" Height="32" Background="{Binding ButtonUnitBackground}" Foreground="{Binding TextUnitForeground}" 
-                    BorderBrush="#0078D4" Content="+ Jednostka" Margin="5" Command="{Binding CreateNewUnit}"/>
+                    BorderBrush="DodgerBlue" Content="+ Jednostka" Margin="5" Command="{Binding CreateNewUnit}"/>
             <TextBox Visibility="{Binding UnitFormVisibility}" MinWidth="50" MaxLength="50" Margin="5"
                      Text="{Binding NewUnit,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="128"/>
         </StackPanel>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <TextBlock Text="Lista magazynów >" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-            <TextBlock Text="{Binding CurrentWarehouse.Name}"   FontSize="18" />
+            <TextBlock Text="Lista magazynów > " VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock Text="{Binding CurrentWarehouse.Name}"  />
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Width="1103" Margin="0,43,0,0">
+            <Border>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Nazwa : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Name}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Nazwa : "  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Name}"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
             </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Id: "  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Id}"   VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+            </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Adres: "  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Address}"  VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+            </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Kod pocztowy: " VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                <TextBlock  Text="{Binding CurrentWarehouse.Zip}"   VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+            </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Zajęty: "   VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                    <TextBlock   VerticalAlignment="Top" HorizontalAlignment="Left" >
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentWarehouse.Full}" Value="0">
+                                        <Setter Property="Text" Value="nie" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CurrentWarehouse.Full}" Value="1">
+                                        <Setter Property="Text" Value="tak" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Id: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Id}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Surowce: "   VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                <TextBlock   VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
+                <ComboBox ItemsSource="{Binding Products}" MinWidth="150" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Adres: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Address}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Kod pocztowy: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock  Text="{Binding CurrentWarehouse.Zip}" FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Zajęty: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding CurrentWarehouse.Full}" Value="0">
-                                    <Setter Property="Text" Value="nie" />
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding CurrentWarehouse.Full}" Value="1">
-                                    <Setter Property="Text" Value="tak" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Surowce: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <TextBlock FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
-                <ComboBox ItemsSource="{Binding Products}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct, UpdateSourceTrigger=PropertyChanged}" />
-            </StackPanel>
+            <Border>
             <StackPanel Orientation="Vertical" Height="520">
                 <DataGrid  IsReadOnly="True" ItemsSource="{Binding CombinedDelivery,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100" FontSize="{Binding MainModel.FontSize}" >
                     <DataGrid.Columns>
@@ -92,6 +112,7 @@
                     <ComboBox MinWidth="100" ItemsSource="{Binding Units}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUnit, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </StackPanel>
+            </Border>
         </StackPanel>
 
     </Grid>

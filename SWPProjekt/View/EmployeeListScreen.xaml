@@ -12,8 +12,7 @@
             <DataGrid IsReadOnly="True" ItemsSource="{Binding EmployeeList}" SelectedItem ="{Binding CurrentEmployee}" AutoGenerateColumns="False" FontSize="{Binding MainModel.FontSize}">
                 <DataGrid.Columns>
                     <DataGridTextColumn/>
-                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
-                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="*"/>
                     <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="*"/>
                     <DataGridTextColumn Header="Rola" Binding="{Binding JobTitle.Name}" Width="*"/>
                 </DataGrid.Columns>

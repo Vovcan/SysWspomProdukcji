@@ -174,7 +174,7 @@ namespace SWPProjekt.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SWPProjekt;V1.0.0.0;component/view/mainmenu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SWPProjekt;component/view/mainmenu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\MainMenu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
