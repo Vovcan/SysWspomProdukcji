@@ -23,7 +23,7 @@ namespace SWPProjekt.ViewModel
             }
             set
             {
-                if (LoginUser.JobTitleid == 5)
+                if (LoginUser.JobTitleid == 3)
                 {
                     _complaintsList = context.Complaints.ToList();
                 }
@@ -70,6 +70,7 @@ namespace SWPProjekt.ViewModel
 
         public void NewComplaintFu(object a)
         {
+
             CreateComplaintScreenViewModel newView = new CreateComplaintScreenViewModel(MainModel, LoginUser);
             if (MainModel.UpdateViewCommand.CanExecute(newView))
                 MainModel.UpdateViewCommand.Execute(newView);
@@ -79,7 +80,7 @@ namespace SWPProjekt.ViewModel
             LoginUser = user;
             MainModel = mainModel;
             ComplaintsList = new List<Complaint>();
-            if (LoginUser.JobTitleid == 5)
+            if (LoginUser.JobTitleid == 3)
             {
                 StackPanelVisibilityForUser = Visibility.Hidden;
             }

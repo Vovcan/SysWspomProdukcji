@@ -12,8 +12,18 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </UserControl.Resources>
     <Grid >
-        <Image Source="{Binding ImageSource}" Margin="650,72,10,238"/>
-        <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition>
+                
+            </ColumnDefinition>
+            <ColumnDefinition>
+                
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Image VerticalAlignment="Top" Margin="80" Grid.Column="1" Source="{Binding ImageSource}" Height="400"/>
+        <StackPanel Grid.Column="0">
+            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
             <TextBlock Text="Konto Użytkownika >"  Margin="10"/>
             <TextBlock Margin="10">
                 <Run Text="{Binding CurrentUser.Name}"/>
@@ -86,6 +96,7 @@
                     <TextBlock Text=" zł./g." />
                 </StackPanel>
             </Border>
+        </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

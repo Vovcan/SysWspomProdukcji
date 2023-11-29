@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\
+C:\Users\user\Desktop\Nowy folder\SWPProjekt\obj\Debug\net7.0-windows\
 SWPProjekt
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-K:\SysWspomProdukcji\SWPProjekt\App.xaml
+C:\Users\user\Desktop\Nowy folder\SWPProjekt\App.xaml
 32674362964
 
 901475951778
-2371442331847
+237-379168196
 Components\BindablePasswordBox.xaml;CustomControls\BindablePasswordBox.xaml;MainWindow.xaml;View\ArchiveListScreen.xaml;View\ArchiveScreen.xaml;View\ComplaintsListScreen.xaml;View\ComplaintsScreen.xaml;View\CreateComplaintScreen.xaml;View\EmployeeListScreen.xaml;View\EmployeeScreen.xaml;View\HistoryHoursScreen.xaml;View\HoursScreen.xaml;View\Login.xaml;View\LoginStartPage.xaml;View\MainMenu.xaml;View\NewAccountScreen.xaml;View\NewProductionScreen.xaml;View\NewProjectScreen.xaml;View\NewTaskScreen.xaml;View\OdzyskanieHasla.xaml;View\ProductionListScreen.xaml;View\ProductionScreen.xaml;View\ProjectScreen.xaml;View\ProjectsScreen.xaml;View\SaleScreen.xaml;View\SettingsScreen.xaml;View\TaskListScreen.xaml;View\TaskScreen.xaml;View\TimeHistoryOfUser.xaml;View\TworzenieNowegoHasla.xaml;View\WarehouseListScreen.xaml;View\WarehouseScreen.xaml;
 
 True

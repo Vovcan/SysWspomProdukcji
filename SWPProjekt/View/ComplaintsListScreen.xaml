@@ -23,7 +23,7 @@
         </StackPanel>
         <StackPanel >
             <Button  Width="128" Height="32" BorderBrush="DodgerBlue" Content="+ Nowa Skarga" Margin="10" HorizontalAlignment="Right" 
-                     Command="{Binding CreateNewComplaint}" Background="DodgerBlue" Visibility="{Binding StackPanelVisibilityForAdmin}"/>
+                     Command="{Binding CreateNewComplaint}" Background="DodgerBlue" Visibility="{Binding StackPanelVisibilityForUser}"/>
         </StackPanel>
     </Grid>
 </UserControl>

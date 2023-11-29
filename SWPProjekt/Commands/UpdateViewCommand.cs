@@ -57,7 +57,16 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "HoursScreen")
             {
-                viewModel.SelectedViewModel = new HoursScreenViewModel(viewModel);
+                if (Login.JobTitleid == 2)
+                {
+                    viewModel.SelectedViewModel = new HoursScreenViewModel(viewModel);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Nie masz dostępu do tej strony!");
+                }
+                
             }
             else if (parameter.ToString() == "HistoryHoursScreen")
             {
@@ -69,7 +78,14 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "TasksScreen")
             {
-                viewModel.SelectedViewModel = new TaskListScreenViewModel(viewModel, Login);
+                if (Login.JobTitleid == 2 || Login.JobTitleid == 5)
+                {
+                    viewModel.SelectedViewModel = new TaskListScreenViewModel(viewModel, Login);
+                }
+                else
+                {
+                    MessageBox.Show("Nie masz dostępu do tego ekranu!");
+                }
             }
             else if (parameter.ToString() == "SaleScreen")
             {
@@ -94,7 +110,14 @@ namespace SWPProjekt.Commands
             }
             else if (parameter.ToString() == "ArchiveListScreen")
             {
-                viewModel.SelectedViewModel = new ArchiveListScreenViewModel(viewModel);
+                if (Login.JobTitleid == 2 || Login.JobTitleid == 3 || Login.JobTitleid == 4)
+                {
+                    viewModel.SelectedViewModel = new ArchiveListScreenViewModel(viewModel);
+                }
+                else
+                {
+                    MessageBox.Show("Nie masz dostępu do tego ekranu!");
+                }
             }
         }        
     }

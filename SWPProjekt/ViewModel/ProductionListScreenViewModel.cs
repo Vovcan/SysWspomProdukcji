@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SWPProjekt.ViewModel
 {
@@ -52,7 +53,14 @@ namespace SWPProjekt.ViewModel
 
         public void Create(Object o)
         {
-            MainModel.UpdateViewCommand.Execute(new NewProductionViewModel(MainModel));
+            if(LoginUser.JobTitleid == 2 || LoginUser.JobTitleid == 3)
+            {
+                MainModel.UpdateViewCommand.Execute(new NewProductionViewModel(MainModel));
+            }
+            else
+            {
+                MessageBox.Show("Nie masz dostępu do tej funkcji!");
+            }
         }
     }
 }
