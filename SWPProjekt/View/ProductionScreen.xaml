@@ -6,107 +6,145 @@
              xmlns:local="clr-namespace:SWPProjekt.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
         <StackPanel Grid.Column="0">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Produkcja >" Margin="10"/>
-                <TextBlock Text="{Binding CurrentProduction.Name}" Margin="10"/>
-            </StackPanel>
-            <StackPanel>
-                <StackPanel.Resources>
-                    <Style TargetType="{x:Type StackPanel}">
-                        <Setter Property="Margin" Value="10,10,10,10"/>
-                    </Style>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="BorderBrush" Value="Gray" />
-                        <Setter Property="BorderThickness" Value="0,0,0,0.5" />
-                    </Style>
-                </StackPanel.Resources>
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Nazwa: "/>
-                        <TextBlock Text="{Binding CurrentProduction.Name}"/>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Id: "/>
-                        <TextBlock Text="{Binding CurrentProduction.Id}"/>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Projekt: "/>
-                        <TextBlock Text="{Binding Project.Name}"/>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel>
-                        <TextBlock Text="Opis: "/>
-                        <TextBlock/>
-                        <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentProduction.Description}"/>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Data Rozpoczęcia: "/>
-                        <TextBlock Text="{Binding CurrentProduction.StartDate}"/>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Data Zakończenia: "/>
-                        <TextBlock Text="{Binding CurrentProduction.FinishDate}"/>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Planowana data zakończenia: "/>
-                        <TextBlock Text="{Binding CurrentProduction.PlannedFinishDate}"/>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Łączny koszt produkcji: "/>
-                        <TextBlock Text="{Binding CurrentProduction.ProductionPrice}"/>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Produkcja >" Margin="10"/>
+                    <TextBlock Text="{Binding CurrentProduction.Name}" Margin="10"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type StackPanel}">
+                            <Setter Property="Margin" Value="10"/>
+                        </Style>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="BorderBrush" Value="Gray" />
+                            <Setter Property="BorderThickness" Value="0,0,0,0.5" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <Border>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Managerowie: " MinWidth="150"/>
-                            <Button Command="{Binding AddCommand}" Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj managera"/>
-                            <Button Command="{Binding RemoveCommand}" Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="- Usuń managera"/>
+                            <TextBlock Text="Nazwa: "/>
+                            <TextBlock Text="{Binding CurrentProduction.Name}"/>
                         </StackPanel>
-                        <DataGrid  IsReadOnly="True" ItemsSource="{Binding Managers,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding SelectedManager}" AutoGenerateColumns="False" Width="400" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
-                                <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="*"/>
-                                <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
-                </Border>
-                <Border>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                        <TextBlock Text="Zadania: "/>
-                        <DataGrid  IsReadOnly="True" ItemsSource="{Binding Tasks,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding SelectedTask}" AutoGenerateColumns="False" Width="400" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
-                                <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
-                </Border>
-                
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Id: "/>
+                            <TextBlock Text="{Binding CurrentProduction.Id}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Projekt: "/>
+                            <TextBlock Text="{Binding Project.Name}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel>
+                            <TextBlock Text="Opis: "/>
+                            <TextBlock/>
+                            <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding CurrentProduction.Description}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Data Rozpoczęcia: "/>
+                            <TextBlock Text="{Binding CurrentProduction.StartDate}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Data Zakończenia: "/>
+                            <TextBlock Text="{Binding CurrentProduction.FinishDate}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Planowana data zakończenia: "/>
+                            <TextBlock Text="{Binding CurrentProduction.PlannedFinishDate}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Łączny koszt produkcji: "/>
+                            <TextBlock Text="{Binding CurrentProduction.ProductionPrice}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Margin="0">
+                                <TextBlock Text="Managerowie: " MinWidth="150"/>
+                                <Button Command="{Binding AddCommand}" Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj managera"/>
+                                <Button Command="{Binding RemoveCommand}" Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="- Usuń managera"/>
+                            </StackPanel>
+                            <DataGrid  IsReadOnly="True" ItemsSource="{Binding Managers,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding SelectedManager}" AutoGenerateColumns="False" Width="400" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                                    <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                            <TextBlock Text="Zadania: "/>
+                            <DataGrid  IsReadOnly="True" ItemsSource="{Binding Tasks,UpdateSourceTrigger=PropertyChanged}" SelectedItem ="{Binding SelectedTask}" AutoGenerateColumns="False" Width="400" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+                    <Border>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                            <StackPanel Margin="0" Orientation="Horizontal">
+                                <TextBlock Text="Wykorzystane surowce: " Width="210"/>
+                                <Button  Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj surowce"/>
+                            </StackPanel>
+                                <DataGrid  IsReadOnly="True" ItemsSource="{Binding UsedMaterials,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="900" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Delivery.Product.Name}" Width="*"/>
+                                        <DataGridTextColumn Header="Ilość" Binding="{Binding Delivery.Amount}" Width="*"/>
+                                        <DataGridTextColumn Header="Jednostka" Binding="{Binding Delivery.Unit.Name}" Width="*"/>
+                                        <DataGridTextColumn Header="Data przeniesienia" Binding="{Binding Date}" Width="*"/>
+                                        <DataGridTextColumn Header="Id dostawy" Binding="{Binding Deliveryid}" Width="*"/>
+                                    </DataGrid.Columns>
+                               </DataGrid>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                <StackPanel Margin="0" Orientation="Horizontal" >
+                                <TextBlock Text="Wyprodukowane surowce: "  Width="210"/>
+                                <Button  Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj surowce"/>
+                            </StackPanel>
+                                <DataGrid  IsReadOnly="True" ItemsSource="{Binding ProducedMaterials,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="900" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Delivery.Product.Name}" Width="*"/>
+                                        <DataGridTextColumn Header="Ilość" Binding="{Binding Delivery.Amount}" Width="*"/>
+                                        <DataGridTextColumn Header="Jednostka" Binding="{Binding Delivery.Unit.Name}" Width="*"/>
+                                        <DataGridTextColumn Header="Data" Binding="{Binding Date}" Width="*"/>
+                                        <DataGridTextColumn Header="Id dostawy" Binding="{Binding Deliveryid}" Width="*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+
             </StackPanel>
-        </StackPanel>
-        <Border Grid.Column="1" BorderThickness="0.5,0,0,0" BorderBrush="Gray">
+
+            <Border Grid.Column="1" BorderThickness="0.5,0,0,0" BorderBrush="Gray">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel  Width="Auto" Visibility="{Binding Visibility}">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <DockPanel>
@@ -121,7 +159,12 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
+                
             </StackPanel>
+            </ScrollViewer>
+
         </Border>
+        
     </Grid>
+    
 </UserControl>

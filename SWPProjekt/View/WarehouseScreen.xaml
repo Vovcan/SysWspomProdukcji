@@ -32,7 +32,7 @@
         </StackPanel>
         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
             <TextBlock Text="Lista magazynów > " VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-            <TextBlock Text="{Binding CurrentWarehouse.Name}"  />
+            <TextBlock Text="{Binding CurrentWarehouse.Name}"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Width="1103" Margin="0,43,0,0">
             <Border>

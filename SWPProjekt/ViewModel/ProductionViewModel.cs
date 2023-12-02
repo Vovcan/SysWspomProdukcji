@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
 
 namespace SWPProjekt.ViewModel
 {
@@ -32,6 +33,8 @@ namespace SWPProjekt.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         public Production CurrentProduction { get; set; }
         public User? SelectedManager { get; set; }
+        public ObservableCollection<ProductionDelivery>? UsedMaterials { get; set; }
+        public ObservableCollection<ProductionDelivery>? ProducedMaterials { get; set; }
         public ObservableCollection<User>? Managers { get; set; }
         public ObservableCollection<User>? ManagersToModify { get => managersToModify; set { managersToModify = value; PropertyChanged(this, new PropertyChangedEventArgs("ManagersToModify")); } }
         public ObservableCollection<Model.Task>? Tasks { get; set; }
@@ -54,6 +57,8 @@ namespace SWPProjekt.ViewModel
                 Project = db.Projects.Single(u => u.Id == CurrentProduction.Projectid);
                 Tasks = new ObservableCollection<Model.Task>(db.Tasks.Where(t => t.Productionid == CurrentProduction.Id).ToList());
                 Managers = new ObservableCollection<User>(db.Users.Where(u => u.ProductionManagers.Any(p => p.Productionid == CurrentProduction.Id)));
+                UsedMaterials = new ObservableCollection<ProductionDelivery>(db.ProductionDeliveries.Where(d => d.Productionid==CurrentProduction.Id && d.InOut==1).Include(d => d.Delivery).ThenInclude(d => d.Product).Include(d => d.Delivery).ThenInclude(d => d.Unit));
+                ProducedMaterials = new ObservableCollection<ProductionDelivery>(db.ProductionDeliveries.Where(d => d.Productionid == CurrentProduction.Id && d.InOut == 0).Include(d => d.Delivery).ThenInclude(d => d.Product).Include(d => d.Delivery).ThenInclude(d => d.Unit));
             }
             catch
             {
