@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SWPProjekt.ViewModel
@@ -62,8 +63,12 @@ namespace SWPProjekt.ViewModel
             {
                 byte[] imageBytes = File.ReadAllBytes(SelectedImagePath);
 
-                // Кодуємо байти в рядок Base64
                 Base64PictureCode = Convert.ToBase64String(imageBytes);
+                if(Base64PictureCode.Length >= 37000)
+                {
+                    MessageBox.Show("Zdjęcie jest za duże!");
+
+                }
             }
             catch (Exception ex)
             {
@@ -130,6 +135,11 @@ namespace SWPProjekt.ViewModel
             if (context.Users.Any(u => u.Email == Email))
             {
                 ValidationFailedText = "Użytkownik z tym adresem email już istnieje";
+                return false;
+            }
+            if(Base64PictureCode.Length >= 37000)
+            {
+                ValidationFailedText = "Wybrane zdjęcie jest zawielkie";
                 return false;
             }
             else

@@ -70,10 +70,15 @@
             <Border>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Hasło tymczasowe: * " Width="160"/>
-                    <TextBox MinWidth="240" MaxLength="30"
+                    <TextBox MinWidth="240" MaxLength="30" 
                              Text="{Binding Password,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </Border>
+            <StackPanel>
+                <TextBlock Text="Zdjęcie powinno być mniejsze 200x200" />
+                <Button Content="Wybrać zdjęcie" Command="{Binding OpenFileCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                        Margin="10" Background="DodgerBlue" BorderBrush="DodgerBlue"/>
+            </StackPanel>
 
 
         </StackPanel>
