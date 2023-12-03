@@ -20,7 +20,7 @@
                 
             </ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <Image VerticalAlignment="Top" Margin="80" Grid.Column="1" Source="{Binding ImageSource}" Height="400"/>
         <StackPanel Grid.Column="0">
             <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">

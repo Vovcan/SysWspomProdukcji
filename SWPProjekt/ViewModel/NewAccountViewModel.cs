@@ -1,20 +1,24 @@
-﻿using SWPProjekt.Helpers;
+﻿using Microsoft.Win32;
+using SWPProjekt.Helpers;
 using SWPProjekt.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using System.Windows.Input;
 
 namespace SWPProjekt.ViewModel
 {
     internal class NewAccountViewModel : BaseViewModel, INotifyPropertyChanged
     {
         public ProductionDatabaseContext context { get; set; } = new ProductionDatabaseContext();
+        public string Base64PictureCode { get; set; }
         User LoginUser;
         public MainViewModel MainModel { get; set; }
         public JobTitle? Role { get; set; }
@@ -38,11 +42,46 @@ namespace SWPProjekt.ViewModel
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string SelectedImagePath { get; set; }
+        public ICommand OpenFileCommand { get; set; }
+
+        private void OpenFileDialog(object a)
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Title = "Wybrać zdjęcie",
+                Filter = "Zdjęcia|*.jpg;*.png;|Wszystkie pliki|*.*"
+
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                SelectedImagePath = openFileDialog.FileName;
+            }
+            try
+            {
+                byte[] imageBytes = File.ReadAllBytes(SelectedImagePath);
+
+                // Кодуємо байти в рядок Base64
+                Base64PictureCode = Convert.ToBase64String(imageBytes);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Błąd przy konwertacji pliku w Base64: {ex.Message}");
+
+            }
+        }
+        private void SetSelectedImagePath(string imagePath)
+        {
+            SelectedImagePath = imagePath;
+        }
+
         public NewAccountViewModel(MainViewModel mainModel, User loginUser)
         {
             SaveCommand = new RelayCommand(Save);
             MainModel = mainModel;
             LoginUser = loginUser;
+            OpenFileCommand = new RelayCommand(OpenFileDialog);
             try
             {
                 Roles = new ObservableCollection<JobTitle>(context.JobTitles.ToList());
@@ -58,7 +97,7 @@ namespace SWPProjekt.ViewModel
         {
             if (Validate())
             {
-                User newUser = new User { Name = Name, Surname = Surname, Login = Login, Password = CreateMD5(Password), PhoneNumber=PhoneNumber,Email=Email, Active=1, TemporaryPassword=1, JobTitleid = Role.Id, Picture="no picture" };
+                User newUser = new User { Name = Name, Surname = Surname, Login = Login, Password = CreateMD5(Password), PhoneNumber=PhoneNumber,Email=Email, Active=1, TemporaryPassword=1, JobTitleid = Role.Id, Picture= Base64PictureCode };
                 context.Add<User>(newUser);
                 context.SaveChanges();
                 MainModel.UpdateViewCommand.Execute("EmployeeListScreen");
