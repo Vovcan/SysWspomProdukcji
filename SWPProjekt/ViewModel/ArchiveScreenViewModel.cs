@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SWPProjekt.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SWPProjekt.ViewModel
 {
@@ -29,7 +30,8 @@ namespace SWPProjekt.ViewModel
         }
 
         public List<Sale> SaleItems { get; set; }
-        public List<Delivery> AddDostaws { get; set; }
+        public List<Delivery> AddDeliveries { get; set; }
+        public List<ProductionDelivery> ProductionDeliveryList { get; set; }
 
         List<CustomArchiveElement> LocalHelpArchiveElements;
         public List<CustomArchiveElement> SaleItemsFu()
@@ -39,15 +41,10 @@ namespace SWPProjekt.ViewModel
             SaleItems.AddRange(context.Sales.Where(sale => sale.Delivery.Warehouseid == CurrentWarehouse.Id));
             for(int i = 0; i < SaleItems.Count; i++)
             {
-                CustomArchiveElement a = new CustomArchiveElement(SaleItems[i].Id,
-                                                                  SaleItems[i].DateOfSale,
-                                                                  context.Sales
+                CustomArchiveElement a = new CustomArchiveElement(SaleItems[i].Id,SaleItems[i].DateOfSale,context.Sales
                                                                     .Where(sale => sale.Id == SaleItems[i].Id)
                                                                     .Select(sale => sale.Delivery.Product.Name)
-                                                                    .FirstOrDefault(),
-                                                                  false,
-                                                                  SaleItems[i].Amount,
-                                                                  context.Sales
+                                                                    .FirstOrDefault(),false,SaleItems[i].Amount,context.Sales
                                                                     .Where(sale => sale.Id == SaleItems[i].Id)
                                                                     .Select(sale => sale.Delivery.Unit.Name)
                                                                      .FirstOrDefault());
@@ -61,26 +58,22 @@ namespace SWPProjekt.ViewModel
         public List<CustomArchiveElement> DeliveryItemsFu()
         {
             LocalHelpArchiveElements = new List<CustomArchiveElement>();
-            AddDostaws = new List<Delivery>();
-            AddDostaws.AddRange(context.Deliveries);
-            for(int i = 0; i < AddDostaws.Count; i++)
+            AddDeliveries = new List<Delivery>();
+            AddDeliveries.AddRange(context.Deliveries.Where(delivery => delivery.Warehouseid == CurrentWarehouse.Id));
+            for(int i = 0; i < AddDeliveries.Count; i++)
             {
-                CustomArchiveElement a = new CustomArchiveElement(AddDostaws[i].Id,
-                                                                   AddDostaws[i].DeliveryDate,
-                                                                   context.Deliveries
-                                                                    .Where(delivery => delivery.Id == AddDostaws[i].Id)
+                CustomArchiveElement a = new CustomArchiveElement(AddDeliveries[i].Id,AddDeliveries[i].DeliveryDate,context.Deliveries
+                                                                    .Where(delivery => delivery.Id == AddDeliveries[i].Id)
                                                                     .Select(delivery => delivery.Product.Name)
-                                                                    .FirstOrDefault(),
-                                                                   true,
-                                                                   AddDostaws[i].Amount,
-                                                                   context.Deliveries
-                                                                    .Where(delivery => delivery.Id == AddDostaws[i].Id)
+                                                                    .FirstOrDefault(),true,AddDeliveries[i].Amount,context.Deliveries
+                                                                    .Where(delivery => delivery.Id == AddDeliveries[i].Id)
                                                                     .Select(delivery => delivery.Unit.Name)
                                                                     .FirstOrDefault());
                 LocalHelpArchiveElements.Add(a);
             }
             return LocalHelpArchiveElements;
         }
+
         public ArchiveScreenViewModel(MainViewModel mainModel, Warehouse CurrentWarehouse)
         {
             MainModel = mainModel;

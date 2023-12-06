@@ -35,7 +35,6 @@
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Data" Binding="{Binding Date}" Width="*"/>
                         <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
-                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                         <DataGridTextColumn Header="Ilość" Binding="{Binding Amount}" Width="*"/>
                         <DataGridTextColumn Header="Jednostka" Binding="{Binding Product}" Width="*"/>
                  </DataGrid.Columns>

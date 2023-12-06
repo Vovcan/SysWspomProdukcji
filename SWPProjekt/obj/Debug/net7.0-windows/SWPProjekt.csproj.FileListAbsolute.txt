@@ -1850,7 +1850,6 @@ C:\Users\user\Desktop\64\SWPProjekt\obj\Debug\net7.0-windows\View\TimeHistoryOfU
 C:\Users\user\Desktop\64\SWPProjekt\obj\Debug\net7.0-windows\View\TimeHistoryOfUser.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.csproj.AssemblyReference.cache
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\Components\BindablePasswordBox.g.cs
-K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\CustomControls\BindablePasswordBox.g.cs
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\MainWindow.g.cs
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\ArchiveListScreen.g.cs
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\ArchiveScreen.g.cs
@@ -1863,7 +1862,6 @@ K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\HistoryHoursScreen
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\HoursScreen.g.cs
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\Login.g.cs
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\LoginStartPage.g.cs
-K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\MainMenu.g.cs
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\NewAccountScreen.g.cs
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\NewProductionScreen.g.cs
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\NewProjectScreen.g.cs
@@ -1948,7 +1946,6 @@ K:\SysWspomProdukcji\SWPProjekt\bin\Debug\net7.0-windows\runtimes\unix\lib\netco
 K:\SysWspomProdukcji\SWPProjekt\bin\Debug\net7.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\App.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\Components\BindablePasswordBox.baml
-K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\CustomControls\BindablePasswordBox.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\MainWindow.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\ArchiveListScreen.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\ArchiveScreen.baml
@@ -1961,7 +1958,6 @@ K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\HistoryHoursScreen
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\HoursScreen.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\Login.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\LoginStartPage.baml
-K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\MainMenu.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\NewAccountScreen.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\NewProductionScreen.baml
 K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\NewProjectScreen.baml
