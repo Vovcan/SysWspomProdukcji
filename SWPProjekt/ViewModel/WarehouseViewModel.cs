@@ -193,23 +193,29 @@ namespace SWPProjekt.ViewModel
                     TextDeliveryForeground = Brushes.White;
                 }
                 Delivery NewDeliveryData = new Delivery();
-
+                
                 if (!isNewDeliveryButtonPressed && SelectedUnit != null && SelectedUnit != null && NewAmount != null && NewFullPrice != null)
                 {
-                    NewDeliveryData.ExpirationDate = Newexpirationdate;
-                    NewDeliveryData.DeliveryDate = NewDeliveryDate;
-                    NewDeliveryData.Amount = Convert.ToInt32(NewAmount);
-                    NewDeliveryData.CurrentAmount = Convert.ToInt32(NewAmount);
-                    NewDeliveryData.FullPrice = Convert.ToInt32(NewFullPrice);
-                    NewDeliveryData.DeliveryNumber = context.Deliveries.Count() + 1;
-                    NewDeliveryData.Unitid = SelectedUnit.Id;
-                    NewDeliveryData.Productid = SelectedProducer.Id;
-                    NewDeliveryData.Warehouseid = CurrentWarehouse.Id;
-                    NewDeliveryData.PriceByUnit = (float)(Convert.ToDouble(NewFullPrice) / Convert.ToDouble(NewAmount));
-                    context.Add<Delivery>(NewDeliveryData);
-                    context.SaveChanges();
-                    MessageBox.Show("Utworzyłeś nową dostawę");
-
+                    if (CurrentWarehouse.Full == 1)
+                    {
+                        MessageBox.Show($"Magazyn {CurrentWarehouse.Name} jest pełny. Nie możesz dodać nowej dostawy.");
+                    }
+                    else
+                    {
+                        NewDeliveryData.ExpirationDate = Newexpirationdate;
+                        NewDeliveryData.DeliveryDate = NewDeliveryDate;
+                        NewDeliveryData.Amount = Convert.ToInt32(NewAmount);
+                        NewDeliveryData.CurrentAmount = Convert.ToInt32(NewAmount);
+                        NewDeliveryData.FullPrice = Convert.ToInt32(NewFullPrice);
+                        NewDeliveryData.DeliveryNumber = context.Deliveries.Count() + 1;
+                        NewDeliveryData.Unitid = SelectedUnit.Id;
+                        NewDeliveryData.Productid = SelectedProducer.Id;
+                        NewDeliveryData.Warehouseid = CurrentWarehouse.Id;
+                        NewDeliveryData.PriceByUnit = (float)(Convert.ToDouble(NewFullPrice) / Convert.ToDouble(NewAmount));
+                        context.Add<Delivery>(NewDeliveryData);
+                        context.SaveChanges();
+                        MessageBox.Show("Utworzyłeś nową dostawę");
+                    }
                 }
             }
             else
@@ -329,8 +335,7 @@ namespace SWPProjekt.ViewModel
                     combinedData.Id = Deliveries[i].Id;
                     combinedData.DeliveryDate = Deliveries[i].DeliveryDate;
                     combinedData.ExpirationDate = Deliveries[i].ExpirationDate;
-                    //combinedData.ProducerName = SelectedProducts[i].Producer; // stary kod, powodował błąd gdy dostaw było więcej od Selected Products
-                    combinedData.ProducerName = Deliveries[i].Product.Producer; // nowy kod, chyba działa poprawnie
+                    combinedData.ProducerName = Deliveries[i].Product.Producer;
                     combinedData.Amount = Deliveries[i].Amount;
                     combinedData.CurrentAmount = Deliveries[i].CurrentAmount;
                     combinedData.FullPrice = Deliveries[i].FullPrice;

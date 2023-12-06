@@ -26,18 +26,15 @@ public class LoginViewModel : BaseViewModel
     public RelayCommand ChangeInterfaceCommand { get; set; }
     private void ChangeInterface(object a)
     {
-        Debug.WriteLine("test");
         PaletteHelper helper = new PaletteHelper();
         ITheme theme = helper.GetTheme();
 
         if (InterfaceChecked == true)
         {
-            Debug.WriteLine("test1");
             theme.SetBaseTheme(Theme.Dark);
         }
         else
         {
-            Debug.WriteLine("test2");
             theme.SetBaseTheme(Theme.Light);
         }
 

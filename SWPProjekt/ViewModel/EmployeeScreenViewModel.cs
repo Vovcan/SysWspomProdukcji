@@ -28,11 +28,6 @@ namespace SWPProjekt.ViewModel
         public User LoginUser { get; set; }
         public MainViewModel MainModel { get; set; }
 
-        //public void LoadImage()
-        //{
-        //    string imagePath = CurrentUser.Picture;
-        //    ImageSource = new BitmapImage(new Uri(imagePath, UriKind.Relative));
-        //}
         public EmployeeScreenViewModel(User user, MainViewModel mainModel, User loginUser)
         {
             LoginUser = loginUser;

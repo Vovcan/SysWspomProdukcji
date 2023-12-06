@@ -14,11 +14,6 @@
     <None Remove="Images\history.png" />
     <None Remove="Images\inbox.png" />
     <None Remove="Images\output.png" />
-    <None Remove="Images\picture1.png" />
-    <None Remove="Images\picture2.png" />
-    <None Remove="Images\picture3.png" />
-    <None Remove="Images\picture4.png" />
-    <None Remove="Images\Screenshot_1.png" />
     <None Remove="Images\skarga.png" />
     <None Remove="Images\String-icon-waffle.png" />
     <None Remove="Images\String-icon.png" />
@@ -49,11 +44,6 @@
     <Resource Include="Images\history.png" />
     <Resource Include="Images\inbox.png" />
     <Resource Include="Images\output.png" />
-    <Resource Include="Images\picture1.png" />
-    <Resource Include="Images\picture2.png" />
-    <Resource Include="Images\picture3.png" />
-    <Resource Include="Images\picture4.png" />
-    <Resource Include="Images\Screenshot_1.png" />
     <Resource Include="Images\skarga.png" />
     <Resource Include="Images\String-icon-waffle.png" />
     <Resource Include="Images\String-icon.png" />

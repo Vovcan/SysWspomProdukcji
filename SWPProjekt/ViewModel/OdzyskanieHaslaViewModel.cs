@@ -49,7 +49,7 @@ namespace SWPProjekt.ViewModel
         {
             code.Clear();
             Random random = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Дозволені символи
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             for (int i = 0; i < 5; i++)
             {
                 int index = random.Next(chars.Length);

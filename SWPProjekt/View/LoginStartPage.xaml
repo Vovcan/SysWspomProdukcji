@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:SWPProjekt.View"
         xmlns:helpers="clr-namespace:SWPProjekt.Helpers"
         xmlns:viewModel="clr-namespace:SWPProjekt.ViewModel" 
-        xmlns:customcontrols="clr-namespace:SWPProjekt.CustomControls"
         xmlns:components="clr-namespace:SWPProjekt.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
