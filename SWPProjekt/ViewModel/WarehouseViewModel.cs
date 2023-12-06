@@ -1,17 +1,11 @@
-﻿using System;
+﻿using SWPProjekt.Helpers;
+using SWPProjekt.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
-using MaterialDesignColors.Recommended;
-using NPOI.Util;
-using SWPProjekt.Helpers;
-using SWPProjekt.Model;
 
 namespace SWPProjekt.ViewModel
 {
@@ -214,13 +208,13 @@ namespace SWPProjekt.ViewModel
                     NewDeliveryData.PriceByUnit = (float)(Convert.ToDouble(NewFullPrice) / Convert.ToDouble(NewAmount));
                     context.Add<Delivery>(NewDeliveryData);
                     context.SaveChanges();
-                    MessageBox.Show("Utworzyłeś nową dostawe");
+                    MessageBox.Show("Utworzyłeś nową dostawę");
 
                 }
             }
             else
             {
-                MessageBox.Show("Niemasz dostępu do tego komponentu");
+                MessageBox.Show("Nie masz dostępu do tego komponentu");
             }
         }
         private void CreateUnit(object a)

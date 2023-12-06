@@ -50,9 +50,6 @@ public partial class ProductionDatabaseContext : DbContext
     public virtual DbSet<WorkingHour> WorkingHours { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //Mateusz connection
-        //=> optionsBuilder.UseMySQL("Server=127.0.0.1;User=root;Database=production_database;");
-        //Włodzimiesz connection
        => optionsBuilder.UseMySQL("server=127.0.0.1;database=swp;user=root;password=root");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -269,7 +266,7 @@ public partial class ProductionDatabaseContext : DbContext
                 .HasColumnType("int(10)")
                 .HasColumnName("amount");
             entity.Property(e => e.Date)
-                .ValueGeneratedOnAddOrUpdate()
+                //.ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("'current_timestamp()'")
                 .HasColumnType("timestamp")
                 .HasColumnName("date");

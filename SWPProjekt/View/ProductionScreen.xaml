@@ -109,12 +109,40 @@
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                             <StackPanel Margin="0" Orientation="Horizontal">
                                 <TextBlock Text="Wykorzystane surowce: " Width="210"/>
-                                <Button  Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj surowce"/>
+                                <Button  Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj surowce" Command="{Binding AddResource}" CommandParameter="In"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Visibility="{Binding InResourceVisibility}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Produkt" Width="200"/>
+                                    <TextBlock Text="Dostawa" Width="200"/>
+                                    <TextBlock Text="Ilość" Width="200"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <ComboBox Width="200" ItemsSource="{Binding AllProducts}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ComboBox Width="200" ItemsSource="{Binding AllDeliveries}" SelectedItem="{Binding SelectedDelivery,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock>
+                                                    <TextBlock.Text>
+                                                        <MultiBinding StringFormat="{} Id: {0} Ilość: {1} Jednostka: {2} Magazyn: {3}">
+                                                            <Binding Path="Id"/>
+                                                            <Binding Path="CurrentAmount"/>
+                                                            <Binding Path="Unit.Name"/>
+                                                            <Binding Path="Warehouse.Name"/>
+                                                        </MultiBinding>
+                                                    </TextBlock.Text>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <TextBox Width="200" Text="{Binding AddedAmount,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <Button  Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="Dodaj"  Command="{Binding SaveInResource}"/>
+                                </StackPanel>
                             </StackPanel>
                                 <DataGrid  IsReadOnly="True" ItemsSource="{Binding UsedMaterials,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="900" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Delivery.Product.Name}" Width="*"/>
-                                        <DataGridTextColumn Header="Ilość" Binding="{Binding Delivery.Amount}" Width="*"/>
+                                        <DataGridTextColumn Header="Produkt" Binding="{Binding Delivery.Product.Name}" Width="*"/>
+                                        <DataGridTextColumn Header="Ilość" Binding="{Binding Amount}" Width="*"/>
                                         <DataGridTextColumn Header="Jednostka" Binding="{Binding Delivery.Unit.Name}" Width="*"/>
                                         <DataGridTextColumn Header="Data przeniesienia" Binding="{Binding Date}" Width="*"/>
                                         <DataGridTextColumn Header="Id dostawy" Binding="{Binding Deliveryid}" Width="*"/>
@@ -124,12 +152,29 @@
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                 <StackPanel Margin="0" Orientation="Horizontal" >
                                 <TextBlock Text="Wyprodukowane surowce: "  Width="210"/>
-                                <Button  Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj surowce"/>
+                                <Button  Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="+ Dodaj surowce"  Command="{Binding AddResource}" CommandParameter="Out"/>
                             </StackPanel>
-                                <DataGrid  IsReadOnly="True" ItemsSource="{Binding ProducedMaterials,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="900" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Vertical" Visibility="{Binding OutResourceVisibility}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Produkt" Width="200"/>
+                                    <TextBlock Text="Ilość" Width="200"/>
+                                    <TextBlock Text="Jednostka" Width="200"/>
+                                    <TextBlock Text="Magazyn" Width="200"/>
+                                    <TextBlock Text="Data Ważności" Width="200"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <ComboBox Width="200" ItemsSource="{Binding AllProducts}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProduct,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBox Width="200" Text="{Binding AddedAmount,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ComboBox Width="200" ItemsSource="{Binding AllUnits}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUnit,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ComboBox Width="200" ItemsSource="{Binding AllWarehouses}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWarehouse,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DatePicker Width="200" SelectedDate="{Binding ExpirationDate,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <Button  Width="200" Height="Auto" Background="DodgerBlue" BorderBrush="DodgerBlue" Content="Dodaj"  Command="{Binding SaveOutResource}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <DataGrid  IsReadOnly="True" ItemsSource="{Binding ProducedMaterials,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="900" FontSize="{Binding MainModel.FontSize}" HorizontalAlignment="Left">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Delivery.Product.Name}" Width="*"/>
-                                        <DataGridTextColumn Header="Ilość" Binding="{Binding Delivery.Amount}" Width="*"/>
+                                        <DataGridTextColumn Header="Produkt" Binding="{Binding Delivery.Product.Name}" Width="*"/>
+                                        <DataGridTextColumn Header="Ilość" Binding="{Binding Amount}" Width="*"/>
                                         <DataGridTextColumn Header="Jednostka" Binding="{Binding Delivery.Unit.Name}" Width="*"/>
                                         <DataGridTextColumn Header="Data" Binding="{Binding Date}" Width="*"/>
                                         <DataGridTextColumn Header="Id dostawy" Binding="{Binding Deliveryid}" Width="*"/>
