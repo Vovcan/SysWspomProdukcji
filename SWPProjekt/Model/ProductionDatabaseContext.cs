@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 
 namespace SWPProjekt.Model;
@@ -49,8 +50,15 @@ public partial class ProductionDatabaseContext : DbContext
 
     public virtual DbSet<WorkingHour> WorkingHours { get; set; }
 
+    static string ReadFromFile(string filePath)
+    {
+        using (StreamReader reader = new StreamReader(filePath))
+        {
+            return reader.ReadToEnd();
+        }
+    }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       => optionsBuilder.UseMySQL("server=127.0.0.1;database=swp;user=root;password=root");
+       => optionsBuilder.UseMySQL(ReadFromFile("data.txt"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
