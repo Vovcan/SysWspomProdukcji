@@ -14,9 +14,9 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel>
-            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                <TextBlock Text="Archiwum > " FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-                <TextBlock Text="{Binding CurrentWarehouse.Name}" FontSize="18" />
+            <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Archiwum > "  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock Text="{Binding CurrentWarehouse.Name}" />
             </StackPanel>
             <StackPanel>
                 <DataGrid IsReadOnly="True" ItemsSource="{Binding CustomArchiveElements,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged" FontSize="{Binding MainModel.FontSize}" >
@@ -34,12 +34,14 @@
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="Data" Binding="{Binding Date}" Width="*"/>
-                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Produkt" Binding="{Binding Name}" Width="*"/>
                         <DataGridTextColumn Header="Ilość" Binding="{Binding Amount}" Width="*"/>
-                        <DataGridTextColumn Header="Jednostka" Binding="{Binding Product}" Width="*"/>
-                 </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
+                        <DataGridTextColumn Header="Jednostka" Binding="{Binding UnitName}" Width="*"/>
+                        <DataGridTextColumn Header="Typ zmiany" Binding="{Binding Type}" Width="*"/>
+                        <DataGridTextColumn Header="Id dostawy/partii" Binding="{Binding Id}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>
