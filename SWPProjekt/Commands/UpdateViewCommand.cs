@@ -118,6 +118,10 @@ namespace SWPProjekt.Commands
                     MessageBox.Show("Nie masz dostępu do tego ekranu!");
                 }
             }
+            else if (parameter.ToString() == "LostProducts")
+            {
+                viewModel.SelectedViewModel = new LostProductsViewModel(viewModel);
+            }
         }        
     }
 }

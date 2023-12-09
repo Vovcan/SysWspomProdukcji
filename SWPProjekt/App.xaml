@@ -82,8 +82,10 @@
             <DataTemplate DataType="{x:Type viewmodels:NewAccountViewModel}">
                 <views:NewAccountScreen/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:LostProductsViewModel}">
+                <views:LostProducts/>
+            </DataTemplate>
 
-            
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

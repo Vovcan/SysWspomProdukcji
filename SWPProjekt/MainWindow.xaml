@@ -107,7 +107,15 @@
                     </Image>
                     <MenuItem Header="Sprzedaż" Command="{Binding UpdateViewCommand}" CommandParameter="SaleScreen"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" >
+                            <Image.Source>
+                                <BitmapImage DecodePixelWidth="300" UriSource="/Images/Union.png" />
+                            </Image.Source>
+                        </Image>
+                        <MenuItem Header="Utracone surowce" Command="{Binding UpdateViewCommand}" CommandParameter="LostProducts"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
                     <Image Width="20" Height="20" >
                         <Image.Source>
                             <BitmapImage DecodePixelWidth="300" UriSource="/Images/history.png" />
@@ -139,7 +147,8 @@
                     </Image>
                     <MenuItem Header="Skargi" Command="{Binding UpdateViewCommand}" CommandParameter="ComplaintsListScreen"/>
                 </StackPanel>
-            </Menu>
+                    
+                </Menu>
             </ScrollViewer>
             
             <Grid Grid.Column="1">

@@ -3,55 +3,22 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using NPOI.SS.Formula.Functions;
 using System.Windows;
 using SWPProjekt.Helpers;
 using SWPProjekt.Model;
-using SWPProjekt.View;
+using System.Text.RegularExpressions;
 
 namespace SWPProjekt.ViewModel
 {
-    class SaleScreenViewModel : BaseViewModel
+    public class LostProductsViewModel : BaseViewModel
     {
         public MainViewModel MainModel { get; set; }
 
         ProductionDatabaseContext context = new ProductionDatabaseContext();
-        public Sale NewSale { get; set; }
-        public RelayCommand CreateNewSale { get; set; }
-        
-        private string _amount;
-        public string Amount
-        {
-            get { return _amount; }
-            set
-            {
-                if (IsNumeric(value))
-                {
-                    _amount = value;
-                }
-                else
-                {
-                    MessageBox.Show("W tym polu wolno wpisywać tylko cyfry");
-                }
-            }
-        }
-        private string _selingPrice;
-        public string SelingPrice
-        {
-            get { return _selingPrice; }
-            set
-            {
-                if (IsNumeric(value))
-                {
-                    _selingPrice = value;
-                }
-                else
-                {
-                    MessageBox.Show("W tym polu wolno wpisywać tylko cyfry");
-                }
-            }
-        }
+        public LostProduct LostProduct { get; set; }
+        public RelayCommand CreateLost { get; set; }
 
         private List<Warehouse> _warehauses;
         public List<Warehouse> Warehauses
@@ -102,6 +69,23 @@ namespace SWPProjekt.ViewModel
                 }
             }
         }
+        private string _amount;
+        public string Amount
+        {
+            get { return _amount; }
+            set
+            {
+                if (IsNumeric(value))
+                {
+                    _amount = value;
+                }
+                else
+                {
+                    MessageBox.Show("W tym polu wolno wpisywać tylko cyfry");
+                }
+            }
+        }
+
         private ObservableCollection<Delivery> _deliverys;
         public ObservableCollection<Delivery> Deliverys
         {
@@ -115,6 +99,7 @@ namespace SWPProjekt.ViewModel
                 OnPropertyChanged(nameof(Deliverys));
             }
         }
+        
         private Delivery _selectedDelivery;
         public Delivery SelectedDelivery
         {
@@ -125,63 +110,36 @@ namespace SWPProjekt.ViewModel
                 OnPropertyChanged(nameof(Warehauses));
             }
         }
-
         public void FindData()
         {
             Warehauses = new List<Warehouse>();
             Warehauses.AddRange(context.Warehouses.ToList());
         }
-
-        public void CreateSale(object a)
-        {
-            if(SelectedDelivery.CurrentAmount >= Convert.ToSingle(Amount))
-            {
-                NewSale = new Sale();
-                NewSale.DateOfSale = DateTime.Now;
-                NewSale.Deliveryid = SelectedDelivery.Id;
-                NewSale.Id = context.Sales.Count() + 1;
-                NewSale.Price = Convert.ToInt32(SelingPrice);
-                NewSale.Amount = Convert.ToInt32(Amount);
-                if (int.TryParse(_amount, out int amountValue))
-                {
-                    SelectedDelivery.CurrentAmount -= amountValue;
-                }
-                context.Add<Sale>(NewSale);
-                context.SaveChanges();
-                MessageBox.Show("Utworzyłeś nową sprzedaże");
-                MainModel.UpdateViewCommand.Execute("SaleScreen");
-                
-            }
-            else
-            {
-                MessageBox.Show("Obecna ilość w magazynie jest mniejsza");
-            }
-            
-        }
-
-        public SaleScreenViewModel(MainViewModel mainModel)
+        public LostProductsViewModel(MainViewModel mainModel)
         {
             MainModel = mainModel;
             FindData();
-            CreateNewSale = new RelayCommand(CreateSale);
-        }
-        private List<CombinedDeliveryData> _combinedDelivery;
-        public List<CombinedDeliveryData> CombinedDelivery
-        {
-            get
-            {
-                return _combinedDelivery;
-            }
-            set
-            {
-                _combinedDelivery = value;
-                OnPropertyChanged(nameof(CombinedDelivery));
-            }
+            CreateLost = new RelayCommand(CreateLostFu);
         }
 
+        void CreateLostFu(object a)
+        {
+
+            LostProduct = new LostProduct();
+            LostProduct.Amount = (float)Convert.ToDouble(Amount);
+            LostProduct.Date = DateTime.Now;
+            LostProduct.Deliveryid = SelectedDelivery.Id;
+            if (int.TryParse(_amount, out int amountValue))
+            {
+                SelectedDelivery.CurrentAmount -= amountValue;
+            }
+            context.Add<LostProduct>(LostProduct);
+            context.SaveChanges();
+            MessageBox.Show("Podane dane są zapisane");
+        }
         private bool IsNumeric(string text)
         {
-            Regex regex = new Regex("^[0-9]+$");
+            Regex regex = new Regex("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$");
 
             return regex.IsMatch(text);
         }
