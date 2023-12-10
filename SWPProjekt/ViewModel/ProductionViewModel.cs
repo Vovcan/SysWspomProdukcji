@@ -22,6 +22,8 @@ namespace SWPProjekt.ViewModel
         private ObservableCollection<Delivery>? allDeliveries;
         private ObservableCollection<Warehouse>? allWarehouses;
         private ObservableCollection<Unit>? allUnits;
+        private float materialPrice = 0;
+        private float laborPrice = 0;
 
         public User? ModifiedManager
         {
@@ -54,6 +56,8 @@ namespace SWPProjekt.ViewModel
         public MainViewModel MainModel { get; set; }
         public User LoginUser { get; set; }
         public Model.Task? SelectedTask { get; set; }
+        public float MaterialPrice { get => materialPrice; set => materialPrice = value; }
+        public float LaborPrice { get => laborPrice; set => laborPrice = value; }
         public ProductionViewModel(Production production, MainViewModel mainView, User loginUser)
         {
             MainModel = mainView;
@@ -73,6 +77,11 @@ namespace SWPProjekt.ViewModel
                 Managers = new ObservableCollection<User>(db.Users.Where(u => u.ProductionManagers.Any(p => p.Productionid == CurrentProduction.Id)));
                 UsedMaterials = new ObservableCollection<ProductionDelivery>(db.ProductionDeliveries.Where(d => d.Productionid == CurrentProduction.Id && d.InOut == 1).Include(d => d.Delivery).ThenInclude(d => d.Product).Include(d => d.Delivery).ThenInclude(d => d.Unit));
                 ProducedMaterials = new ObservableCollection<ProductionDelivery>(db.ProductionDeliveries.Where(d => d.Productionid == CurrentProduction.Id && d.InOut == 0).Include(d => d.Delivery).ThenInclude(d => d.Product).Include(d => d.Delivery).ThenInclude(d => d.Unit));
+                foreach (ProductionDelivery u in UsedMaterials)
+                {
+                    MaterialPrice += u.Delivery.PriceByUnit * u.Amount;
+                }
+                LaborPrice = CurrentProduction.ProductionPrice - CurrentProduction.OtherPayments - MaterialPrice;
             }
             catch
             {
@@ -214,7 +223,7 @@ namespace SWPProjekt.ViewModel
                 MessageBox.Show("Wybrana ilość jest większa od dostępnej ilośći surowca");
                 return;
             }
-            if (AddedAmount <=0)
+            if (AddedAmount <= 0)
             {
                 MessageBox.Show("Ilość musi być większa od 0");
                 return;
@@ -222,11 +231,12 @@ namespace SWPProjekt.ViewModel
 
             try
             {
-                ProductionDelivery pd = new ProductionDelivery { Productionid = CurrentProduction.Id, Deliveryid = SelectedDelivery.Id,Date=DateTime.Now, InOut = 1, Amount = AddedAmount};
+                ProductionDelivery pd = new ProductionDelivery { Productionid = CurrentProduction.Id, Deliveryid = SelectedDelivery.Id, Date = DateTime.Now, InOut = 1, Amount = AddedAmount };
                 db.Add<ProductionDelivery>(pd);
                 SelectedDelivery.CurrentAmount -= pd.Amount;
+                CurrentProduction.ProductionPrice += SelectedDelivery.PriceByUnit * pd.Amount;
                 db.SaveChanges();
-                MainModel.UpdateViewCommand.Execute(new ProductionViewModel(CurrentProduction,MainModel,LoginUser));
+                MainModel.UpdateViewCommand.Execute(new ProductionViewModel(CurrentProduction, MainModel, LoginUser));
             }
             catch (Exception e)
             {
@@ -248,7 +258,7 @@ namespace SWPProjekt.ViewModel
 
             try
             {
-                Delivery newDelivery = new Delivery { Productid = SelectedProduct.Id, DeliveryDate = DateTime.Now, Amount = AddedAmount, ExpirationDate=ExpirationDate, CurrentAmount=AddedAmount, Unitid=SelectedUnit.Id, DeliveryNumber=db.Deliveries.Count() + 1, FullPrice=0,PriceByUnit=0, Warehouseid=SelectedWarehouse.Id};
+                Delivery newDelivery = new Delivery { Productid = SelectedProduct.Id, DeliveryDate = DateTime.Now, Amount = AddedAmount, ExpirationDate = ExpirationDate, CurrentAmount = AddedAmount, Unitid = SelectedUnit.Id, DeliveryNumber = db.Deliveries.Count() + 1, FullPrice = 0, PriceByUnit = 0, Warehouseid = SelectedWarehouse.Id };
                 ProductionDelivery pd = new ProductionDelivery { Productionid = CurrentProduction.Id, Delivery = newDelivery, Date = DateTime.Now, InOut = 0, Amount = AddedAmount };
                 db.Add<ProductionDelivery>(pd);
                 db.SaveChanges();
@@ -256,10 +266,8 @@ namespace SWPProjekt.ViewModel
             }
             catch (Exception e)
             {
-                Debug.WriteLine($"{e.Message}");
+                MessageBox.Show("Nastąpił błąd podczas połączenia z bazą");
             }
         }
-
-
     }
 }

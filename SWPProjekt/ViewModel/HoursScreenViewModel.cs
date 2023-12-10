@@ -29,7 +29,7 @@ namespace SWPProjekt.ViewModel
         public void TableGenerator(List<CombinedUser> combinedUsers)
         {
             var usersWithTasks1 = context.TaskUsers
-    .Where(taskUser => taskUser.Task.FinishDate == today)
+    .Where(taskUser => taskUser.Task.FinishDate == today && taskUser.User.JobTitleid!=2)
     .Select(taskUser => Tuple.Create(taskUser.User, taskUser.Task))
     .ToList();
 
@@ -57,6 +57,17 @@ namespace SWPProjekt.ViewModel
                 b.Productionid = context.Tasks.Where(x => x.Id == sortedAndFilteredUsers[i].TaskId).Select(x => x.Productionid).FirstOrDefault();
                 ListToAdd.Add(b);
                 context.Add<WorkingHour>(b);
+
+                try
+                {
+                    Production updatedProduction = context.Productions.SingleOrDefault(p => p.Id == b.Productionid);
+                    User updatedUser = context.Users.SingleOrDefault(u => u.Id == b.Userid);
+                    updatedProduction.ProductionPrice += b.Hours * (float)updatedUser.SalaryByHour;
+                }
+                catch (Exception e)
+                {
+                    Debug.Print(e.ToString());
+                }
             }
             context.SaveChanges();
             MessageBox.Show("Utworzyłeś godziny pracy");

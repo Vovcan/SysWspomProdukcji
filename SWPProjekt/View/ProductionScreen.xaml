@@ -77,7 +77,25 @@
                             <TextBlock Text="{Binding CurrentProduction.ProductionPrice}"/>
                         </StackPanel>
                     </Border>
-                    <Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Koszt materiałów: "/>
+                        <TextBlock Text="{Binding MaterialPrice}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Koszt wynagrodzeń pracowników: "/>
+                        <TextBlock Text="{Binding LaborPrice}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Inne wydatki: "/>
+                        <TextBlock Text="{Binding CurrentProduction.OtherPayments}"/>
+                    </StackPanel>
+                </Border>
+                <Border>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                             <StackPanel Orientation="Horizontal" Margin="0">
                                 <TextBlock Text="Managerowie: " MinWidth="150"/>
@@ -190,8 +208,8 @@
 
             <Border Grid.Column="1" BorderThickness="0.5,0,0,0" BorderBrush="Gray">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel  Width="Auto" Visibility="{Binding Visibility}">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel  Width="Auto" Visibility="{Binding Visibility}">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <DockPanel>
                         <TextBlock Text="Managerowie: " Margin="10"/>
                         <Button Width="40" Command="{Binding CloseCommand}" Content="X" Background="DodgerBlue" BorderBrush="DodgerBlue" HorizontalAlignment="Right"></Button>

@@ -2801,3 +2801,5 @@ C:\Users\user\Desktop\99\SWPProjekt\obj\Debug\net7.0-windows\SWPProjekt.genrunti
 C:\Users\user\Desktop\99\SWPProjekt\obj\Debug\net7.0-windows\ref\SWPProjekt.dll
 C:\Users\user\Desktop\99\SWPProjekt\obj\Debug\net7.0-windows\View\LostProductsScreen.g.cs
 C:\Users\user\Desktop\99\SWPProjekt\obj\Debug\net7.0-windows\View\LostProductsScreen.baml
+K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\LostProductsScreen.g.cs
+K:\SysWspomProdukcji\SWPProjekt\obj\Debug\net7.0-windows\View\LostProductsScreen.baml
