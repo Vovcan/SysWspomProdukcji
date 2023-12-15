@@ -124,18 +124,32 @@ namespace SWPProjekt.ViewModel
 
         void CreateLostFu(object a)
         {
-
-            LostProduct = new LostProduct();
-            LostProduct.Amount = (float)Convert.ToDouble(Amount);
-            LostProduct.Date = DateTime.Now;
-            LostProduct.Deliveryid = SelectedDelivery.Id;
-            if (int.TryParse(_amount, out int amountValue))
+            if (SelectedDelivery == null || Amount == "")
             {
-                SelectedDelivery.CurrentAmount -= amountValue;
+                MessageBox.Show("Wypełnij wszystkie pola");
             }
-            context.Add<LostProduct>(LostProduct);
-            context.SaveChanges();
-            MessageBox.Show("Podane dane są zapisane");
+            else if (SelectedDelivery.CurrentAmount < Convert.ToSingle(Amount))
+            {
+                MessageBox.Show("Obecna ilość w magazynie jest mniejsza");
+            }
+            else
+            {
+                LostProduct = new LostProduct();
+                LostProduct.Amount = (float)Convert.ToDouble(Amount);
+                LostProduct.Date = DateTime.Now;
+                LostProduct.Deliveryid = SelectedDelivery.Id;
+                if (int.TryParse(_amount, out int amountValue))
+                {
+                    SelectedDelivery.CurrentAmount -= amountValue;
+                    context.Add<LostProduct>(LostProduct);
+                    context.SaveChanges();
+                    MessageBox.Show("Podane dane są zapisane");
+                }
+                else
+                {
+                    MessageBox.Show("Podaj poprawną liczbę");
+                }
+            } 
         }
         private bool IsNumeric(string text)
         {

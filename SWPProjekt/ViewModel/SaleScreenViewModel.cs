@@ -134,7 +134,15 @@ namespace SWPProjekt.ViewModel
 
         public void CreateSale(object a)
         {
-            if(SelectedDelivery.CurrentAmount >= Convert.ToSingle(Amount))
+            if(SelectedDelivery == null || SelingPrice == "" || Amount == "")
+            {
+                MessageBox.Show("Wypełnij wszystkie pola");
+            }
+            else if(SelectedDelivery.CurrentAmount < Convert.ToSingle(Amount))
+            {
+                MessageBox.Show("Obecna ilość w magazynie jest mniejsza");
+            }
+            else
             {
                 NewSale = new Sale();
                 NewSale.DateOfSale = DateTime.Now;
@@ -148,15 +156,9 @@ namespace SWPProjekt.ViewModel
                 }
                 context.Add<Sale>(NewSale);
                 context.SaveChanges();
-                MessageBox.Show("Utworzyłeś nową sprzedaże");
+                MessageBox.Show("Utworzyłeś nową sprzedaż");
                 MainModel.UpdateViewCommand.Execute("SaleScreen");
-                
-            }
-            else
-            {
-                MessageBox.Show("Obecna ilość w magazynie jest mniejsza");
-            }
-            
+            }   
         }
 
         public SaleScreenViewModel(MainViewModel mainModel)

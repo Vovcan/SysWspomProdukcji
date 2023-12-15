@@ -13,18 +13,29 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
     </UserControl.Resources>
     <Grid>
-        <StackPanel Margin="1091,40,-432,280" >
-            <Button Width="128" Height="32" BorderBrush="#0078D4" Content="Zapisać dane" Margin="5" Background="#0078D4" Command="{Binding CreateLost}"/>
+        <StackPanel >
+            <Button  Width="128" Height="32" BorderBrush="DodgerBlue" Content="Sprzedaj" HorizontalAlignment="Right" 
+                     Command="{Binding CreateLost}" Background="DodgerBlue"/>
         </StackPanel>
-        <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <TextBlock Text="Sprzedaż" FontSize="18"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
-        </StackPanel>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical" Width="1103" Margin="0,43,0,0">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type StackPanel}">
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                </Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="Gray" />
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock Text="Utracone surowce"  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+            <Border>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Nazwa : " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Nazwa : "  VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
                 <ComboBox ItemsSource="{Binding Warehauses}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWarehouse, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
-            <StackPanel>
+            </Border>
+            <Border>
+                <StackPanel>
                 <DataGrid  IsReadOnly="True" ItemsSource="{Binding Deliverys,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" Width="1100" FontSize="{Binding MainModel.FontSize}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
@@ -37,14 +48,19 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
+            </Border>
+            <Border>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Numer dostawy: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+                <TextBlock Text="Numer dostawy: "   VerticalAlignment="Top" HorizontalAlignment="Left" ></TextBlock>
                 <ComboBox ItemsSource="{Binding Deliverys}" DisplayMemberPath="DeliveryNumber" SelectedItem="{Binding SelectedDelivery, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Liczba utraconych surowców: " FontSize="20"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20"></TextBlock>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Liczba utraconych surowców: " VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
                 <TextBox MinWidth="50" MaxLength="50" Text="{Binding Amount,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30"/>
             </StackPanel>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>
