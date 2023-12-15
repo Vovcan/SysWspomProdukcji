@@ -1,12 +1,9 @@
 ﻿using SWPProjekt.Helpers;
 using SWPProjekt.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SWPProjekt.ViewModel
@@ -53,7 +50,7 @@ namespace SWPProjekt.ViewModel
 
         public void Create(Object o)
         {
-            if(LoginUser.JobTitleid == 2 || LoginUser.JobTitleid == 3)
+            if(LoginUser.JobTitleid == 3)
             {
                 MainModel.UpdateViewCommand.Execute(new NewProductionViewModel(MainModel));
             }

@@ -55,13 +55,13 @@ namespace SWPProjekt.ViewModel
 
         public void CreateProject(Object o)
         {
-            if(LoginUser.JobTitleid == 2 || LoginUser.JobTitleid == 3)
+            if(LoginUser.JobTitleid == 3)
             {
                 MainModel.UpdateViewCommand.Execute(new NewProjectViewModel(MainModel));
             }
             else
             {
-                MessageBox.Show("Niemasz dostępu do tego komponentu");
+                MessageBox.Show("Nie masz dostępu do tego komponentu");
             }
 
         }

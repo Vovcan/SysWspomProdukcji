@@ -82,21 +82,25 @@
                     <TextBlock Text="{Binding CurrentUser.JobTitle.Name}"/>
                 </StackPanel>
             </Border>
-            <Border>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Wynagrodzenie godzinowe: "/>
-                    <TextBlock Text="{Binding CurrentUser.SalaryByHour}"/>
-                    <TextBlock Text=" zł./g." />
-                </StackPanel>
-            </Border>
-            <Border>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Wynagrodzenie miesięczne: "/>
-                    <TextBlock Text="{Binding CurrentUser.SalaryByMonth}"/>
-                    <TextBlock Text=" zł./g." />
-                </StackPanel>
-            </Border>
-        </StackPanel>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Wynagrodzenie godzinowe: "/>
+                        <TextBlock Text="{Binding CurrentUser.SalaryByHour}"/>
+                        <TextBlock Text=" zł./g.    " />
+                        <TextBox MinWidth="50" Visibility="{Binding EditVisibility}" Text="{Binding UpdatedHourWage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        
+                    </StackPanel>
+                </Border>
+                <Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Wynagrodzenie miesięczne: "/>
+                        <TextBlock Text="{Binding CurrentUser.SalaryByMonth}"/>
+                        <TextBlock Text=" zł./g.    " />
+                        <TextBox MinWidth="50" Visibility="{Binding EditVisibility}" Text="{Binding UpdatedMonthWage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Content="Aktualizuj wynagrodzenie" Visibility="{Binding EditVisibility}" BorderBrush="DodgerBlue" Background="DodgerBlue" Command="{Binding EditSalaryCommand}"></Button>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

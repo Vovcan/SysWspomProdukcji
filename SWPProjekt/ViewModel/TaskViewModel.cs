@@ -29,7 +29,7 @@ namespace SWPProjekt.ViewModel
             {
                 if (statusCheck != true)
                 {
-                    if(LoginUser.JobTitleid == 2 || LoginUser.JobTitleid == 4 || LoginUser.JobTitleid == 5)
+                    if(LoginUser.JobTitleid == 2 || LoginUser.JobTitleid == 5)
                     {
                         if (LoginUser.JobTitleid == 2)
                             CurrentTask.TaskStatus = 1;
@@ -92,7 +92,7 @@ namespace SWPProjekt.ViewModel
             CloseCommand = new RelayCommand(Close);
             RemoveCommand = new RelayCommand(RemovalList);
             db = new ProductionDatabaseContext();
-            if (CurrentTask.TaskStatus == 1 || CurrentTask.TaskStatus==2 && (LoginUser.JobTitleid==4 || LoginUser.JobTitleid==5))
+            if (CurrentTask.TaskStatus == 1 || CurrentTask.TaskStatus==2 && (LoginUser.JobTitleid==5))
                 statusCheck = true;
             else
                 statusCheck = false;
@@ -114,7 +114,7 @@ namespace SWPProjekt.ViewModel
             AllEmployees = null;
             Visibility = Visibility.Visible;
             Removing = false;
-            AllEmployees = new ObservableCollection<User>(db.Users.Where(u => !u.TaskUsers.Any(p => p.Taskid == CurrentTask.Id) && (u.JobTitleid == 4 || u.JobTitleid == 5)));
+            AllEmployees = new ObservableCollection<User>(db.Users.Where(u => !u.TaskUsers.Any(p => p.Taskid == CurrentTask.Id) && (u.JobTitleid == 5)));
         }
         public void RemovalList(object o)
         {

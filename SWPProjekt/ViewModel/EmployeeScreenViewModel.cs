@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
+﻿using SWPProjekt.Helpers;
 using SWPProjekt.Model;
-using System.Drawing;
+using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace SWPProjekt.ViewModel
 {
     class EmployeeScreenViewModel : BaseViewModel
     {
+        public float? UpdatedHourWage { get; set; }
+        public int? UpdatedMonthWage { get; set; }
+        public RelayCommand EditSalaryCommand { get; set; }
+        public Visibility EditVisibility { get; set; }
         private BitmapImage _imageSource;
         public BitmapImage ImageSource
         {
@@ -33,7 +32,14 @@ namespace SWPProjekt.ViewModel
             LoginUser = loginUser;
             MainModel = mainModel;
             CurrentUser = user;
+            if (CurrentUser.JobTitleid == 4 || CurrentUser.JobTitleid == 3)
+                EditVisibility = Visibility.Visible;
+            else
+                EditVisibility= Visibility.Collapsed;
             LoadImage(user);
+            EditSalaryCommand = new RelayCommand(EditSalary);
+            UpdatedHourWage = CurrentUser.SalaryByHour;
+            UpdatedMonthWage = CurrentUser.SalaryByMonth;
         }
 
         private void LoadImage(User user)
@@ -60,6 +66,21 @@ namespace SWPProjekt.ViewModel
             {
                 MessageBox.Show($"Bład ładowania obrazka: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return null;
+            }
+        }
+
+        public void EditSalary(object o)
+        {
+            try
+            {
+                ProductionDatabaseContext db = new ProductionDatabaseContext();
+                CurrentUser.SalaryByHour = UpdatedHourWage;
+                CurrentUser.SalaryByMonth = UpdatedMonthWage;
+                MainModel.UpdateViewCommand.Execute(new EmployeeScreenViewModel(CurrentUser, MainModel, LoginUser));
+            }
+            catch
+            {
+                MessageBox.Show("Operacja nie udała się");
             }
         }
     }
